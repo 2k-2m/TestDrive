@@ -1,0 +1,29 @@
+65362339
+Pass: drivetestviv@2025_
+drivetest.2025.viva@gmail.com
+Pass: drivetestviv@2025_face
+
+
+
+
+
+
+json
+{
+  "platformName": "Android",
+  "appium:deviceName": "R58M795NHZF",
+  "appium:automationName": "UiAutomator2",
+  "appium:noReset": true
+}
+{
+  "platformName": "Android",
+  "appium:deviceName": "emulator-5554",
+  "appium:automationName": "UiAutomator2",
+  "appium:appPackage": "com.instagram.android",
+  "appium:appActivity": "com.instagram.android.activity.MainTabActivity",
+  "appium:noReset": true,
+  "appium:autoLaunch": false
+}
+
+
+emulator -avd Nombre_de_tu_AVD -no-snapshot-load
