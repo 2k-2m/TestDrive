@@ -1,0 +1,4 @@
+2025-06-03 13:11:32 - Tiempo de carga: 0.93 segundos
+2025-06-03 13:17:00 - Tiempo de carga: 1.41 segundos
+2025-06-03 13:31:27 - Tiempo de carga: 1.25 segundos
+2025-06-03 13:34:54 - Tiempo de carga: 5.77 segundos
