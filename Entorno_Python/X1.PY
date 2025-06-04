@@ -32,104 +32,108 @@ def setup_driver():
         print(f"❌ Failed to connect to Appium server or start session: {e}")
         return None
 
-def guardar_tiempo_en_txt_y_csv(segundos):
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+def guardar_fechas(driver, tipo_de_prueba, locator, metodo="uia", timeout=30, comentario="ok"):
+    print(f"\n🕒 Guardando tiempos para: {tipo_de_prueba}...")
+    fecha_inicio = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
 
-    # Guardar en .txt
+    try:
+        if metodo == "uia":
+            WebDriverWait(driver, timeout).until(
+                EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, locator))
+            )
+        elif metodo == "id":
+            WebDriverWait(driver, timeout).until(
+                EC.presence_of_element_located((AppiumBy.ID, locator))
+            )
+        elif metodo == "xpath":
+            WebDriverWait(driver, timeout).until(
+                EC.presence_of_element_located((AppiumBy.XPATH, locator))
+            )
+        else:
+            raise ValueError(f"❌ Método de localización desconocido: {metodo}")
+
+        fecha_fin = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+        print(f"✅ Guardado '{tipo_de_prueba}' desde {fecha_inicio} hasta {fecha_fin}")
+
+        # Guardar en .txt
+        with open("tiempos_carga.txt", "a", encoding="utf-8") as txt_file:
+            txt_file.write(f"instagram movil {tipo_de_prueba} {fecha_inicio} {fecha_fin} {comentario}\n")
+
+        # Guardar en .csv
+        with open("tiempos_carga.csv", "a", newline="", encoding="utf-8") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(["instagram", "movil", tipo_de_prueba, fecha_inicio, fecha_fin, comentario])
+
+    except Exception as e:
+        print(f"⚠️ No se detectó el elemento para '{tipo_de_prueba}': {e}")
+
+
+def contar_imagenes_en_chat(driver):
+    try:
+        contenedores = driver.find_elements(
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().resourceId("com.instagram.android:id/image")'
+        )
+        print(f"🧩 Contenedores de imagen encontrados: {len(contenedores)}")
+
+        imagenes_validas = 0
+        for contenedor in contenedores:
+            imagenes = contenedor.find_elements(
+                AppiumBy.CLASS_NAME,
+                "android.widget.ImageView"
+            )
+            if imagenes:
+                imagenes_validas += 1
+
+        print(f"📸 Total de imágenes enviadas detectadas: {imagenes_validas}")
+        return imagenes_validas
+    except Exception as e:
+        print(f"❌ Error al contar imágenes en el chat: {e}")
+        return 0
+
+
+def enviar_foto_y_guardar_fechas(driver, tipo_de_prueba="EnvioFoto", timeout=15):
+    print("\n📸 Enviando imagen y esperando confirmación visual...")
+
+    # Paso 1: Contar imágenes actuales en el chat
+    cantidad_antes = contar_imagenes_en_chat(driver)
+    print(f"📷 Imágenes en chat antes de enviar: {cantidad_antes}")
+
+    # Paso 2: Abrir galería y seleccionar imagen
+    click_button(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Galeria")
+    select_from_gallery(driver, 2)
+
+    # Paso 3: Registrar fecha de inicio justo antes de enviar
+    fecha_inicio = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+
+    # Paso 4: Enviar la imagen
+    click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button", "enviar foto")
+
+    # Paso 5: Esperar a que aumente la cantidad de imágenes en el chat
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: contar_imagenes_en_chat(d) > cantidad_antes
+        )
+        fecha_fin = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+        print(f"✅ Imagen enviada desde {fecha_inicio} hasta {fecha_fin}")
+
+        comentario = "ok"
+
+    except Exception as e:
+        print(f"⚠️ No se detectó incremento en cantidad de imágenes: {e}")
+        fecha_fin = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+        comentario = "fallo"
+
+    # Paso 6: Guardar en .txt y .csv
     with open("tiempos_carga.txt", "a", encoding="utf-8") as txt_file:
-        txt_file.write(f"{timestamp} - Tiempo de carga: {segundos:.2f} segundos\n")
+        txt_file.write(f"instagram movil {tipo_de_prueba} {fecha_inicio} {fecha_fin} {comentario}\n")
 
-    # Guardar en .csv
     with open("tiempos_carga.csv", "a", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow([timestamp, round(segundos, 2)])
+        writer.writerow(["instagram", "movil", tipo_de_prueba, fecha_inicio, fecha_fin, comentario])
 
-    print("📝 Tiempo guardado en archivos 'tiempos_carga.txt' y 'tiempos_carga.csv'.")
 
-def measure_feed_load_time(driver):
-    print("\n⏱️ Starting timer to measure feed load time...")
-    start_time = time.time()
-
-    try:
-        WebDriverWait(driver, 30).until(
-            lambda d: d.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                'new UiSelector().resourceId("com.instagram.android:id/refreshable_container")')
-        )
-        end_time = time.time()
-        load_duration = end_time - start_time
-        print(f"✅ Feed (For You page) loaded in {load_duration:.2f} seconds.")
-        guardar_tiempo_en_txt_y_csv(load_duration)
-        return load_duration
-    except Exception as e:
-        print(f"❌ Failed to detect feed container in time: {e}")
-        return None
-
-def medir_tiempo_post_publicado(driver, username="drivetest.2025.viva", timeout=30):
-    print("\n⏱️ Midiendo tiempo hasta que se publica el post...")
-    start = time.time()
-    try:
-        descripcion = f"{username} publicó un photo el"
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located(
-                (AppiumBy.ANDROID_UIAUTOMATOR,
-                 f'new UiSelector().descriptionContains("{descripcion}")')
-            )
-        )
-        duracion = time.time() - start
-        print(f"✅ Publicación detectada en {duracion:.2f} segundos.")
-        return duracion
-    except Exception as e:
-        print(f"❌ No se pudo detectar la publicación en {timeout} segundos: {e}")
-        return None
-
-def medir_tiempo_envio_mensaje(driver):
-    print("\n⏱️ Midiendo tiempo de envío de mensaje...")
-    start = time.time()
-    try:
-        WebDriverWait(driver, 15).until_not(
-            EC.presence_of_element_located((AppiumBy.ID, "com.instagram.android:id/row_thread_composer_send_button_container"))
-        )
-        end = time.time()
-        duracion = end - start
-        print(f"✅ Mensaje enviado en {duracion:.2f} segundos.")
-        return duracion
-    except Exception as e:
-        print(f"❌ No se pudo verificar envío del mensaje: {e}")
-        return None
     
-def medir_tiempo_envio_mensaje(driver, texto_enviado="Hola", timeout=10):
-    print("\n⏱️ Midiendo tiempo de envío de mensaje...")
-    start = time.time()
-    try:
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((
-                AppiumBy.ANDROID_UIAUTOMATOR,
-                f'new UiSelector().text("{texto_enviado}")'
-            ))
-        )
-        duracion = time.time() - start
-        print(f"✅ Mensaje enviado en {duracion:.2f} segundos.")
-        return duracion
-    except Exception as e:
-        print(f"❌ El mensaje no apareció en el chat dentro de {timeout} segundos: {e}")
-        return None
-    
-def medir_tiempo_envio_foto(driver):
-    print("\n⏱️ Midiendo tiempo de envío de imagen...")
-    start = time.time()
-    try:
-        WebDriverWait(driver, 20).until_not(
-            EC.presence_of_element_located((AppiumBy.ID, "com.instagram.android:id/media_thumbnail_tray_button"))
-        )
-        end = time.time()
-        duracion = end - start
-        print(f"✅ Imagen enviada en {duracion:.2f} segundos.")
-        return duracion
-    except Exception as e:
-        print(f"❌ No se pudo verificar envío de imagen: {e}")
-        return None
-
-
 def enter_text_id(driver, resource_id, text_to_enter, description="",timeout=15):
     print(f"Buscando '{description}' para ingresar texto...")
     try:
@@ -313,33 +317,60 @@ def asegurar_publicacion_activa(driver, timeout=5):
         print(f"❌ No se pudo verificar o seleccionar 'PUBLICACIÓN': {e}")
         return False
 
-def medir_tiempo_envio(driver, boton_id, descripcion_boton="Botón Enviar", timeout=30):
-    print(f"\n⏱️ Iniciando medición de tiempo de envío para: {descripcion_boton}")
+
+def contar_mensajes_con_texto(driver, texto="Hola"):
+    return len(driver.find_elements(
+        AppiumBy.ANDROID_UIAUTOMATOR,
+        f'new UiSelector().text("{texto}")'
+    ))
+
+def enviar_mensaje_y_guardar_fechas(driver, texto="Hola", tipo_de_prueba="EnvioMensaje", timeout=15):
+    print(f"\n💬 Enviando mensaje '{texto}' y esperando confirmación...")
+
+    cantidad_antes = contar_mensajes_con_texto(driver, texto)
+    print(f"💬 Mensajes con texto '{texto}' antes de enviar: {cantidad_antes}")
+
+    # Escribir texto
+    enter_text_ui(
+        driver,
+        'new UiSelector().resourceId("com.instagram.android:id/row_thread_composer_edittext")',
+        texto,
+        "Escribir mensaje"
+    )
+
+    # Fecha inicio (justo antes de presionar el botón de enviar)
+    fecha_inicio = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+
+    # Presionar botón de enviar
+    click_button(driver, "com.instagram.android:id/row_thread_composer_send_button_container", "Enviar mensaje")
+
     try:
-        # Paso 1: Presionar botón de enviar
-        boton_enviar = WebDriverWait(driver, timeout).until(
-            EC.element_to_be_clickable((AppiumBy.ID, boton_id))
+        WebDriverWait(driver, timeout).until(
+            lambda d: contar_mensajes_con_texto(d, texto) > cantidad_antes
         )
-        start_time = time.time()
-        boton_enviar.click()
-        print(f"📤 {descripcion_boton} presionado.")
+        fecha_fin = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+        print(f"✅ Mensaje detectado en el chat desde {fecha_inicio} hasta {fecha_fin}")
 
-        # Paso 2: Esperar a que desaparezca el ícono de "enviando"
-        WebDriverWait(driver, timeout).until_not(
-            EC.presence_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
-        )
+        with open("tiempos_carga.txt", "a", encoding="utf-8") as txt_file:
+            txt_file.write(f"instagram movil {tipo_de_prueba} {fecha_inicio} {fecha_fin} ok\n")
 
-        end_time = time.time()
-        duracion_envio = end_time - start_time
-        print(f"✅ {descripcion_boton} enviado correctamente en {duracion_envio:.2f} segundos.\n")
-        return duracion_envio
+        with open("tiempos_carga.csv", "a", newline="", encoding="utf-8") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(["instagram", "movil", tipo_de_prueba, fecha_inicio, fecha_fin, "ok"])
 
-    except TimeoutException:
-        print(f"❌ El ícono de envío no desapareció en {timeout} segundos.")
-        return None
     except Exception as e:
-        print(f"❌ Error al medir tiempo de envío para {descripcion_boton}: {e}")
-        return None
+        fecha_fin = datetime.now().strftime("%d/%m/%Y %H:%M.%S")
+        print(f"⚠️ No se detectó nuevo mensaje con texto '{texto}' en {timeout} segundos: {e}")
+
+        with open("tiempos_carga.txt", "a", encoding="utf-8") as txt_file:
+            txt_file.write(f"instagram movil {tipo_de_prueba} {fecha_inicio} {fecha_fin} fallo\n")
+
+        with open("tiempos_carga.csv", "a", newline="", encoding="utf-8") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(["instagram", "movil", tipo_de_prueba, fecha_inicio, fecha_fin, "fallo"])
+
+
+
 
 def test_instagram_login_or_skip():
     driver = None
@@ -350,7 +381,9 @@ def test_instagram_login_or_skip():
             print("Launching Instagram app...")
             
             # ⏱️ Medir tiempo de carga del feed
-            measure_feed_load_time(driver)
+            guardar_fechas(driver,tipo_de_prueba="Cargadefeed",locator='new UiSelector().resourceId("com.instagram.android:id/refreshable_container")',metodo="uia")
+
+
 
             if is_logged_in(driver):
                 print("Skipping login process as user is already logged in.")
@@ -362,19 +395,20 @@ def test_instagram_login_or_skip():
                 click_button(driver, "com.instagram.android:id/next_button_textview", "Botón Next publicación")
                 click_button(driver, "com.instagram.android:id/creation_next_button", "Botón Next creación")
                 click_button(driver, "com.instagram.android:id/share_footer_button", "Botón Compartir publicación")
-                medir_tiempo_post_publicado(driver)
-                #click_tab_icon(driver, "com.instagram.android:id/tab_icon", 0, "Icono Inicio")
+                guardar_fechas(driver,tipo_de_prueba="Publicacion",locator='new UiSelector().descriptionContains("drivetest.2025.viva publicó un photo el")',metodo="uia")
                 click_button(driver, "com.instagram.android:id/action_bar_inbox_button", "Botón Inbox")  
                 click_button(driver, "com.instagram.android:id/row_inbox_container", "Entrar al Chat") 
-                enter_text_ui(driver, 'new UiSelector().resourceId("com.instagram.android:id/row_thread_composer_edittext")', "Hola", "Escribir un hola")
-                click_button(driver, "com.instagram.android:id/row_thread_composer_send_button_container","Enviar mensaje")
-                medir_tiempo_envio_mensaje(driver)
-                medir_tiempo_envio(driver, "com.instagram.android:id/row_thread_composer_send_button_container", "Mensaje de texto")
-                click_button(driver, "com.instagram.android:id/row_thread_composer_button_gallery","Galeria")
-                select_from_gallery(driver, 2)
-                click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button","enviar foto")
-                medir_tiempo_envio_foto(driver)
-                medir_tiempo_envio(driver, "com.instagram.android:id/media_thumbnail_tray_button", "Foto")
+                
+                enviar_mensaje_y_guardar_fechas(driver, texto="Hola")
+                #enter_text_ui(driver, 'new UiSelector().resourceId("com.instagram.android:id/row_thread_composer_edittext")', "Hola", "Escribir un hola")
+                #click_button(driver, "com.instagram.android:id/row_thread_composer_send_button_container","Enviar mensaje")
+                #guardar_fechas(driver,tipo_de_prueba="EnvioMensaje",locator='new UiSelector().text("Hola")',metodo="uia")
+
+                enviar_foto_y_guardar_fechas(driver)
+                #click_button(driver, "com.instagram.android:id/row_thread_composer_button_gallery","Galeria")
+                #select_from_gallery(driver, 2)
+                #click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button","enviar foto")
+                #guardar_fechas(driver,tipo_de_prueba="EnvioFoto",locator='//android.widget.ImageView[contains(@content-desc, "Mensaje enviado") or contains(@content-desc, "imagen")]',metodo="xpath")
 
                 
             else:

@@ -9,7 +9,7 @@
     {
       "type": "text",
       "name": "appium:deviceName",
-      "value": "emulator-5554"
+      "value": "R58M795NHZF"
     },
     {
       "type": "text",
@@ -17,24 +17,9 @@
       "value": "UiAutomator2"
     },
     {
-      "type": "text",
-      "name": "appium:appPackage",
-      "value": "com.instagram.android"
-    },
-    {
-      "type": "text",
-      "name": "appium:appActivity",
-      "value": "com.instagram.android.activity.MainTabActivity"
-    },
-    {
       "type": "boolean",
       "name": "appium:noReset",
       "value": true
-    },
-    {
-      "type": "boolean",
-      "name": "appium:autoLaunch",
-      "value": false
     }
   ],
   "server": {

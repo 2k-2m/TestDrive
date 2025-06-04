@@ -396,11 +396,24 @@ def test_instagram_automation():
             print("Driver quit.")
 
 if __name__ == "__main__":
-    csv_file_path = "tiempos_carga.csv"
+    csv_file_path = "metricas_instagram.csv"
+
+    # Crear archivo si no existe o está vacío
     if not os.path.isfile(csv_file_path) or os.path.getsize(csv_file_path) == 0:
         with open(csv_file_path, "w", newline="", encoding="utf-8") as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow(["Timestamp", "Metrica", "Duracion (segundos)"])
-        print(f"Archivo '{csv_file_path}' creado/inicializado con cabecera.")
-    
-    test_instagram_automation()
+            writer.writerow([
+                "Instagram", "Tipo de test", "Ret", "Latitud", "Longitud",
+                "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Comentario"
+            ])
+        print(f"📄 Archivo '{csv_file_path}' creado/inicializado con cabecera.")
+
+    # Número de repeticiones
+    repeticiones = 4
+
+    for i in range(repeticiones):
+        print(f"\n🔁 Ejecutando iteración {i + 1} de {repeticiones}...")
+        try:
+            test_instagram_automation()
+        except Exception as e:
+            print(f"❌ Error en la iteración {i + 1}: {e}")
