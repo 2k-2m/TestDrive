@@ -70,7 +70,9 @@ def setup_driver():
         return None
 
 # --- Función ACTUALIZADA para Guardar Resultados en CSV y TXT ---
-def guardar_resultado_y_tiempo_en_archivos(tipo_test, ret, latitud, longitud, fecha_hora_inicio, fecha_hora_fin, comentario="OK"):
+def guardar_resultado_y_tiempo_en_archivos(
+    tipo_test, ret, latitud, longitud, fecha_hora_inicio, fecha_hora_fin, comentario="OK"
+):
     csv_file_path = "metricas_instagram.csv"
     txt_file_path = "tiempos_carga.txt" # Path para el archivo TXT
 
@@ -79,14 +81,14 @@ def guardar_resultado_y_tiempo_en_archivos(tipo_test, ret, latitud, longitud, fe
     is_empty = os.path.getsize(csv_file_path) == 0 if file_exists else True
 
     with open(csv_file_path, "a", newline="", encoding="utf-8") as csv_file:
-        writer = csv.writer(csv_file, delimiter=';')
+        writer = csv.writer(csv_file)
         if not file_exists or is_empty:
             writer.writerow([
-                "Instagram", "Ret", "Tipo de test", "Latitud", "Longitud",
+                "Instagram", "Tipo de test", "Ret", "Latitud", "Longitud",
                 "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Comentario"
             ])
         writer.writerow([
-            "Instagram", ret, tipo_test, latitud, longitud,
+            "Instagram", tipo_test, ret, latitud, longitud,
             fecha_hora_inicio, fecha_hora_fin, comentario
         ])
     print(f"📝 Métrica guardada en '{csv_file_path}'.")
@@ -97,10 +99,11 @@ def guardar_resultado_y_tiempo_en_archivos(tipo_test, ret, latitud, longitud, fe
     fmt = "%Y-%m-%d %H:%M:%S.%f"
     start_dt = datetime.strptime(fecha_hora_inicio, fmt)
     end_dt = datetime.strptime(fecha_hora_fin, fmt)
+    duration_seconds = (end_dt - start_dt).total_seconds()
 
     with open(txt_file_path, "a", encoding="utf-8") as txt_file:
         txt_file.write(
-            f"{fecha_hora_inicio} - {tipo_test}: "
+            f"{fecha_hora_inicio} - {tipo_test}: {duration_seconds:.2f} segundos. "
             f"Inicio: {fecha_hora_inicio}, Fin: {fecha_hora_fin}, "
             f"Lat: {latitud}, Lon: {longitud}, Comentario: {comentario}\n"
         )
@@ -246,6 +249,47 @@ PHOTO_THUMBNAIL_LOCATORS = [
     (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("com.instagram.android:id/media_picker_grid_view").childSelector(new UiSelector().className("android.widget.Button"))'),
     (AppiumBy.CLASS_NAME, "android.widget.Button"),
 ]
+"""""
+PHOTO_THUMBNAIL = [
+    (AppiumBy.XPATH, '//android.widget.GridView[@resource-id="com.instagram.android:id/media_picker_grid_view"]//android.widget.Button'),
+    (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("com.instagram.android:id/media_picker_grid_view").childSelector(new UiSelector().className("android.widget.Button"))'),
+    (AppiumBy.CLASS_NAME, "android.widget.Button"),
+]
+def select_from_grid(driver, photo_index, thumbnail_locators=PHOTO_THUMBNAIL, timeout=15):
+
+    print(f"\n--- Intentando seleccionar la miniatura de foto/video en la galería (índice: {photo_index}) ---")
+    
+    photo_elements = []
+    # Itera sobre los locators para encontrar cualquier elemento de foto
+    for by, value in thumbnail_locators:
+        photo_elements = find_elements_safely(driver, by, value, timeout=timeout, description=f"Miniaturas de fotos con {by.value}:'{value}'")
+        if photo_elements:
+            break # Si encontramos elementos con un selector, salimos del bucle
+
+    if not photo_elements:
+        print(f"❌ No se encontraron miniaturas de fotos con ninguno de los selectores proporcionados.")
+        return False
+
+    if photo_index >= len(photo_elements) or photo_index < 0:
+        print(f"⚠️ Índice de foto fuera de rango. Se solicitó el índice {photo_index}, pero solo se encontraron {len(photo_elements)} fotos.")
+        return False
+
+    try:
+        specific_photo = photo_elements[photo_index]
+        
+        photo_description = specific_photo.get_attribute('content-desc') or specific_photo.text or f"miniatura en índice {photo_index} (clase: {specific_photo.tag_name})"
+        print(f"✅ Seleccionando miniatura de foto/video: '{photo_description}'")
+        
+        specific_photo.click()
+        print(f"✅ Clic en miniatura de foto/video en índice {photo_index} exitoso.")
+        time.sleep(2) # Esperar a que la foto se abra o cargue la siguiente pantalla
+        return True
+    except Exception as e:
+        print(f"❌ Error al intentar hacer clic en la miniatura de foto/video en el índice {photo_index}: {e}")
+        return False
+"""""
+
+
 
 def find_elements_safely(driver, by, value, timeout=10, description="Elementos"):
     try:
@@ -262,63 +306,48 @@ def find_elements_safely(driver, by, value, timeout=10, description="Elementos")
         print(f"❌ Error al buscar elementos para '{description}': {e}")
         return []
 
-def random_photo(driver, thumbnail_locators):
+def random_photo(driver, thumbnail_locators): # Added parameters
     print("\n--- Intentando seleccionar una miniatura de foto aleatoriamente ---")
     photo_elements = []
-    
-    for by, value in thumbnail_locators:
-        all_elements = find_elements_safely(driver, by, value, timeout=10, description="Miniaturas")
-        if all_elements:
-            # Filtrar solo los elementos que en content-desc indiquen que son FOTOS
-            filtered_elements = [
-                el for el in all_elements
-                if "miniatura de foto" in (el.get_attribute("content-desc") or "").lower()
-            ]
-            if filtered_elements:
-                photo_elements = filtered_elements
-                break
-
+    for by, value in thumbnail_locators: # Use the passed-in locators
+        photo_elements = find_elements_safely(driver, by, value, timeout=10, description="Miniaturas de fotos")
+        if photo_elements:
+            break # Si encontramos elementos con un selector, salimos del bucle de selectores
+            
     if photo_elements:
-        selected = random.choice(photo_elements)
-        desc = selected.get_attribute("content-desc") or selected.text or "Elemento sin descripción"
-        print(f"✅ Seleccionando miniatura aleatoria de foto: '{desc}'")
-        selected.click()
-        print("✅ Clic en miniatura exitoso.")
-        time.sleep(2)
+        random_photo = random.choice(photo_elements)
+        # Intentar obtener el atributo 'content-desc' o 'text' para imprimirlo.
+        photo_description = random_photo.get_attribute('content-desc') or random_photo.text or f"Elemento (Clase: {random_photo.tag_name})"
+        print(f"✅ Seleccionando miniatura de foto aleatoria: '{photo_description}'")
+        random_photo.click()
+        print("✅ Clic en miniatura de foto exitoso.")
+        time.sleep(2) # Esperar a que la foto se abra en pantalla completa
     else:
-        raise Exception("❌ No se encontraron miniaturas de fotos (videos excluidos).")
-    
+        raise Exception("❌ No se encontraron miniaturas de fotos para seleccionar con los selectores proporcionados.")
 
 def asegurar_publicacion_activa(driver, timeout=5):
-    try:
-        publicacion_btn = WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((AppiumBy.ID, "com.instagram.android:id/cam_dest_feed"))
-        )
-        publicacion_btn.click()
-        print("✅ 'PUBLICACIÓN' fue activada directamente.")
-        return True
-
-    except Exception:
-        print("⚠️ No se pudo hacer clic en 'PUBLICACIÓN'. Intentando primero con 'REEL'...")
+    print("\n🔍 Verificando si la opción 'PUBLICACIÓN' está activa...")
 
     try:
-        reel_btn = WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "REEL"))
+        # Intentar encontrar la opción activa con content-desc "PUBLICACIÓN"
+        elemento_publicacion = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((
+                AppiumBy.XPATH,
+                '//android.widget.TextView[@content-desc="PUBLICACIÓN"]'
+            ))
         )
-        reel_btn.click()
-        print("🎯 'REEL' fue seleccionado correctamente.")
 
-        publicacion_btn = WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((AppiumBy.ID, "com.instagram.android:id/cam_dest_feed"))
-        )
-        publicacion_btn.click()
-        print("✅ 'PUBLICACIÓN' fue activada después de seleccionar 'REEL'.")
-        return True
-
+        if elemento_publicacion.is_selected() or "selected" in (elemento_publicacion.get_attribute("selected") or ""):
+            print("✅ Ya está seleccionada la opción 'PUBLICACIÓN'.")
+            return True
+        else:
+            print("ℹ️ Opción 'PUBLICACIÓN' no está activa. Intentando activarla...")
+            return click_button(driver, "com.instagram.android:id/cam_dest_feed", "Opción 'PUBLICACIÓN'")
+    
     except Exception as e:
-        print(f"❌ No se pudo activar 'PUBLICACIÓN' incluso después de seleccionar 'REEL': {e}")
+        print(f"❌ No se pudo verificar o seleccionar 'PUBLICACIÓN': {e}")
         return False
-
+    
 
 def select_from_gallery(driver, instance_index, gallery_id="com.instagram.android:id/gallery_grid", thumbnail_class_name="android.widget.CheckBox", timeout=15):
     print(f"\n--- Intentando seleccionar la miniatura de foto/video de la galería")
@@ -367,16 +396,18 @@ def test_instagram_automation():
             fecha_hora_inicio_app_feed = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
             
             if measure_app_open_to_feed_time(driver):
+                lat_fin_app_feed, lon_fin_app_feed = get_device_location(driver)
                 fecha_hora_fin_app_feed = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_CARGA_APP_A_FEED, Red, lat_inicio_app_feed, lon_inicio_app_feed,
                     fecha_hora_inicio_app_feed, fecha_hora_fin_app_feed, "OK"
                 )
             else:
+                lat_fin_app_feed, lon_fin_app_feed = get_device_location(driver)
                 fecha_hora_fin_app_feed = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_CARGA_APP_A_FEED, Red, lat_inicio_app_feed, lon_inicio_app_feed,
-                    fecha_hora_inicio_app_feed, fecha_hora_fin_app_feed, "Fail"
+                    fecha_hora_inicio_app_feed, fecha_hora_fin_app_feed, "Feed no detectado"
                 )
                 print("⚠️ No se pudo medir el tiempo de carga del feed porque el feed no se detectó.")
                 return
@@ -384,58 +415,6 @@ def test_instagram_automation():
             # --- Proceso de Login (si es necesario) ---
             if not is_logged_in(driver):
                 print("User is not logged in. Proceeding with login flow.")
-                
-                """""
-                username = "drivetest.2025.viva@gmail.com"
-                password = "drivetestviv@2025_face"
-
-                try:
-                    username_field = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().className("android.widget.EditText").instance(0)')
-                    username_field.send_keys(username)
-                    print(f"✅ Entered username: {username}")
-                    time.sleep(2)
-                except Exception as e:
-                    print(f"❌ Could not find username field: {e}")
-                    return
-                
-                try:
-                    password_field = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().className("android.widget.EditText").instance(1)')
-                    password_field.send_keys(password)
-                    print("✅ Entered password.")
-                    time.sleep(2)
-                except Exception as e:
-                    print(f"❌ Could not find password field: {e}")
-                    driver.save_screenshot("error_password_field.png")
-                    return
-
-                try:
-                    login_button = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().description("Iniciar sesión")')
-                    login_button.click()
-                    print("✅ Clicked on 'Iniciar sesión' button.")
-                    time.sleep(10)
-                except Exception as e:
-                    print(f"❌ Could not click login button: {e}")
-                    driver.save_screenshot("error_login_button.png")
-                    return
-
-                try:
-                    time.sleep(5)
-                    save_login_button = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().description("Guardar")')
-                    save_login_button.click()
-                    print("✅ Clicked on 'Guardar' button.")
-                    time.sleep(5)
-                except NoSuchElementException:
-                    print("ℹ️ 'Guardar' button not found. Skipping.")
-                except Exception as e:
-                    print(f"Unexpected error with 'Guardar' button: {e}")
-
-                print("✅ Instagram login completed successfully.")
-                """""
-                
             else:
                 print("Skipping login process as user is already logged in.")
                 time.sleep(2)
@@ -468,7 +447,7 @@ def test_instagram_automation():
                             EC.element_to_be_clickable((AppiumBy.ID, "com.instagram.android:id/feed_tab_icon"))
                         )
                     )
-                    
+                    lat_fin_post, lon_fin_post = get_device_location(driver)
                     fecha_hora_fin_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     print(f"✅ Publicación completada y confirmada.")
                     guardar_resultado_y_tiempo_en_archivos(
@@ -476,19 +455,19 @@ def test_instagram_automation():
                         fecha_hora_inicio_post, fecha_hora_fin_post, "OK"
                     )
                 except TimeoutException:
-                    
+                    lat_fin_post, lon_fin_post = get_device_location(driver)
                     fecha_hora_fin_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     print(f"⚠️ No se pudo confirmar la finalización de la publicación en 90s (timeout).")
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_PUBLICACION_POST, Red, lat_inicio_post, lon_inicio_post,
-                        fecha_hora_inicio_post, fecha_hora_fin_post, "Fail"
+                        fecha_hora_inicio_post, fecha_hora_fin_post, "Timeout de confirmación"
                     )
             else:
-                
+                lat_fin_post, lon_fin_post = get_device_location(driver)
                 fecha_hora_fin_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_PUBLICACION_POST, Red, lat_inicio_post, lon_inicio_post,
-                    fecha_hora_inicio_post, fecha_hora_fin_post, "Fail"
+                    fecha_hora_inicio_post, fecha_hora_fin_post, "No se hizo clic en Compartir"
                 )
                 print("❌ No se pudo hacer clic en Compartir, no se medirá el tiempo de publicación.")
 
@@ -508,7 +487,7 @@ def test_instagram_automation():
                         WebDriverWait(driver, 30).until(
                             EC.invisibility_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
                         )
-                        
+                        lat_fin_msg_texto, lon_fin_msg_texto = get_device_location(driver)
                         fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                         print(f"✅ Mensaje de texto enviado y confirmado.")
                         guardar_resultado_y_tiempo_en_archivos(
@@ -516,27 +495,27 @@ def test_instagram_automation():
                             fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "OK"
                         )
                     except TimeoutException:
-                        
+                        lat_fin_msg_texto, lon_fin_msg_texto = get_device_location(driver)
                         fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                         print(f"⚠️ No se pudo confirmar el envío del mensaje de texto en 30s (timeout).")
                         guardar_resultado_y_tiempo_en_archivos(
                             METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                            fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail"
+                            fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Timeout de confirmación"
                         )
                 else:
-                    
+                    lat_fin_msg_texto, lon_fin_msg_texto = get_device_location(driver)
                     fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                        fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail"
+                        fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "No se hizo clic en Enviar"
                     )
                     print("❌ No se pudo hacer clic en Enviar Mensaje, no se medirá el tiempo.")
             else:
-                
+                lat_fin_msg_texto, lon_fin_msg_texto = get_device_location(driver)
                 fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                    fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail"
+                    fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "No se pudo ingresar texto"
                 )
                 print("❌ No se pudo ingresar texto, no se medirá el tiempo de envío.")
 
@@ -554,7 +533,7 @@ def test_instagram_automation():
                             WebDriverWait(driver, 60).until(
                                 EC.invisibility_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
                             )
-                            
+                            lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                             fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                             print(f"✅ Mensaje con foto enviado y confirmado.")
                             guardar_resultado_y_tiempo_en_archivos(
@@ -562,35 +541,35 @@ def test_instagram_automation():
                                 fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "OK"
                             )
                         except TimeoutException:
-                            
+                            lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                             fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                             print(f"⚠️ No se pudo confirmar el envío de la foto en 60s (timeout).")
                             guardar_resultado_y_tiempo_en_archivos(
                                 METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Timeout de confirmación"
                             )
                     else:
-                        
+                        lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                         fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                         guardar_resultado_y_tiempo_en_archivos(
                             METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "No se hizo clic en Enviar Foto"
                         )
                         print(f"❌ No se pudo hacer clic en Enviar Foto Seleccionada, no se medirá el tiempo.")
                 else:
-                    
+                    lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                     fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                        fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                        fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "No se pudo seleccionar foto"
                     )
                     print("❌ No se pudo seleccionar una foto de la galería del chat.")
             else:
-                
+                lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                 fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                    fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                    fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "No se hizo clic en Botón Galería"
                 )
                 print("❌ No se pudo hacer clic en el botón de Galería en el chat.")
 
@@ -614,7 +593,7 @@ def test_instagram_automation():
                             WebDriverWait(driver, 60).until(
                                 EC.invisibility_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
                             )
-                           
+                            lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                             fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                             print(f"✅ Mensaje con foto enviado y confirmado.")
                             guardar_resultado_y_tiempo_en_archivos(
@@ -622,41 +601,46 @@ def test_instagram_automation():
                                 fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "OK"
                             )
                         except TimeoutException:
-                           
+                            lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                             fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                             print(f"⚠️ No se pudo confirmar el envío de la foto en 60s (timeout).")
                             guardar_resultado_y_tiempo_en_archivos(
                                 METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Timeout de confirmación"
                             )
                     else:
-                        
+                        lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                         fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                         guardar_resultado_y_tiempo_en_archivos(
                             METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "No se hizo clic en Enviar Foto"
                         )
                         print(f"❌ No se pudo hacer clic en Enviar Foto Seleccionada, no se medirá el tiempo.")
                 else:
-                   
+                    lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                     fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                        fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                        fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "No se pudo seleccionar foto"
                     )
                     print("❌ No se pudo seleccionar una foto de la galería del chat.")
             else:
-                
+                lat_fin_msg_foto, lon_fin_msg_foto = get_device_location(driver)
                 fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                    fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                    fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "No se hizo clic en Botón Galería"
                 )
                 print("❌ No se pudo hacer clic en el botón de Galería en el chat.")
 
             print("\n✅ Flujo principal de acciones completado.")
 
             time.sleep(2)
+
+
+
+
+
 
     except Exception as e:
         print(f"❌ An error occurred during the test: {e}")
