@@ -70,9 +70,9 @@ def setup_driver():
         return None
 
 # --- Función ACTUALIZADA para Guardar Resultados en CSV y TXT ---
-def guardar_resultado_y_tiempo_en_archivos(tipo_test, ret, latitud, longitud, fecha_hora_inicio, fecha_hora_fin, comentario="OK"):
+def guardar_resultado_y_tiempo_en_archivos(tipo_test, ret, latitud, longitud, fecha_hora_inicio, fecha_hora_fin, comentario="OK", causa_falla="", tam_archivo=""):
     csv_file_path = "metricas_instagram.csv"
-    txt_file_path = "tiempos_carga.txt" # Path para el archivo TXT
+    txt_file_path = "tiempos_carga.txt"  # Path para el archivo TXT
 
     # --- Escribir en CSV ---
     file_exists = os.path.isfile(csv_file_path)
@@ -83,28 +83,16 @@ def guardar_resultado_y_tiempo_en_archivos(tipo_test, ret, latitud, longitud, fe
         if not file_exists or is_empty:
             writer.writerow([
                 "Instagram", "Ret", "Tipo de test", "Latitud", "Longitud",
-                "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Comentario"
+                "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Comentario",
+                "Causa de falla", "Tamaño archivo"
             ])
         writer.writerow([
             "Instagram", ret, tipo_test, latitud, longitud,
-            fecha_hora_inicio, fecha_hora_fin, comentario
+            fecha_hora_inicio, fecha_hora_fin, comentario,
+            causa_falla, tam_archivo
         ])
     print(f"📝 Métrica guardada en '{csv_file_path}'.")
 
-    # --- Escribir en TXT ---
-    # Calcular la duración para el archivo TXT
-    # Convertir a datetime objects para calcular la diferencia
-    fmt = "%Y-%m-%d %H:%M:%S.%f"
-    start_dt = datetime.strptime(fecha_hora_inicio, fmt)
-    end_dt = datetime.strptime(fecha_hora_fin, fmt)
-
-    with open(txt_file_path, "a", encoding="utf-8") as txt_file:
-        txt_file.write(
-            f"{fecha_hora_inicio} - {tipo_test}: "
-            f"Inicio: {fecha_hora_inicio}, Fin: {fecha_hora_fin}, "
-            f"Lat: {latitud}, Lon: {longitud}, Comentario: {comentario}\n"
-        )
-    print(f"📝 Tiempo guardado en '{txt_file_path}'.")
 
 
 # --- Resto de las funciones (get_device_location, measure_app_open_to_feed_time,
@@ -361,11 +349,11 @@ def test_instagram_automation():
         Red = obtener_estado_conectividad_real(driver)
         if driver:
             print("\n--- Instagram Automation Started ---")
-            
+
             # --- 1. Medición: Carga de App a For You Page ---
             lat_inicio_app_feed, lon_inicio_app_feed = get_device_location(driver)
             fecha_hora_inicio_app_feed = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-            
+
             if measure_app_open_to_feed_time(driver):
                 fecha_hora_fin_app_feed = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
@@ -376,286 +364,196 @@ def test_instagram_automation():
                 fecha_hora_fin_app_feed = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_CARGA_APP_A_FEED, Red, lat_inicio_app_feed, lon_inicio_app_feed,
-                    fecha_hora_inicio_app_feed, fecha_hora_fin_app_feed, "Fail"
+                    fecha_hora_inicio_app_feed, fecha_hora_fin_app_feed, "Fail",
+                    causa_falla="Timeout", tam_archivo=""
                 )
                 print("⚠️ No se pudo medir el tiempo de carga del feed porque el feed no se detectó.")
                 return
 
-            # --- Proceso de Login (si es necesario) ---
+            # --- Login (omitido si ya está logueado) ---
             if not is_logged_in(driver):
                 print("User is not logged in. Proceeding with login flow.")
-                
-                """""
-                username = "drivetest.2025.viva@gmail.com"
-                password = "drivetestviv@2025_face"
-
-                try:
-                    username_field = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().className("android.widget.EditText").instance(0)')
-                    username_field.send_keys(username)
-                    print(f"✅ Entered username: {username}")
-                    time.sleep(2)
-                except Exception as e:
-                    print(f"❌ Could not find username field: {e}")
-                    return
-                
-                try:
-                    password_field = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().className("android.widget.EditText").instance(1)')
-                    password_field.send_keys(password)
-                    print("✅ Entered password.")
-                    time.sleep(2)
-                except Exception as e:
-                    print(f"❌ Could not find password field: {e}")
-                    driver.save_screenshot("error_password_field.png")
-                    return
-
-                try:
-                    login_button = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().description("Iniciar sesión")')
-                    login_button.click()
-                    print("✅ Clicked on 'Iniciar sesión' button.")
-                    time.sleep(10)
-                except Exception as e:
-                    print(f"❌ Could not click login button: {e}")
-                    driver.save_screenshot("error_login_button.png")
-                    return
-
-                try:
-                    time.sleep(5)
-                    save_login_button = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
-                        'new UiSelector().description("Guardar")')
-                    save_login_button.click()
-                    print("✅ Clicked on 'Guardar' button.")
-                    time.sleep(5)
-                except NoSuchElementException:
-                    print("ℹ️ 'Guardar' button not found. Skipping.")
-                except Exception as e:
-                    print(f"Unexpected error with 'Guardar' button: {e}")
-
-                print("✅ Instagram login completed successfully.")
-                """""
-                
+                # Omitido por confidencialidad / ya implementado
             else:
                 print("Skipping login process as user is already logged in.")
                 time.sleep(2)
 
-            # --- 2. Flujo de Publicación de Post ---
-            click_tab_icon(driver, "com.instagram.android:id/tab_avatar", instance_index=0, description="Icono perfil (Avatar Tab)")
-            click_tab_icon(driver, "com.instagram.android:id/tab_icon", instance_index=2, description="Icono crear (+) - Middle Tab Icon", timeout=10)
+            # --- 2. Publicación de Post ---
+            click_tab_icon(driver, "com.instagram.android:id/tab_avatar", 0, "Icono perfil")
+            if not click_tab_icon(driver, "com.instagram.android:id/tab_icon", 2, "Icono crear (+)", timeout=10):
+                return
             print("✅ 'Crear (+)' icon clicked successfully.")
-            
+
             if not asegurar_publicacion_activa(driver):
                 print("❌ No se pudo asegurar la opción 'PUBLICACIÓN'. Abortando publicación.")
                 return
 
-            
-            #select_from_grid(driver,3)
             random_photo(driver, PHOTO_THUMBNAIL_LOCATORS)
-            click_button(driver, "com.instagram.android:id/next_button_textview", "Botón Siguiente (Selección de Media)")
+            click_button(driver, "com.instagram.android:id/next_button_textview", "Botón Siguiente")
             click_button(driver, "com.instagram.android:id/creation_next_button", "Botón Next creación")
-            
+
             lat_inicio_post, lon_inicio_post = get_device_location(driver)
             fecha_hora_inicio_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
             print("\n⏱️ Medición: Tiempo de publicación del post...")
-            
+
             if click_button(driver, "com.instagram.android:id/share_footer_button", "Botón Compartir publicación"):
                 try:
                     WebDriverWait(driver, 90).until(
                         EC.any_of(
-                            EC.invisibility_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'Finalizando') or contains(@text, 'Finishing')]")),
-                            EC.invisibility_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'Compartiendo') or contains(@text, 'Sharing')]")),
+                            EC.invisibility_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'Finalizando') or contains(@text, 'Compartiendo') or contains(@text, 'Sharing') or contains(@text, 'Finishing')]")),
                             EC.element_to_be_clickable((AppiumBy.ID, "com.instagram.android:id/feed_tab_icon"))
                         )
                     )
-                    
                     fecha_hora_fin_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                    print(f"✅ Publicación completada y confirmada.")
+                    print("✅ Publicación completada y confirmada.")
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_PUBLICACION_POST, Red, lat_inicio_post, lon_inicio_post,
-                        fecha_hora_inicio_post, fecha_hora_fin_post, "OK"
+                        fecha_hora_inicio_post, fecha_hora_fin_post, "OK",
+                        tam_archivo="2MB"
                     )
                 except TimeoutException:
-                    
                     fecha_hora_fin_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                    print(f"⚠️ No se pudo confirmar la finalización de la publicación en 90s (timeout).")
+                    print("⚠️ Timeout al esperar la confirmación de publicación.")
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_PUBLICACION_POST, Red, lat_inicio_post, lon_inicio_post,
-                        fecha_hora_inicio_post, fecha_hora_fin_post, "Fail"
+                        fecha_hora_inicio_post, fecha_hora_fin_post, "Fail",
+                        causa_falla="Timeout", tam_archivo="2MB"
                     )
             else:
-                
                 fecha_hora_fin_post = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_PUBLICACION_POST, Red, lat_inicio_post, lon_inicio_post,
-                    fecha_hora_inicio_post, fecha_hora_fin_post, "Fail"
+                    fecha_hora_inicio_post, fecha_hora_fin_post, "Fail",
+                    causa_falla="No se encontró el elemento botón", tam_archivo="2MB"
                 )
-                print("❌ No se pudo hacer clic en Compartir, no se medirá el tiempo de publicación.")
+                print("❌ No se pudo hacer clic en Compartir.")
 
-            # --- 3. Flujo de Mensaje de Texto ---
-            time.sleep(2)
-            click_button(driver, "com.instagram.android:id/action_bar_inbox_button", "Botón Inbox (Mensajes)")
-            click_button(driver, "com.instagram.android:id/row_inbox_container", "Entrar al Primer Chat")
-
+            # --- 3. Mensaje de Texto ---
+            click_button(driver, "com.instagram.android:id/action_bar_inbox_button", "Botón Inbox")
+            click_button(driver, "com.instagram.android:id/row_inbox_container", "Primer Chat")
             lat_inicio_msg_texto, lon_inicio_msg_texto = get_device_location(driver)
             fecha_hora_inicio_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-            print("\n⏱️ Medición: Tiempo de envío de mensaje de texto...")
+            print("\n⏱️ Tiempo de envío de mensaje de texto...")
 
-            if enter_text_ui(driver, 'new UiSelector().resourceId("com.instagram.android:id/row_thread_composer_edittext")', "Hola prueba", "Escribir un hola"):
-                if click_button(driver, "com.instagram.android:id/row_thread_composer_send_button_container","Enviar mensaje", mandatory=False, timeout=7):
+            if enter_text_ui(driver, 'new UiSelector().resourceId("com.instagram.android:id/row_thread_composer_edittext")', "Hola prueba", "Escribir texto"):
+                if click_button(driver, "com.instagram.android:id/row_thread_composer_send_button_container", "Enviar texto", False, 7):
                     try:
-                        print("🔍 Esperando desaparición de 'action_icon' o spinner para confirmar envío de texto...")
                         WebDriverWait(driver, 30).until(
                             EC.invisibility_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
                         )
-                        
                         fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                        print(f"✅ Mensaje de texto enviado y confirmado.")
+                        print("✅ Mensaje enviado.")
                         guardar_resultado_y_tiempo_en_archivos(
                             METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                            fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "OK"
+                            fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "OK",
+                            tam_archivo="1KB"
                         )
                     except TimeoutException:
-                        
                         fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                        print(f"⚠️ No se pudo confirmar el envío del mensaje de texto en 30s (timeout).")
                         guardar_resultado_y_tiempo_en_archivos(
                             METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                            fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail"
+                            fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail",
+                            causa_falla="Timeout", tam_archivo="1KB"
                         )
                 else:
-                    
                     fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     guardar_resultado_y_tiempo_en_archivos(
                         METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                        fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail"
+                        fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail",
+                        causa_falla="No se encontró el elemento botón", tam_archivo="1KB"
                     )
-                    print("❌ No se pudo hacer clic en Enviar Mensaje, no se medirá el tiempo.")
             else:
-                
                 fecha_hora_fin_msg_texto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
                     METRICA_ENVIO_MSG_TEXTO, Red, lat_inicio_msg_texto, lon_inicio_msg_texto,
-                    fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail"
+                    fecha_hora_inicio_msg_texto, fecha_hora_fin_msg_texto, "Fail",
+                    causa_falla="No se encontró el elemento texto", tam_archivo="1KB"
                 )
-                print("❌ No se pudo ingresar texto, no se medirá el tiempo de envío.")
 
-            # --- 4. Flujo de Mensaje con Foto ---
-            time.sleep(2)
+            # --- 4. Mensaje con Foto ---
             if click_button(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
                 if select_from_gallery(driver, 2):
                     lat_inicio_msg_foto, lon_inicio_msg_foto = get_device_location(driver)
                     fecha_hora_inicio_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                    print("\n⏱️ Medición: Tiempo de envío de mensaje con foto...")
-                    
-                    if click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button","Enviar foto", mandatory=False, timeout=7):
+                    if click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button", "Enviar foto", False, 7):
                         try:
-                            print("🔍 Esperando desaparición de 'action_icon' o spinner para confirmar envío de foto...")
                             WebDriverWait(driver, 60).until(
                                 EC.invisibility_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
                             )
-                            
                             fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                            print(f"✅ Mensaje con foto enviado y confirmado.")
                             guardar_resultado_y_tiempo_en_archivos(
                                 METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "OK"
+                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "OK",
+                                tam_archivo="2MB"
                             )
                         except TimeoutException:
-                            
                             fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                            print(f"⚠️ No se pudo confirmar el envío de la foto en 60s (timeout).")
                             guardar_resultado_y_tiempo_en_archivos(
                                 METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail",
+                                causa_falla="Timeout", tam_archivo="2MB"
                             )
                     else:
-                        
                         fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                         guardar_resultado_y_tiempo_en_archivos(
                             METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail",
+                            causa_falla="No se encontró el elemento botón", tam_archivo="2MB"
                         )
-                        print(f"❌ No se pudo hacer clic en Enviar Foto Seleccionada, no se medirá el tiempo.")
                 else:
-                    
-                    fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     guardar_resultado_y_tiempo_en_archivos(
-                        METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                        fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                        METRICA_ENVIO_MSG_FOTO, Red, "", "", "", "", "Fail",
+                        causa_falla="No se encontró el elemento foto", tam_archivo="2MB"
                     )
-                    print("❌ No se pudo seleccionar una foto de la galería del chat.")
             else:
-                
-                fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
-                    METRICA_ENVIO_MSG_FOTO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                    fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                    METRICA_ENVIO_MSG_FOTO, Red, "", "", "", "", "Fail",
+                    causa_falla="No se encontró el elemento botón", tam_archivo="2MB"
                 )
-                print("❌ No se pudo hacer clic en el botón de Galería en el chat.")
 
-            print("\n✅ Flujo principal de acciones completado.")
-
-            time.sleep(2)
-
-
-                        # --- 5. Flujo de Mensaje con Video ---
-            time.sleep(2)
+            # --- 5. Mensaje con Video ---
             if click_button(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
                 if select_from_gallery(driver, 0):
-                    lat_inicio_msg_foto, lon_inicio_msg_foto = get_device_location(driver)
-                    fecha_hora_inicio_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                    print("\n⏱️ Medición: Tiempo de envío de mensaje con Video...")
-                    
-                    if click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button","Enviar Video", mandatory=False, timeout=7):
+                    lat_inicio_msg_video, lon_inicio_msg_video = get_device_location(driver)
+                    fecha_hora_inicio_msg_video = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+                    if click_button(driver, "com.instagram.android:id/media_thumbnail_tray_button", "Enviar video", False, 7):
                         try:
-                            print("🔍 Esperando desaparición de 'action_icon' o spinner para confirmar envío de Video...")
                             time.sleep(3)
                             WebDriverWait(driver, 60).until(
                                 EC.invisibility_of_element_located((AppiumBy.ID, "com.instagram.android:id/action_icon"))
                             )
-                           
-                            fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                            print(f"✅ Mensaje con foto enviado y confirmado.")
+                            fecha_hora_fin_msg_video = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                             guardar_resultado_y_tiempo_en_archivos(
-                                METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "OK"
+                                METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_video, lon_inicio_msg_video,
+                                fecha_hora_inicio_msg_video, fecha_hora_fin_msg_video, "OK",
+                                tam_archivo="20MB"
                             )
                         except TimeoutException:
-                           
-                            fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                            print(f"⚠️ No se pudo confirmar el envío de la foto en 60s (timeout).")
+                            fecha_hora_fin_msg_video = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                             guardar_resultado_y_tiempo_en_archivos(
-                                METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                                fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                                METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_video, lon_inicio_msg_video,
+                                fecha_hora_inicio_msg_video, fecha_hora_fin_msg_video, "Fail",
+                                causa_falla="Timeout", tam_archivo="20MB"
                             )
                     else:
-                        
-                        fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+                        fecha_hora_fin_msg_video = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                         guardar_resultado_y_tiempo_en_archivos(
-                            METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                            fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                            METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_video, lon_inicio_msg_video,
+                            fecha_hora_inicio_msg_video, fecha_hora_fin_msg_video, "Fail",
+                            causa_falla="No se encontró el elemento botón", tam_archivo="20MB"
                         )
-                        print(f"❌ No se pudo hacer clic en Enviar Foto Seleccionada, no se medirá el tiempo.")
                 else:
-                   
-                    fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     guardar_resultado_y_tiempo_en_archivos(
-                        METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                        fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                        METRICA_ENVIO_MSG_VIDEO, Red, "", "", "", "", "Fail",
+                        causa_falla="No se encontró el elemento video", tam_archivo="20MB"
                     )
-                    print("❌ No se pudo seleccionar una foto de la galería del chat.")
             else:
-                
-                fecha_hora_fin_msg_foto = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                 guardar_resultado_y_tiempo_en_archivos(
-                    METRICA_ENVIO_MSG_VIDEO, Red, lat_inicio_msg_foto, lon_inicio_msg_foto,
-                    fecha_hora_inicio_msg_foto, fecha_hora_fin_msg_foto, "Fail"
+                    METRICA_ENVIO_MSG_VIDEO, Red, "", "", "", "", "Fail",
+                    causa_falla="No se encontró el elemento botón", tam_archivo="20MB"
                 )
-                print("❌ No se pudo hacer clic en el botón de Galería en el chat.")
 
             print("\n✅ Flujo principal de acciones completado.")
-
             time.sleep(2)
 
     except Exception as e:
@@ -675,6 +573,7 @@ def test_instagram_automation():
             print("Driver quit.")
 
 
+
 if __name__ == "__main__":
 
 
@@ -686,7 +585,7 @@ if __name__ == "__main__":
             writer = csv.writer(csv_file)
             writer.writerow([
                 "Instagram", "Tipo de test", "Ret", "Latitud", "Longitud",
-                "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Comentario"
+                "Fecha_Hora_Inicio", "Fecha_Hora_Fin", "Comentario", "Causa de falla", "Tamaño archivo"
             ])
         print(f"📄 Archivo '{csv_file_path}' creado/inicializado con cabecera.")
 
