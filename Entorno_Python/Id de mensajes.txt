@@ -1,0 +1,95 @@
+De mensajes
+accessibility id
+Recientes
+id
+com.instagram.android:id/media_picker_header_title_container
+-android uiautomator
+(docs)
+new UiSelector().resourceId("com.instagram.android:id/media_picker_header_title_container")
+xpath
+//android.widget.Button[@content-desc="Recientes"]
+Attribute	Value
+elementId
+00000000-0000-015a-ffff-ffff00001b7c
+index
+0
+package
+com.instagram.android
+class
+android.widget.Button
+text
+content-desc
+Recientes
+resource-id
+com.instagram.android:id/media_picker_header_title_container
+checkable
+false
+checked
+false
+clickable
+true
+enabled
+true
+
+La galeria grid
+
+id
+com.instagram.android:id/album_thumbnail_recycler_view
+-android uiautomator
+(docs)
+new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")
+xpath
+//android.widget.GridView[@resource-id="com.instagram.android:id/album_thumbnail_recycler_view"]
+Attribute	Value
+elementId
+00000000-0000-0168-ffff-ffff00001c8b
+index
+1
+package
+com.instagram.android
+class
+android.widget.GridView
+text
+resource-id
+com.instagram.android:id/album_thumbnail_recycler_view
+checkable
+false
+checked
+false
+clickable
+false
+enabled
+true
+focusable
+true
+
+y La carpeta download
+accessibility id
+Download
+-android uiautomator
+(docs)
+new UiSelector().description("Download")
+xpath
+//android.widget.LinearLayout[@content-desc="Download"]
+Attribute	Value
+elementId
+00000000-0000-0168-ffff-ffff00001ca8
+index
+2
+package
+com.instagram.android
+class
+android.widget.LinearLayout
+text
+content-desc
+Download
+resource-id
+com.instagram.android:id/album_thumbnail_view
+checkable
+false
+checked
+false
+clickable
+true
+enabled
+true

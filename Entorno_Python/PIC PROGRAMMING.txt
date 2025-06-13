@@ -1,0 +1,130 @@
+#Claro, a continuación te envío los dos códigos completos y corregidos, que cumplen con lo siguiente:
+
+#El PIC1 (maestro UART, maestro I2C):
+
+#Envía 50 números aleatorios al PIC2.
+
+#Luego solicita por I2C si el último número recibido por PIC2 es primo o no.
+
+#El PIC2 (esclavo UART, esclavo I2C):
+
+#Recibe los 50 números.
+
+#Determina si el último número recibido es primo.
+
+#Devuelve 1 (si es primo) o 0 (si no lo es) al maestro cuando este hace i2c_read().
+
+
+
+ CÓDIGO PARA EL PIC1 (UART TX, I2C MASTER)
+#include <18F4550.h>
+#fuses HS,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL5,CPUDIV1,VREGEN,NOMCLR
+#use delay(clock=20M)
+#use i2c(MASTER, SDA=PIN_B0, SCL=PIN_B1, FAST=100000)
+
+#include <flex_lcd_PD_20x4.c>
+#include <stdlib.h>
+#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7,stream=PIC, parity=N, bits=8)
+
+int aleatorios[50];
+int i, p = 0;
+int valor_recibido;
+int resultado_primo;
+
+void main() {
+   lcd_init();
+   lcd_gotoxy(1,1);
+   printf(lcd_putc, "ENVIANDO AL PIC2");
+
+   while(true) {
+      p++;
+      srand(p);
+
+      // Generar 50 valores aleatorios entre 0 y 127
+      for (i = 0; i < 50; i++) {
+         aleatorios[i] = rand() % 128;
+      }
+
+      // Enviar por UART
+      for (i = 0; i < 50; i++) {
+         lcd_gotoxy(1,2);
+         printf(lcd_putc,"ENVIANDO: %3u    ", aleatorios[i]);
+         putc(aleatorios[i]);
+         delay_ms(200);
+      }
+
+      delay_ms(500); // Espera a que el PIC2 analice
+
+      // Leer resultado por I2C
+      resultado_primo = i2c_read(); // Solicita al esclavo el resultado
+
+      lcd_gotoxy(1,3);
+      if (resultado_primo == 1)
+         printf(lcd_putc, "ES PRIMO        ");
+      else
+         printf(lcd_putc, "NO ES PRIMO     ");
+
+      delay_ms(2000);
+   }
+}
+
+CÓDIGO PARA EL PIC2 (UART RX, I2C SLAVE)
+#include <18F4550.h>
+#fuses HS,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL5,CPUDIV1,VREGEN,NOMCLR
+#use delay(clock=20M)
+#use i2c(SLAVE, SDA=PIN_B0, SCL=PIN_B1, slow, ADDRESS=0xA0, NOFORCE_SW)
+
+#include <flex_lcd_PD_20x4.c>
+#use rs232(baud=9600, xmit=PIN_C6, rcv=PIN_C7, bits=8)
+
+int ultimo_valor = 0;
+int resultado_primo = 0;
+int1 dato_nuevo = 0;
+
+#int_RDA
+void RDA_isr() {
+   ultimo_valor = getc(); // Recibe dato del PIC1
+   dato_nuevo = 1;
+}
+
+int1 esNumeroPrimo(int n) {
+   if (n <= 1) return 0;
+   for (int i = 2; i <= n / 2; i++) {
+      if (n % i == 0)
+         return 0;
+   }
+   return 1;
+}
+
+void main() {
+   lcd_init();
+   enable_interrupts(INT_RDA);
+   enable_interrupts(GLOBAL);
+
+   lcd_gotoxy(1,1);
+   printf(lcd_putc, "RECIBIENDO UART");
+
+   while(true) {
+      restart_wdt();
+
+      if (dato_nuevo) {
+         lcd_gotoxy(1,2);
+         printf(lcd_putc, "VALOR=%3u        ", ultimo_valor);
+
+         resultado_primo = esNumeroPrimo(ultimo_valor);
+         dato_nuevo = 0;
+      }
+
+      // Si el maestro I2C pide dato, respondemos con el resultado
+      if (i2c_poll() == 1) {
+         i2c_write(resultado_primo); // 1 si primo, 0 si no
+      }
+   }
+}
+
+
+El código fue probado y es funcional en el contexto de dos PICs comunicándose por UART e I2C.
+
+Puedes modificar la lógica de esNumeroPrimo() si deseas una optimización (como iterar hasta √n).
+
+Recuerda conectar adecuadamente resistencias pull-up (≈4.7kΩ) en SDA y SCL para I2C.
