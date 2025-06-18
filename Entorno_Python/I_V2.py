@@ -7,16 +7,9 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
 import time, csv, random, os
+import subprocess
 
 # --- CONSTANTES ---
-ARCHIVOS_CONOCIDOS = [
-    "Video.mp4",
-    "Video2.mp4",
-    "Imagen1.jpg",
-    "Imagen2.jpg",
-    "Imagen3.jpg",
-    "Imagen4.jpg",
-]
 METRICAS = {
     "FEED": "Carga_Feed",
     "POST": "Publicacion",
@@ -87,7 +80,7 @@ def ingresar_texto(driver, rid, texto, desc="", timeout=10):
     except: return False
 
 def seleccionar_media_publicacion(driver):
-    index = random.randint(2, 5)
+    index = random.randint(0, 3)
     try:
         el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
             f'new UiSelector().resourceId("com.instagram.android:id/media_picker_grid_view")'
@@ -145,6 +138,13 @@ def click_button(driver, resource_id, description="", timeout=10, mandatory=True
 def enviar_contenido_F(driver, tipo, index, btn_id, wait_for_id):
     if not clic(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
         return
+    
+    clic(driver, "com.instagram.android:id/media_picker_header_title_container")
+    el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
+            f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
+            f'.childSelector(new UiSelector().description("DriveTest"))')))
+    el.click()
+
     if not seleccionar_media(driver, index):
         guardar_resultado(tipo, red, "", "", "", "", "Fail", "No se encontró el elemento", tam_archivo)
         return
@@ -159,6 +159,13 @@ def enviar_contenido_F(driver, tipo, index, btn_id, wait_for_id):
 def enviar_contenido_V(driver, tipo, index, btn_id, wait_for_id):
     if not clic(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
         return
+    
+    clic(driver, "com.instagram.android:id/media_picker_header_title_container")
+    el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
+            f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
+            f'.childSelector(new UiSelector().description("DriveTest"))')))
+    el.click()
+
     if not seleccionar_media(driver, index):
         guardar_resultado(tipo, red, "", "", "", "", "Fail", "No se encontró el elemento", tam_archivo)
         return
@@ -238,7 +245,7 @@ def verificar_reproduccion_video(driver, duracion_segundos=15, check_interval=5)
     return True
 
 def obtener_tamano_archivo_android(nombre_archivo):
-    ruta = f"/sdcard/Download/{nombre_archivo}"
+    ruta = f"/sdcard/DriveTest/{nombre_archivo}"  # ✅ Carpeta correcta
     output = os.popen(f"adb shell ls -l {ruta}").read()
     try:
         peso_bytes = int(output.split()[4])
@@ -289,6 +296,11 @@ def test_instagram():
     # --- Post ---
     print("Publicando imagen...")
     if click_tab_icon(driver, "com.instagram.android:id/tab_icon", 3, "Crear", 10) and asegurar_publicacion_activa(driver):
+        clic(driver, "com.instagram.android:id/gallery_folder_menu_tv")
+        el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
+            f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
+            f'.childSelector(new UiSelector().description("DriveTest"))')))
+        el.click()
         exito, tam_archivo = seleccionar_media_publicacion(driver)
         if exito:
             clic(driver, "com.instagram.android:id/next_button_textview")
@@ -319,15 +331,12 @@ def test_instagram():
     enviar_mensaje_texto(driver, "Hola Mundo Peru", red)
     print("Enviando mensaje de texto...OK")
 
-    index1 = random.randint(3, 5)
-    index2 = random.randint(1, 2)
-
     print("Enviando imagen por mensaje...")
-    enviar_contenido_F(driver, METRICAS["PHOTO"], index1, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
+    enviar_contenido_F(driver, METRICAS["PHOTO"], 1, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
     print("Enviando imagen por mensaje...OK")
 
     print("Enviando video por mensaje...")
-    enviar_contenido_V(driver, METRICAS["VIDEO"], index2, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
+    enviar_contenido_V(driver, METRICAS["VIDEO"], 5, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
     print("Enviando video por mensaje...OK")
 
     driver.quit()
@@ -352,8 +361,23 @@ def ejecutar_pruebas(n=1):
         except Exception as e:
             print(f" Error en la iteración {i+1}: {e}")
 
+def generar_vector_archivos(carpeta="/sdcard/DriveTest"):
+    salida = subprocess.getoutput(f'adb shell ls -ltlh {carpeta}')
+    archivos_conocidos = []
+
+    for linea in salida.strip().split('\n'):
+        columnas = linea.split()
+        if len(columnas) >= 9:
+            nombre_archivo = ' '.join(columnas[8:])
+            if "." in nombre_archivo and not nombre_archivo.endswith("/"):
+                archivos_conocidos.append(nombre_archivo)
+
+    return archivos_conocidos
+
+ARCHIVOS_CONOCIDOS = generar_vector_archivos()
 
 # --- EJECUCIÓN ---
 if __name__ == "__main__":
-    inicializar_csv()
-    ejecutar_pruebas(3)
+    print(ARCHIVOS_CONOCIDOS)
+    #inicializar_csv()
+    #ejecutar_pruebas(3)
