@@ -259,15 +259,18 @@ def setup_driver():
     caps = {
         "platformName": "Android",
         "deviceName": "R58M795NHZF",
+        "udid": "R58M795NHZF",
         "appPackage": "com.instagram.android",
         "appActivity": "com.instagram.android.activity.MainTabActivity",
         "automationName": "UiAutomator2",
         "forceAppLaunch": True,
+        "systemPort": 8202, 
         "noReset": True,
+        
         "newCommandTimeout": 360
     }
     try:
-        return webdriver.Remote("http://127.0.0.1:4723", options=UiAutomator2Options().load_capabilities(caps))
+        return webdriver.Remote("http://127.0.0.1:4727", options=UiAutomator2Options().load_capabilities(caps))
     except Exception as e:
         print(f"No se pudo iniciar Appium: {e}")
         return None
@@ -374,10 +377,11 @@ def generar_vector_archivos(carpeta="/sdcard/DriveTest"):
 
     return archivos_conocidos
 
-ARCHIVOS_CONOCIDOS = generar_vector_archivos()
+ARCHIVOS_CONOCIDOS = ['1Imagen.jpg', '2Imagen.jpg', '3Imagen.jpg', '4Imagen.jpg', 'Video2.mp4', 'Video.mp4']
+#generar_vector_archivos()
 
 # --- EJECUCIÓN ---
 if __name__ == "__main__":
     print(ARCHIVOS_CONOCIDOS)
-    #inicializar_csv()
-    #ejecutar_pruebas(3)
+    inicializar_csv()
+    ejecutar_pruebas(1000)

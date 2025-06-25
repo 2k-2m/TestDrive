@@ -1,0 +1,254 @@
+App,Red,tipo_variable,tipo_contenido,Lat. Inicio (inicio app o inicio envio_contenido),Long. Inicio (inicio app o inicio envio_contenido),fecha_hora_inicio_enviado,fecha_hora_fin_enviado,fecha_hora_inicio_entregado,fecha_hora_fin_entregado,Tamano archivo (MB),RESULTADO
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3762759,-66.1567392,23/06/2025 11:45:37,23/06/2025 11:45:42,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3762759,-66.1567392,23/06/2025 11:45:50,23/06/2025 11:45:53,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3763027,-66.1567577,23/06/2025 11:46:01,23/06/2025 11:46:03,23/06/2025 11:46:03,23/06/2025 11:46:03,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3763027,-66.1567577,23/06/2025 11:46:11,23/06/2025 11:46:18,23/06/2025 11:46:20,23/06/2025 11:46:20,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3763027,-66.1567577,23/06/2025 11:46:27,n/a,n/a,n/a,14.0,Timeout
+Whatsapp,MOBILE,envio_contenido,documento,-17.3763027,-66.1567577,23/06/2025 11:46:51,23/06/2025 11:46:56,23/06/2025 11:46:57,23/06/2025 11:46:57,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3762387,-66.156733,23/06/2025 11:47:27,23/06/2025 11:47:30,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3762387,-66.156733,23/06/2025 11:47:38,23/06/2025 11:47:40,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3762387,-66.156733,23/06/2025 11:47:48,23/06/2025 11:47:50,23/06/2025 11:47:50,23/06/2025 11:47:50,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.376212,-66.1567096,23/06/2025 11:47:58,23/06/2025 11:48:00,23/06/2025 11:48:00,23/06/2025 11:48:00,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.376212,-66.1567096,23/06/2025 11:48:08,23/06/2025 11:48:10,23/06/2025 11:48:10,23/06/2025 11:48:10,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.376212,-66.1567096,23/06/2025 11:48:18,23/06/2025 11:48:20,23/06/2025 11:48:20,23/06/2025 11:48:20,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.376212,-66.1567096,23/06/2025 11:48:50,23/06/2025 11:48:53,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.376212,-66.1567096,23/06/2025 11:49:01,23/06/2025 11:49:05,,,n/a,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3762481,-66.156923,23/06/2025 13:36:11,23/06/2025 13:36:15,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3762481,-66.156923,23/06/2025 13:36:22,23/06/2025 13:36:24,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3762481,-66.156923,23/06/2025 13:36:32,23/06/2025 13:36:34,23/06/2025 13:36:36,23/06/2025 13:36:36,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3762481,-66.156923,23/06/2025 13:36:43,23/06/2025 13:36:45,23/06/2025 13:36:45,23/06/2025 13:36:45,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3762481,-66.156923,23/06/2025 13:36:52,23/06/2025 13:36:54,23/06/2025 13:36:54,23/06/2025 13:36:54,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3762481,-66.156923,23/06/2025 13:37:02,23/06/2025 13:37:04,23/06/2025 13:37:04,23/06/2025 13:37:04,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3755574,-66.1569065,23/06/2025 13:37:34,23/06/2025 13:38:09,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3755574,-66.1569065,23/06/2025 13:38:43,23/06/2025 13:38:43,,,n/a,ERROR
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3724271,-66.1638552,23/06/2025 13:47:22,23/06/2025 13:47:25,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3724271,-66.1638552,23/06/2025 13:47:32,23/06/2025 13:47:35,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3724809,-66.1639918,23/06/2025 13:48:50,23/06/2025 13:48:52,23/06/2025 13:48:55,23/06/2025 13:48:55,14.0,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3686439,-66.1647778,23/06/2025 13:49:57,23/06/2025 13:50:00,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3686439,-66.1647778,23/06/2025 13:50:07,23/06/2025 13:50:10,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3686439,-66.1647778,23/06/2025 13:50:17,23/06/2025 13:50:20,23/06/2025 13:50:20,23/06/2025 13:50:20,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3686439,-66.1647778,23/06/2025 13:50:27,23/06/2025 13:50:29,23/06/2025 13:50:29,23/06/2025 13:50:29,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3682285,-66.1669614,23/06/2025 13:50:38,23/06/2025 13:50:39,23/06/2025 13:50:39,23/06/2025 13:50:39,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3682285,-66.1669614,23/06/2025 13:50:46,23/06/2025 13:50:48,23/06/2025 13:50:48,23/06/2025 13:50:48,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3682285,-66.1669614,23/06/2025 13:51:18,23/06/2025 13:51:21,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3682285,-66.1669614,23/06/2025 13:51:28,23/06/2025 13:51:38,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3657672,-66.1679272,23/06/2025 13:51:46,23/06/2025 13:51:48,23/06/2025 13:51:49,23/06/2025 13:51:49,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3657672,-66.1679272,23/06/2025 13:51:56,23/06/2025 13:51:58,23/06/2025 13:51:58,23/06/2025 13:51:58,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3657672,-66.1679272,23/06/2025 13:52:06,23/06/2025 13:52:08,23/06/2025 13:52:08,23/06/2025 13:52:08,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3657672,-66.1679272,23/06/2025 13:52:15,23/06/2025 13:52:16,23/06/2025 13:52:16,23/06/2025 13:52:16,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3670271,-66.1658556,23/06/2025 13:52:47,23/06/2025 13:52:50,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3670271,-66.1658556,23/06/2025 13:52:57,23/06/2025 13:53:06,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3670271,-66.1658556,23/06/2025 13:53:14,23/06/2025 13:53:16,23/06/2025 13:53:16,23/06/2025 13:53:16,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3670271,-66.1658556,23/06/2025 13:53:23,23/06/2025 13:53:25,23/06/2025 13:53:25,23/06/2025 13:53:25,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3670271,-66.1658556,23/06/2025 13:53:32,23/06/2025 13:53:34,23/06/2025 13:53:34,23/06/2025 13:53:34,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3689199,-66.1635955,23/06/2025 13:53:41,23/06/2025 13:53:43,23/06/2025 13:53:43,23/06/2025 13:53:43,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3689199,-66.1635955,23/06/2025 13:54:13,23/06/2025 13:54:16,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3689199,-66.1635955,23/06/2025 13:54:23,23/06/2025 13:54:32,,,n/a,Timeout
+Whatsapp,MOBILE,envio_contenido,texto,-17.3671676,-66.1624477,23/06/2025 13:54:39,23/06/2025 13:54:42,23/06/2025 13:54:45,23/06/2025 13:54:45,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3671676,-66.1624477,23/06/2025 13:54:53,n/a,n/a,n/a,3.3,Timeout
+Whatsapp,MOBILE,envio_contenido,video,-17.3671676,-66.1624477,23/06/2025 13:55:08,23/06/2025 13:55:11,23/06/2025 13:55:11,23/06/2025 13:55:11,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3671676,-66.1624477,23/06/2025 13:55:18,n/a,n/a,n/a,1.2,Timeout
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3684191,-66.1600181,23/06/2025 13:55:57,23/06/2025 13:56:01,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3684191,-66.1600181,23/06/2025 13:56:09,23/06/2025 13:56:12,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3684191,-66.1600181,23/06/2025 13:56:19,23/06/2025 13:56:21,23/06/2025 13:56:21,23/06/2025 13:56:21,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3684191,-66.1600181,23/06/2025 13:56:28,23/06/2025 13:56:30,23/06/2025 13:56:30,23/06/2025 13:56:30,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3697368,-66.1577521,23/06/2025 13:56:38,23/06/2025 13:56:40,23/06/2025 13:56:41,23/06/2025 13:56:41,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3697368,-66.1577521,23/06/2025 13:56:48,23/06/2025 13:56:50,23/06/2025 13:56:50,23/06/2025 13:56:50,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3697368,-66.1577521,23/06/2025 13:57:20,23/06/2025 13:57:23,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3697368,-66.1577521,23/06/2025 13:57:31,23/06/2025 13:57:40,,,n/a,Timeout
+Whatsapp,MOBILE,envio_contenido,texto,-17.3700266,-66.1559597,23/06/2025 13:57:47,23/06/2025 13:57:50,23/06/2025 13:57:52,23/06/2025 13:57:52,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3700266,-66.1559597,23/06/2025 13:58:00,23/06/2025 13:58:02,23/06/2025 13:58:02,23/06/2025 13:58:02,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3700266,-66.1559597,23/06/2025 13:58:09,23/06/2025 13:58:11,23/06/2025 13:58:11,23/06/2025 13:58:11,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3700266,-66.1559597,23/06/2025 13:58:19,23/06/2025 13:58:20,23/06/2025 13:58:20,23/06/2025 13:58:20,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3704972,-66.1535799,23/06/2025 13:58:51,23/06/2025 13:58:55,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3704972,-66.1535799,23/06/2025 13:59:02,23/06/2025 13:59:05,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3704972,-66.1535799,23/06/2025 13:59:13,23/06/2025 13:59:14,23/06/2025 13:59:16,23/06/2025 13:59:16,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3704972,-66.1535799,23/06/2025 13:59:24,23/06/2025 13:59:26,23/06/2025 13:59:26,23/06/2025 13:59:26,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3704972,-66.1535799,23/06/2025 13:59:34,23/06/2025 13:59:36,23/06/2025 13:59:36,23/06/2025 13:59:36,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.371611,-66.1518107,23/06/2025 13:59:43,23/06/2025 13:59:45,23/06/2025 13:59:45,23/06/2025 13:59:45,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.371611,-66.1518107,23/06/2025 14:00:16,23/06/2025 14:00:20,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.371611,-66.1518107,23/06/2025 14:00:27,23/06/2025 14:00:36,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.372771,-66.1494078,23/06/2025 14:00:43,23/06/2025 14:00:46,23/06/2025 14:00:47,23/06/2025 14:00:47,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.372771,-66.1494078,23/06/2025 14:00:54,23/06/2025 14:00:56,23/06/2025 14:00:56,23/06/2025 14:00:56,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.372771,-66.1494078,23/06/2025 14:01:04,23/06/2025 14:01:06,23/06/2025 14:01:06,23/06/2025 14:01:06,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.372771,-66.1494078,23/06/2025 14:01:13,23/06/2025 14:01:15,23/06/2025 14:01:15,23/06/2025 14:01:15,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.376936,-66.1497977,23/06/2025 14:01:45,23/06/2025 14:01:48,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.376936,-66.1497977,23/06/2025 14:01:55,23/06/2025 14:02:04,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.376936,-66.1497977,23/06/2025 14:02:12,23/06/2025 14:02:14,23/06/2025 14:02:14,23/06/2025 14:02:14,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.376936,-66.1497977,23/06/2025 14:02:22,23/06/2025 14:02:24,23/06/2025 14:02:24,23/06/2025 14:02:24,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.376936,-66.1497977,23/06/2025 14:02:31,23/06/2025 14:02:33,23/06/2025 14:02:33,23/06/2025 14:02:33,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3791552,-66.1522477,23/06/2025 14:02:40,23/06/2025 14:02:42,23/06/2025 14:02:42,23/06/2025 14:02:42,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3791552,-66.1522477,23/06/2025 14:03:12,23/06/2025 14:03:15,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3791552,-66.1522477,23/06/2025 14:03:23,23/06/2025 14:03:26,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3791552,-66.1522477,23/06/2025 14:03:34,23/06/2025 14:03:36,n/a,n/a,0.0,Timeout
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3801462,-66.1568859,23/06/2025 14:03:50,23/06/2025 14:03:52,23/06/2025 14:03:57,23/06/2025 14:03:57,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3801462,-66.1568859,23/06/2025 14:04:04,23/06/2025 14:04:06,23/06/2025 14:04:06,23/06/2025 14:04:06,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3801462,-66.1568859,23/06/2025 14:04:13,23/06/2025 14:04:16,23/06/2025 14:04:16,23/06/2025 14:04:16,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3782961,-66.1569736,23/06/2025 14:05:46,23/06/2025 14:05:50,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3782961,-66.1569736,23/06/2025 14:05:58,23/06/2025 14:06:02,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3782961,-66.1569736,23/06/2025 14:06:10,23/06/2025 14:06:13,23/06/2025 14:06:13,23/06/2025 14:06:13,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3782961,-66.1569736,23/06/2025 14:06:22,23/06/2025 14:06:23,23/06/2025 14:06:23,23/06/2025 14:06:23,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3782961,-66.1569736,23/06/2025 14:06:30,23/06/2025 14:06:39,23/06/2025 14:06:39,23/06/2025 14:06:39,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3779865,-66.1591767,23/06/2025 14:06:47,23/06/2025 14:06:49,23/06/2025 14:06:49,23/06/2025 14:06:49,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3779865,-66.1591767,23/06/2025 14:07:19,23/06/2025 14:07:22,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3779865,-66.1591767,23/06/2025 14:07:30,23/06/2025 14:07:32,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3779338,-66.1604956,23/06/2025 14:07:40,23/06/2025 14:07:42,23/06/2025 14:07:43,23/06/2025 14:07:43,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3779338,-66.1604956,23/06/2025 14:07:51,23/06/2025 14:07:53,23/06/2025 14:07:53,23/06/2025 14:07:53,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3779338,-66.1604956,23/06/2025 14:08:00,23/06/2025 14:08:02,23/06/2025 14:08:02,23/06/2025 14:08:02,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3779338,-66.1604956,23/06/2025 14:08:10,23/06/2025 14:08:12,23/06/2025 14:08:12,23/06/2025 14:08:12,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3787453,-66.1636395,23/06/2025 14:08:42,23/06/2025 14:08:45,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3787453,-66.1636395,23/06/2025 14:08:52,23/06/2025 14:09:01,,,n/a,Timeout
+Whatsapp,MOBILE,envio_contenido,texto,-17.3787453,-66.1636395,23/06/2025 14:09:09,23/06/2025 14:09:11,23/06/2025 14:09:13,23/06/2025 14:09:13,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3787453,-66.1636395,23/06/2025 14:09:20,n/a,n/a,n/a,3.3,Timeout
+Whatsapp,MOBILE,envio_contenido,video,-17.3781794,-66.1677155,23/06/2025 14:09:38,23/06/2025 14:09:40,23/06/2025 14:09:40,23/06/2025 14:09:40,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3781794,-66.1677155,23/06/2025 14:09:48,23/06/2025 14:09:50,23/06/2025 14:09:50,23/06/2025 14:09:50,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3781794,-66.1677155,23/06/2025 14:10:20,23/06/2025 14:10:23,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3781794,-66.1677155,23/06/2025 14:10:31,23/06/2025 14:10:33,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3762754,-66.1718653,23/06/2025 14:10:42,23/06/2025 14:10:44,23/06/2025 14:10:45,23/06/2025 14:10:45,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3762754,-66.1718653,23/06/2025 14:10:53,23/06/2025 14:10:55,23/06/2025 14:10:55,23/06/2025 14:10:55,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3762754,-66.1718653,23/06/2025 14:11:03,23/06/2025 14:11:05,23/06/2025 14:11:05,23/06/2025 14:11:05,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3762754,-66.1718653,23/06/2025 14:11:12,23/06/2025 14:11:14,23/06/2025 14:11:14,23/06/2025 14:11:14,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3763426,-66.1752018,23/06/2025 14:11:44,23/06/2025 14:11:47,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3763426,-66.1752018,23/06/2025 14:11:55,23/06/2025 14:11:58,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3763426,-66.1752018,23/06/2025 14:12:06,23/06/2025 14:12:08,23/06/2025 14:12:12,23/06/2025 14:12:12,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3763426,-66.1752018,23/06/2025 14:12:20,23/06/2025 14:12:22,23/06/2025 14:12:22,23/06/2025 14:12:22,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3763426,-66.1752018,23/06/2025 14:12:29,23/06/2025 14:12:31,23/06/2025 14:12:31,23/06/2025 14:12:31,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3761363,-66.1782215,23/06/2025 14:12:38,23/06/2025 14:12:40,23/06/2025 14:12:40,23/06/2025 14:12:40,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3761363,-66.1782215,23/06/2025 14:13:11,23/06/2025 14:13:15,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3761363,-66.1782215,23/06/2025 14:13:22,23/06/2025 14:13:25,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3761363,-66.1782215,23/06/2025 14:13:33,23/06/2025 14:13:35,23/06/2025 14:13:35,23/06/2025 14:13:35,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3738794,-66.1804512,23/06/2025 14:13:43,23/06/2025 14:13:45,23/06/2025 14:13:45,23/06/2025 14:13:45,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3738794,-66.1804512,23/06/2025 14:13:53,23/06/2025 14:13:59,23/06/2025 14:13:59,23/06/2025 14:13:59,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3738794,-66.1804512,23/06/2025 14:14:05,23/06/2025 14:14:07,23/06/2025 14:14:08,23/06/2025 14:14:08,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3715314,-66.1786999,23/06/2025 14:14:39,23/06/2025 14:14:42,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3715314,-66.1786999,23/06/2025 14:14:49,23/06/2025 14:14:58,,,n/a,Timeout
+Whatsapp,MOBILE,envio_contenido,texto,-17.3715314,-66.1786999,23/06/2025 14:15:06,23/06/2025 14:15:08,23/06/2025 14:15:10,23/06/2025 14:15:10,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3715314,-66.1786999,23/06/2025 14:15:17,23/06/2025 14:15:19,23/06/2025 14:15:19,23/06/2025 14:15:19,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3715314,-66.1786999,23/06/2025 14:15:26,23/06/2025 14:15:28,23/06/2025 14:15:28,23/06/2025 14:15:28,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3715314,-66.1786999,23/06/2025 14:15:36,23/06/2025 14:15:38,23/06/2025 14:15:38,23/06/2025 14:15:38,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3716699,-66.1759943,23/06/2025 14:16:08,23/06/2025 14:16:11,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3716699,-66.1759943,23/06/2025 14:16:19,23/06/2025 14:16:21,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3716699,-66.1759943,23/06/2025 14:16:29,23/06/2025 14:16:31,23/06/2025 14:16:31,23/06/2025 14:16:31,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3719379,-66.1721371,23/06/2025 14:16:39,23/06/2025 14:16:41,23/06/2025 14:16:41,23/06/2025 14:16:41,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3719379,-66.1721371,23/06/2025 14:16:48,23/06/2025 14:16:50,23/06/2025 14:16:50,23/06/2025 14:16:50,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3719379,-66.1721371,23/06/2025 14:16:57,23/06/2025 14:16:59,23/06/2025 14:16:59,23/06/2025 14:16:59,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3719379,-66.1721371,23/06/2025 14:17:29,23/06/2025 14:17:32,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3719379,-66.1721371,23/06/2025 14:17:40,23/06/2025 14:17:42,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3721533,-66.1687895,23/06/2025 14:17:50,23/06/2025 14:17:52,23/06/2025 14:17:54,23/06/2025 14:17:54,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3721533,-66.1687895,23/06/2025 14:18:02,23/06/2025 14:18:04,23/06/2025 14:18:04,23/06/2025 14:18:04,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3721533,-66.1687895,23/06/2025 14:18:12,23/06/2025 14:18:14,23/06/2025 14:18:14,23/06/2025 14:18:14,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3721533,-66.1687895,23/06/2025 14:18:22,23/06/2025 14:18:24,23/06/2025 14:18:24,23/06/2025 14:18:24,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3722724,-66.1666317,23/06/2025 14:18:54,23/06/2025 14:18:58,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3722724,-66.1666317,23/06/2025 14:19:05,23/06/2025 14:19:10,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3722724,-66.1666317,23/06/2025 14:19:18,23/06/2025 14:19:19,23/06/2025 14:19:21,23/06/2025 14:19:21,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3722724,-66.1666317,23/06/2025 14:19:29,23/06/2025 14:19:31,23/06/2025 14:19:31,23/06/2025 14:19:31,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.372504,-66.1639529,23/06/2025 14:19:39,23/06/2025 14:19:41,23/06/2025 14:19:41,23/06/2025 14:19:41,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.372504,-66.1639529,23/06/2025 14:19:47,23/06/2025 14:19:49,23/06/2025 14:19:49,23/06/2025 14:19:49,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.372504,-66.1639529,23/06/2025 14:20:19,23/06/2025 14:20:23,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.372504,-66.1639529,23/06/2025 14:20:30,23/06/2025 14:20:33,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3726162,-66.162803,23/06/2025 14:20:41,23/06/2025 14:20:44,23/06/2025 14:20:44,23/06/2025 14:20:44,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3726162,-66.162803,23/06/2025 14:20:52,23/06/2025 14:20:54,23/06/2025 14:20:54,23/06/2025 14:20:54,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3726162,-66.162803,23/06/2025 14:21:01,23/06/2025 14:21:03,23/06/2025 14:21:03,23/06/2025 14:21:03,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3726162,-66.162803,23/06/2025 14:21:10,n/a,n/a,n/a,1.2,Timeout
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3726391,-66.1595697,23/06/2025 14:21:50,23/06/2025 14:21:53,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3726391,-66.1595697,23/06/2025 14:22:01,23/06/2025 14:22:04,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3726391,-66.1595697,23/06/2025 14:22:11,23/06/2025 14:22:13,23/06/2025 14:22:14,23/06/2025 14:22:14,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3726391,-66.1595697,23/06/2025 14:22:22,23/06/2025 14:22:24,23/06/2025 14:22:24,23/06/2025 14:22:24,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3726391,-66.1595697,23/06/2025 14:22:30,23/06/2025 14:22:32,23/06/2025 14:22:32,23/06/2025 14:22:32,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3734727,-66.1568967,23/06/2025 14:22:39,23/06/2025 14:22:41,23/06/2025 14:22:41,23/06/2025 14:22:41,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3734727,-66.1568967,23/06/2025 14:23:11,23/06/2025 14:23:14,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3734727,-66.1568967,23/06/2025 14:23:21,23/06/2025 14:23:24,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3734727,-66.1568967,23/06/2025 14:23:33,23/06/2025 14:23:35,23/06/2025 14:23:36,23/06/2025 14:23:36,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3746377,-66.1579368,23/06/2025 14:23:46,23/06/2025 14:23:48,23/06/2025 14:23:48,23/06/2025 14:23:48,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3746377,-66.1579368,23/06/2025 14:23:56,23/06/2025 14:23:58,23/06/2025 14:23:58,23/06/2025 14:23:58,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3746377,-66.1579368,23/06/2025 14:24:05,23/06/2025 14:24:07,23/06/2025 14:24:09,23/06/2025 14:24:09,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3734905,-66.1590515,23/06/2025 14:24:39,23/06/2025 14:24:42,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3734905,-66.1590515,23/06/2025 14:24:50,23/06/2025 14:24:53,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3734905,-66.1590515,23/06/2025 14:25:01,23/06/2025 14:25:02,23/06/2025 14:25:04,23/06/2025 14:25:04,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3734905,-66.1590515,23/06/2025 14:25:12,23/06/2025 14:25:14,23/06/2025 14:25:14,23/06/2025 14:25:14,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3734905,-66.1590515,23/06/2025 14:25:21,23/06/2025 14:25:23,23/06/2025 14:25:23,23/06/2025 14:25:23,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3734905,-66.1590515,23/06/2025 14:25:31,23/06/2025 14:25:33,23/06/2025 14:25:33,23/06/2025 14:25:33,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3695432,-66.1587438,23/06/2025 14:26:02,23/06/2025 14:26:06,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3695432,-66.1587438,23/06/2025 14:26:13,23/06/2025 14:26:23,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3695432,-66.1587438,23/06/2025 14:26:31,23/06/2025 14:26:33,23/06/2025 14:26:35,23/06/2025 14:26:35,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3669579,-66.1572585,23/06/2025 14:26:43,23/06/2025 14:26:45,23/06/2025 14:26:45,23/06/2025 14:26:45,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3669579,-66.1572585,23/06/2025 14:26:53,23/06/2025 14:26:55,23/06/2025 14:26:55,23/06/2025 14:26:55,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3669579,-66.1572585,23/06/2025 14:27:02,23/06/2025 14:27:04,23/06/2025 14:27:04,23/06/2025 14:27:04,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3642598,-66.1562044,23/06/2025 14:27:34,23/06/2025 14:27:37,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3642598,-66.1562044,23/06/2025 14:27:44,23/06/2025 14:27:47,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3642598,-66.1562044,23/06/2025 14:27:55,23/06/2025 14:27:57,23/06/2025 14:27:59,23/06/2025 14:27:59,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3642598,-66.1562044,23/06/2025 14:28:06,23/06/2025 14:28:08,23/06/2025 14:28:08,23/06/2025 14:28:08,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3642598,-66.1562044,23/06/2025 14:28:15,23/06/2025 14:28:17,23/06/2025 14:28:17,23/06/2025 14:28:17,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3642598,-66.1562044,23/06/2025 14:28:24,23/06/2025 14:28:26,23/06/2025 14:28:26,23/06/2025 14:28:26,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.362902,-66.154714,23/06/2025 14:28:56,23/06/2025 14:28:59,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.362902,-66.154714,23/06/2025 14:29:07,23/06/2025 14:29:13,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.362902,-66.154714,23/06/2025 14:29:21,23/06/2025 14:29:23,n/a,n/a,0.0,Timeout
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3648863,-66.1536808,23/06/2025 14:29:38,23/06/2025 14:29:39,23/06/2025 14:29:39,23/06/2025 14:29:39,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3648863,-66.1536808,23/06/2025 14:29:47,23/06/2025 14:29:49,23/06/2025 14:29:49,23/06/2025 14:29:49,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3648863,-66.1536808,23/06/2025 14:29:57,23/06/2025 14:29:58,23/06/2025 14:29:58,23/06/2025 14:29:58,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3648863,-66.1536808,23/06/2025 14:30:28,23/06/2025 14:30:31,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3648863,-66.1536808,23/06/2025 14:30:39,23/06/2025 14:30:41,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3661323,-66.1530786,23/06/2025 14:30:49,23/06/2025 14:30:51,23/06/2025 14:30:53,23/06/2025 14:30:53,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3661323,-66.1530786,23/06/2025 14:31:00,23/06/2025 14:31:02,23/06/2025 14:31:02,23/06/2025 14:31:02,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3661323,-66.1530786,23/06/2025 14:31:09,23/06/2025 14:31:11,23/06/2025 14:31:11,23/06/2025 14:31:11,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3661323,-66.1530786,23/06/2025 14:31:18,23/06/2025 14:31:20,23/06/2025 14:31:20,23/06/2025 14:31:20,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3668042,-66.1523332,23/06/2025 14:31:50,23/06/2025 14:31:53,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3668042,-66.1523332,23/06/2025 14:32:00,23/06/2025 14:32:05,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3668042,-66.1523332,23/06/2025 14:32:12,23/06/2025 14:32:15,23/06/2025 14:32:15,23/06/2025 14:32:15,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3668042,-66.1523332,23/06/2025 14:32:22,23/06/2025 14:32:25,23/06/2025 14:32:25,23/06/2025 14:32:25,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3668042,-66.1523332,23/06/2025 14:32:31,23/06/2025 14:32:40,23/06/2025 14:32:40,23/06/2025 14:32:40,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3668902,-66.1499393,23/06/2025 14:32:47,23/06/2025 14:32:49,23/06/2025 14:32:49,23/06/2025 14:32:49,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3668902,-66.1499393,23/06/2025 14:33:19,23/06/2025 14:33:22,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3668902,-66.1499393,23/06/2025 14:33:30,23/06/2025 14:33:33,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3685274,-66.1458057,23/06/2025 14:33:40,23/06/2025 14:33:42,23/06/2025 14:33:43,23/06/2025 14:33:43,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3685274,-66.1458057,23/06/2025 14:33:51,23/06/2025 14:33:53,23/06/2025 14:33:53,23/06/2025 14:33:53,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3685274,-66.1458057,23/06/2025 14:34:00,23/06/2025 14:34:02,23/06/2025 14:34:02,23/06/2025 14:34:02,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3685274,-66.1458057,23/06/2025 14:34:10,23/06/2025 14:34:11,23/06/2025 14:34:11,23/06/2025 14:34:11,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3699176,-66.1425305,23/06/2025 14:34:42,23/06/2025 14:34:45,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3699176,-66.1425305,23/06/2025 14:34:52,23/06/2025 14:34:55,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3699176,-66.1425305,23/06/2025 14:35:02,23/06/2025 14:35:04,23/06/2025 14:35:06,23/06/2025 14:35:06,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3699176,-66.1425305,23/06/2025 14:35:14,23/06/2025 14:35:16,23/06/2025 14:35:16,23/06/2025 14:35:16,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3699176,-66.1425305,23/06/2025 14:35:24,23/06/2025 14:35:26,23/06/2025 14:35:26,23/06/2025 14:35:26,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3699176,-66.1425305,23/06/2025 14:35:33,23/06/2025 14:35:35,23/06/2025 14:35:35,23/06/2025 14:35:35,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3714554,-66.1393887,23/06/2025 14:36:05,23/06/2025 14:36:08,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3714554,-66.1393887,23/06/2025 14:36:16,23/06/2025 14:36:20,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3714554,-66.1393887,23/06/2025 14:36:28,23/06/2025 14:36:30,23/06/2025 14:36:32,23/06/2025 14:36:32,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3714554,-66.1393887,23/06/2025 14:36:39,23/06/2025 14:36:47,23/06/2025 14:36:47,23/06/2025 14:36:47,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.372482,-66.1371405,23/06/2025 14:36:54,23/06/2025 14:36:56,23/06/2025 14:36:56,23/06/2025 14:36:56,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.372482,-66.1371405,23/06/2025 14:37:02,23/06/2025 14:37:06,n/a,n/a,1.2,Timeout
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3738666,-66.1393523,23/06/2025 14:37:42,23/06/2025 14:37:45,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3738666,-66.1393523,23/06/2025 14:37:53,23/06/2025 14:38:01,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3738666,-66.1393523,23/06/2025 14:38:09,n/a,n/a,n/a,0.0,Timeout
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3738666,-66.1393523,23/06/2025 14:38:24,23/06/2025 14:38:26,23/06/2025 14:38:26,23/06/2025 14:38:26,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3738666,-66.1393523,23/06/2025 14:38:32,23/06/2025 14:38:38,23/06/2025 14:38:38,23/06/2025 14:38:38,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3732874,-66.142959,23/06/2025 14:38:46,23/06/2025 14:38:48,23/06/2025 14:38:48,23/06/2025 14:38:48,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3732874,-66.142959,23/06/2025 14:39:18,23/06/2025 14:39:21,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3732874,-66.142959,23/06/2025 14:39:29,23/06/2025 14:39:38,,,n/a,Timeout
+Whatsapp,MOBILE,envio_contenido,texto,-17.3733532,-66.1441423,23/06/2025 14:39:45,23/06/2025 14:39:47,23/06/2025 14:39:48,23/06/2025 14:39:48,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3733532,-66.1441423,23/06/2025 14:39:56,23/06/2025 14:39:58,23/06/2025 14:39:58,23/06/2025 14:39:58,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3733532,-66.1441423,23/06/2025 14:40:05,23/06/2025 14:40:07,23/06/2025 14:40:07,23/06/2025 14:40:07,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3733532,-66.1441423,23/06/2025 14:40:14,23/06/2025 14:40:16,23/06/2025 14:40:16,23/06/2025 14:40:16,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.373461,-66.1467432,23/06/2025 14:40:46,23/06/2025 14:40:49,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.373461,-66.1467432,23/06/2025 14:40:57,23/06/2025 14:41:00,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.373461,-66.1467432,23/06/2025 14:41:08,23/06/2025 14:41:10,23/06/2025 14:41:10,23/06/2025 14:41:10,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.373461,-66.1467432,23/06/2025 14:41:17,23/06/2025 14:41:19,23/06/2025 14:41:19,23/06/2025 14:41:19,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.373461,-66.1467432,23/06/2025 14:41:26,23/06/2025 14:41:28,23/06/2025 14:41:28,23/06/2025 14:41:28,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.373461,-66.1467432,23/06/2025 14:41:35,23/06/2025 14:41:37,23/06/2025 14:41:37,23/06/2025 14:41:37,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3732244,-66.1492937,23/06/2025 14:42:07,23/06/2025 14:42:10,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3732244,-66.1492937,23/06/2025 14:42:17,23/06/2025 14:42:23,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3732244,-66.1492937,23/06/2025 14:42:31,23/06/2025 14:42:33,23/06/2025 14:42:34,23/06/2025 14:42:34,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3732794,-66.1514121,23/06/2025 14:42:42,23/06/2025 14:42:44,23/06/2025 14:42:44,23/06/2025 14:42:44,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3732794,-66.1514121,23/06/2025 14:42:52,23/06/2025 14:42:54,23/06/2025 14:42:54,23/06/2025 14:42:54,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3732794,-66.1514121,23/06/2025 14:43:01,23/06/2025 14:43:02,23/06/2025 14:43:02,23/06/2025 14:43:02,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3732794,-66.1514121,23/06/2025 14:43:32,23/06/2025 14:43:35,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3732794,-66.1514121,23/06/2025 14:43:43,23/06/2025 14:43:46,,,n/a,Entregado
+Whatsapp,MOBILE,envio_contenido,texto,-17.3730728,-66.1539268,23/06/2025 14:43:53,23/06/2025 14:43:55,23/06/2025 14:43:55,23/06/2025 14:43:55,0.0,Entregado
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3730728,-66.1539268,23/06/2025 14:44:03,23/06/2025 14:44:05,23/06/2025 14:44:05,23/06/2025 14:44:05,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3730728,-66.1539268,23/06/2025 14:44:13,23/06/2025 14:44:15,23/06/2025 14:44:15,23/06/2025 14:44:15,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3730728,-66.1539268,23/06/2025 14:44:22,23/06/2025 14:44:23,23/06/2025 14:44:23,23/06/2025 14:44:23,1.2,Entregado
+Whatsapp,MOBILE,tiempo_carga_app,n/a,-17.3767062,-66.1539807,23/06/2025 14:44:53,23/06/2025 14:44:57,n/a,n/a,n/a,APP cargada
+Whatsapp,MOBILE,envio_contenido,estado,-17.3767062,-66.1539807,23/06/2025 14:45:04,23/06/2025 14:45:13,,,n/a,Timeout
+Whatsapp,MOBILE,envio_contenido,texto,-17.3767062,-66.1539807,23/06/2025 14:45:20,n/a,n/a,n/a,0.0,Timeout
+Whatsapp,MOBILE,envio_contenido,imagen,-17.3767062,-66.1539807,23/06/2025 14:45:36,23/06/2025 14:45:45,23/06/2025 14:45:45,23/06/2025 14:45:45,3.3,Entregado
+Whatsapp,MOBILE,envio_contenido,video,-17.3782516,-66.1541796,23/06/2025 14:45:52,23/06/2025 14:45:54,23/06/2025 14:45:54,23/06/2025 14:45:54,14.0,Entregado
+Whatsapp,MOBILE,envio_contenido,documento,-17.3782516,-66.1541796,23/06/2025 14:46:00,23/06/2025 14:46:02,23/06/2025 14:46:02,23/06/2025 14:46:02,1.2,Entregado
