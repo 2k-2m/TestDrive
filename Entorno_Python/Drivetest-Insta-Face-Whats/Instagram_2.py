@@ -264,13 +264,13 @@ def setup_driver():
         "appActivity": "com.instagram.android.activity.MainTabActivity",
         "automationName": "UiAutomator2",
         "forceAppLaunch": True,
-        "systemPort": 8202, 
+        "systemPort": 8200, 
         "noReset": True,
         
         "newCommandTimeout": 360
     }
     try:
-        return webdriver.Remote("http://127.0.0.1:4727", options=UiAutomator2Options().load_capabilities(caps))
+        return webdriver.Remote("http://127.0.0.1:4723", options=UiAutomator2Options().load_capabilities(caps))
     except Exception as e:
         print(f"No se pudo iniciar Appium: {e}")
         return None
