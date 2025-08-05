@@ -1,0 +1,8 @@
+cat /home/pi/test_output.log
+
+
+ crontab -l debe verse exactamente así:
+
+bash
+
+@reboot sleep 30 && bash /home/pi/Desktop/Testdrive/start_test.sh >> /home/pi/test_output.log 2>&1

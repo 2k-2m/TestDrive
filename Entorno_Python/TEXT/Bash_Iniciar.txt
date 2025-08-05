@@ -1,0 +1,24 @@
+nano ~/Desktop/Drivetest-Insta-Face-Whats/start_test.sh
+
+chmod +x ~/Desktop/Drivetest-Insta-Face-Whats/start_test.sh
+
+. ~/Desktop/Drivetest-Insta-Face-Whats/start_test.sh
+
+
+ 
+
+
+
+
+
+source ~/kivyenv/bin/activate
+
+
+ssh-keygen -R 10.44.191.5
+
+
+DISPLAY=:0 python3 /ruta/a/tu/interfaz.py
+
+
+
+un timer un pop up o una bocina. y ya

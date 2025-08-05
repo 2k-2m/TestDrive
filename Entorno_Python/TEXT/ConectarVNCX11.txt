@@ -1,0 +1,97 @@
+loginctl
+SESSION  UID USER SEAT  TTY
+  --> 1 1000 pi   seat0 tty1
+      3 1000 pi   seat0
+      4 1000 pi         pts/1
+
+loginctl show-session "--> Numero" -p Type -p Display
+echo $XDG_SESSION_TYPE
+
+✅ Resumen de configuración exitosa de VNC con pantalla SPI (usando X11)
+🛠️ 1. Desactivaste Wayland y forzaste el uso de X11
+Editaste el archivo de configuración de LightDM:
+
+bash
+Copiar
+Editar
+sudo nano /etc/lightdm/lightdm.conf
+Y agregaste esta línea bajo [Seat:*]:
+
+ini
+Copiar
+Editar
+[Seat:*]
+display-server=x11
+🛑 2. Detuviste los servicios de WayVNC que usaban Wayland
+bash
+Copiar
+Editar
+sudo systemctl stop wayvnc.service
+sudo systemctl stop wayvnc-control.service
+🚫 3. Deshabilitaste WayVNC para que no se inicie más al arrancar
+bash
+Copiar
+Editar
+sudo systemctl disable wayvnc.service
+sudo systemctl disable wayvnc-control.service
+🖥️ 4. Activaste y arrancaste el servidor VNC de X11 (RealVNC)
+Habilitaste el servicio para que arranque automáticamente:
+
+bash
+Copiar
+Editar
+sudo systemctl enable vncserver-x11-serviced.service
+Lo arrancaste manualmente:
+
+bash
+Copiar
+Editar
+sudo systemctl start vncserver-x11-serviced.service
+Y verificaste su estado:
+
+bash
+Copiar
+Editar
+sudo systemctl status vncserver-x11-serviced.service
+Debería decir: Active: active (running)
+
+🔌 5. Conectaste con VNC Viewer desde otro equipo
+Usaste la IP de la Raspberry Pi (por ejemplo, 192.168.1.42) y te conectaste con VNC Viewer.
+Te mostró la misma sesión de escritorio que se ve en la pantalla SPI.
+
+🎉 Resultado:
+✅ VNC funcionando con la misma sesión que la pantalla SPI.
+
+✅ Sin modificar overlays ni desinstalar nada.
+
+✅ Cambio limpio de Wayland → X11, compatible con SPI y RealVNC.
+
+
+
+
+---------------------------------------------------------------------------
+Solucionar Arranque lento
+Medición y diagnóstico del arranque
+systemd-analyze
+systemd-analyze blame
+systemctl list-jobs
+
+Desactivar servicios VNC y gráficos innecesarios Desactivar bloqueo por Plymouth
+sudo systemctl disable wayvnc.service
+sudo systemctl disable wayvnc-control.service
+sudo systemctl stop wayvnc.service
+sudo systemctl stop wayvnc-control.service
+
+
+Editar /boot/firmware/cmdline.txt
+sudo nano /boot/firmware/cmdline.txt
+console=tty1 root=PARTUUID=d8eff19e-02 rootfstype=ext4 fsck.repair=yes rootwait quiet loglevel=3 vt.global_cursor_default=0
+
+
+Auto-inicio gráfico con startx en lugar de lightdm
+
+nano ~/.bash_profile
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+    startx
+fi

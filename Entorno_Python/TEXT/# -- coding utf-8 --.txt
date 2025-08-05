@@ -1,0 +1,223 @@
+# -*- coding: utf-8 -*-
+import datetime
+
+# Contenido Markdown con emojis y formato enriquecido
+markdown_content = f"""# 🖥️ Guía Técnica Completa: Pantalla SPI 3.5" en Raspberry Pi
+
+**Autor**: ChatGPT – OpenAI  
+**Fecha**: {datetime.date.today().strftime("%d/%m/%Y")}
+
+---
+
+## 📑 Índice
+
+1. 🧠 Introducción  
+2. 🔌 Conexión física y pines  
+3. 🧱 Qué es el kernel  
+4. ⚙️ Qué es un driver/controlador  
+5. 🔄 Comunicación SPI en detalle  
+6. 🖼️ Qué es y cómo funciona el framebuffer  
+7. 🎮 HDMI vs SPI  
+8. 🧩 DRM/KMS y overlays  
+9. 🪟 Wayland vs X11  
+10. 🔁 Flujo completo de software y hardware  
+11. 📂 Archivos y rutas clave  
+12. ❌ Errores comunes  
+13. 🧭 Resumen visual  
+14. ✅ Solución funcional paso a paso
+
+---
+
+## 🧠 1. Introducción
+
+Esta guía explica el funcionamiento técnico de pantallas SPI de 3.5” en Raspberry Pi, en sistemas modernos como RPi OS Bookworm. Cubre desde la conexión eléctrica hasta la configuración del entorno gráfico.
+
+---
+
+## 🔌 2. Conexión física y pines
+
+Aunque SPI usa pocos pines (MOSI, SCLK, CS, DC, RESET), las pantallas suelen usar 30+ pines por diseño físico:
+- Pines repetidos (varios GND o VCC)
+- Pines reservados o sin uso
+- Pines extra para touchscreen (I2C o SPI)
+- Conector pensado para encajar completo sobre el GPIO de la Pi
+
+---
+
+## 🧱 3. Qué es el kernel
+
+El **kernel** es el núcleo del sistema operativo. Administra:
+- Acceso a hardware (pantalla, red, USB)
+- Recursos como memoria y CPU
+- Comunicación con programas mediante syscalls
+
+En Raspberry Pi usamos un **kernel Linux personalizado** con soporte a GPIO, SPI, cámara, pantallas, etc.
+
+---
+
+## ⚙️ 4. Qué es un driver/controlador
+
+Un **driver** (o controlador) es software que enseña al kernel cómo usar un hardware específico.
+
+Ejemplo:
+- El chip ILI9486 de tu pantalla no se entiende solo
+- Se necesita un driver que le diga al kernel cómo inicializarlo, enviar datos, manejar táctil, etc.
+
+---
+
+## 🔄 5. Comunicación SPI en detalle
+
+SPI (Serial Peripheral Interface) es un protocolo serial síncrono. Usa:
+- `MOSI` – datos de la Pi a la pantalla
+- `SCLK` – reloj
+- `CS` – selección del dispositivo
+- `DC`, `RESET` – control
+- `MISO` – opcional
+
+📡 SPI transmite datos en serie con sincronización por reloj. Velocidades típicas: 16–32 MHz.
+
+---
+
+## 🖼️ 6. Qué es y cómo funciona el framebuffer
+
+El **framebuffer** es una región de memoria que representa la imagen mostrada.
+
+- `/dev/fb0`: framebuffer HDMI
+- `/dev/fb1`: framebuffer SPI (cuando configurado)
+
+X11 o programas gráficos escriben sobre esa memoria. El driver se encarga de transferirla a la pantalla física.
+
+---
+
+## 🎮 7. HDMI vs SPI
+
+| Característica        | HDMI             | SPI                    |
+|-----------------------|------------------|-------------------------|
+| Velocidad             | Alta (Gbps)      | Baja (MHz)              |
+| Plug and play         | ✅                | ❌ (requiere overlay)    |
+| Resolución soportada  | Alta (1080p+)    | Limitada (480x320)     |
+| Requiere configuración| ❌                | ✅                      |
+| Driver específico     | No               | Sí                     |
+
+---
+
+## 🧩 8. DRM/KMS y overlays
+
+- **DRM (Direct Rendering Manager)** y **KMS (Kernel Mode Setting)** son tecnologías del kernel Linux para manejar gráficos modernos.
+- Algunos overlays (como `piscreen`) se integran con DRM para que la pantalla SPI se use como pantalla primaria real.
+
+---
+
+## 🪟 9. Wayland vs X11
+
+| Característica    | X11           | Wayland         |
+|-------------------|---------------|------------------|
+| Modelo gráfico    | Cliente-servidor | Compositor directo |
+| Compatibilidad    | Alta           | Media/Baja        |
+| Funciona con SPI  | ✅             | ⚠️ Parcial        |
+| Necesario para evdev | ✅         | ❌ (incompatible)  |
+
+✅ En Raspberry Pi OS Bookworm, cambiar de Wayland a X11 es necesario para usar pantallas SPI.
+
+---
+
+## 🔁 10. Flujo completo de software y hardware
+
+```plaintext
+Software gráfico
+        ↓
+       X11
+        ↓
+   /dev/fb1 (framebuffer SPI)
+        ↓
+Driver SPI (ILI9486)
+        ↓
+     GPIO SPI
+        ↓
+Pantalla SPI 3.5"
+Táctil (si tiene):
+
+plaintext
+Copiar
+Editar
+Touchscreen
+    ↓
+/dev/input/eventX
+    ↓
+Driver evdev
+    ↓
+Cursor en pantalla
+📂 11. Archivos y rutas clave
+/boot/firmware/config.txt → activa overlays
+
+/dev/fb0, /dev/fb1 → framebuffers
+
+/dev/input/event* → eventos táctiles
+
+/usr/share/X11/xorg.conf.d/ → config entrada X11
+
+/lib/modules/ → drivers del kernel
+
+❌ 12. Errores comunes
+Ejecutar LCD35-show en RPi OS moderno → rompe compatibilidad
+
+No cambiar de Wayland a X11
+
+Usar overlays incorrectos
+ssh-keygen -R 10.44.191.5
+
+Asumir que SPI es plug-and-play como HDMI
+
+🧭 13. Resumen visual
+plaintext
+Copiar
+Editar
+[X11] → [/dev/fb1] → [Driver SPI] → [GPIO SPI] → [Pantalla]
+✅ 14. Solución funcional paso a paso
+Instalar RPi OS Bookworm (32 bits)
+
+Ejecutar:
+
+bash
+Copiar
+Editar
+sudo rpi-update
+sudo raspi-config
+Interfaz → habilitar SPI
+
+Avanzado → desactivar Wayland (usar X11)
+
+Editar /boot/firmware/config.txt:
+
+bash
+Copiar
+Editar
+#dtoverlay=vc4-kms-v3d
+dtoverlay=piscreen,speed=18000000,drm
+Instalar entrada táctil:
+
+bash
+Copiar
+Editar
+sudo apt install xserver-xorg-input-evdev
+Reconfigurar evdev:
+
+bash
+Copiar
+Editar
+sudo mv /usr/share/X11/xorg.conf.d/10-evdev.conf /usr/share/X11/xorg.conf.d/45-evdev.conf
+sudo nano /usr/share/X11/xorg.conf.d/45-evdev.conf
+Agregar al final:
+
+text
+Copiar
+Editar
+Section "InputClass"
+    Identifier "evdev touchscreen catchall"
+    MatchIsTouchscreen "on"
+    MatchDevicePath "/dev/input/event*"
+    Driver "evdev"
+    Option "InvertX" "false"
+    Option "InvertY" "true"
+EndSection
+Reiniciar y verificar la pantalla.

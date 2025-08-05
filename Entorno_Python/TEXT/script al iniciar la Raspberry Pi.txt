@@ -1,0 +1,56 @@
+Pasos para autoejecutar un script al iniciar la Raspberry Pi
+
+1. Copiar el script a:
+   /home/pi/Desktop/Testdrive/start_test.sh
+
+2. Dar permisos de ejecución:
+   chmod +x /home/pi/Desktop/Testdrive/start_test.sh
+
+3. Editar el crontab:
+   crontab -e
+
+4. Agregar al final:
+   @reboot sleep 30 && bash /home/pi/Desktop/Testdrive/start_test.sh >> /home/pi/test_output.log 2>&1
+
+5. Guardar y salir (Ctrl+O, Enter, Ctrl+X)
+
+6. Verificar que esté configurado:
+   crontab -l
+
+7. Reiniciar:
+   sudo reboot
+
+8. Verificar la ejecución:
+   cat /home/pi/test_output.log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+configuracion de lcd 3.5
+Option  "Calibration"   "189 3897 3955 210"

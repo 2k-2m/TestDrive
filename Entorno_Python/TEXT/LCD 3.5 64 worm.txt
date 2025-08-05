@@ -1,0 +1,67 @@
+Estoy usando una RPI-5 (4gb), con el último sistema operativo de 64 bits Bookworm. La pantalla LCD que uso es una de 3.5 pulgadas RPi Display - LCD wiki , que encaja en el GPIO del RPi y se comunica vía SPI.
+
+Instalación nueva de RPI OS Bookworm (Expandir sistema de archivos -> reiniciar -> y luego ejecutar sudo rpi-update)
+
+sudo raspi-config
+
+Avanzado -> cambiar Wayland a X11
+
+Interfaz -> SPI - habilitar
+
+3) En la terminal escribe:
+
+sudo nano /boot/firmware/config.txt
+
+Agrega un "#" al principio de la línea "dtoverlay=vc4-kms-v3d"
+
+Agrega esta línea al final del archivo: "dtoverlay=piscreen,speed=18000000,drm"
+
+(quita las comillas)
+
+4) Reinicia
+
+5) sudo apt-get install xserver-xorg-input-evdev
+
+6) sudo mv /usr/share/X11/xorg.conf.d/10-evdev.conf /usr/share/X11/xorg.conf.d/45-evdev.conf
+
+7) sudo nano /usr/share/X11/xorg.conf.d/45-evdev.conf
+
+Agrega estas líneas al final del archivo:
+
+"Section "InputClass"
+
+Identifier "evdev touchscreen catchall"
+
+MatchIsTouchscreen "on"
+
+MatchDevicePath "/dev/input/event*"
+
+Driver "evdev"
+
+Option "InvertX" "false"
+
+Option "InvertY" "true"
+
+EndSection"
+
+(quita las comillas)
+
+NOTA: Si el táctil sigue sin funcionar bien, juega un poco con Option "InvertX" "false", Option "InvertY" "true" en el paso 7 hasta que consigas el resultado deseado.
+
+8) Reinicia
+
+9) sudo touch /etc/X11/xorg.conf.d/99-calibration.conf
+
+10) sudo apt-get install xinput-calibrator
+
+11) Reinicia
+
+12) Escribe esto en la terminal: "DISPLAY=:0.0 xinput_calibrator"
+
+(quita las comillas)
+
+Se ejecutará el software de calibración y se verá en la pantalla. Presiona los 4 marcadores para calibrar y el táctil quedará bastante preciso.
+
+Esta guía también debería funcionar si la LCD solo muestra blanco al conectar la LCD al RPi5.
+
+Si cometí algún error o hay una mejor solución, avísame.

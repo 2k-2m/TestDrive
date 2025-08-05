@@ -1,0 +1,46 @@
+🧩 Esquema de conexiones físicas y flujo de software – pantalla SPI 3.5”
+🔌 Conexiones físicas (GPIO)
+Pantalla SPI	Raspberry Pi GPIO
+VCC (5V o 3.3V)	Pin 2 o 1
+GND	Pin 6
+CS (Chip Select)	Pin 24 (GPIO8)
+RESET	Pin 11 (GPIO17)
+DC (Data/Command)	Pin 22 (GPIO25)
+MOSI	Pin 19 (GPIO10)
+MISO (si aplica)	Pin 21 (GPIO9)
+SCLK	Pin 23 (GPIO11)
+Touch (IRQ/SDA/SCL)	Pines extra si usa I2C
+
+🧠 Flujo de software
+bash
+Copiar
+Editar
+[ Aplicaciones ]
+       ↓
+[ X11 / Desktop ]
+       ↓
+[ Framebuffer (/dev/fb1) ]
+       ↓
+[ SPI Driver (ILI9486, en el Kernel) ]
+       ↓
+[ Kernel Linux ]
+       ↓
+[ Bus SPI (GPIO) ]
+       ↓
+[ Pantalla SPI 3.5" ]
+✋ Flujo del táctil (si tiene)
+css
+Copiar
+Editar
+[ Touch Panel ]
+       ↓
+[ /dev/input/eventX ]
+       ↓
+[ Driver evdev ]
+       ↓
+[ X11 Input System ]
+       ↓
+[ Aplicaciones (como mouse o toque) ]
+Si más adelante podés usar un chat normal, avisame y con gusto te genero el diagrama en imagen directamente.
+
+¿Querés que te prepare un archivo .drawio o .svg con este esquema para que lo abras vos manualmente?

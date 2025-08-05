@@ -1,4 +1,4 @@
-# --- IMPORTS & CONFIGURACIÓN INICIAL ---
+# --- IMPORTS & CONFIGURACION INICIAL ---
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
@@ -63,7 +63,7 @@ def cerrar_apps(paquetes, udid):
         subprocess.run(['adb', '-s', udid, 'shell', 'am', 'force-stop', paquete])
         print(f"App {paquete} cerrada en {udid}.")
 
-def esperar(driver, cond, timeout=30):
+def esperar(driver, cond, timeout=20):
     return WebDriverWait(driver, timeout).until(cond)
 
 def clic(driver, rid, desc="", timeout=8, mandatory=True):
@@ -91,7 +91,7 @@ def seleccionar_media_publicacion(driver):
         el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
             f'new UiSelector().resourceId("com.instagram.android:id/media_picker_grid_view")'
             f'.childSelector(new UiSelector().className("android.widget.Button").instance({index}))')))
-        el.click(); time.sleep(0.7)
+        el.click(); 
         tam_archivo = "2.3"#obtener_tamano_archivo_android(ARCHIVOS_CONOCIDOS[index])
         return True, tam_archivo
     except:
@@ -141,48 +141,84 @@ def click_button(driver, resource_id, description="", timeout=10, mandatory=True
         if mandatory: raise
         return False
 
-def enviar_contenido_F(driver, tipo, index, btn_id, wait_for_id):
-    if not clic(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
-        return
-    
-    clic(driver, "com.instagram.android:id/media_picker_header_title_container")
-    el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
-            f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
-            f'.childSelector(new UiSelector().description("DriveTest"))')))
-    el.click()
+def publicar_imagen(driver, red):
+    try:
+        if click_tab_icon(driver, "com.instagram.android:id/tab_icon", 3, "Crear", 10) and asegurar_publicacion_activa(driver):
+            try:
+                clic(driver, "com.instagram.android:id/gallery_folder_menu_tv")
+                el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
+                    f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
+                    f'.childSelector(new UiSelector().description("DriveTest"))')), timeout=10)
+                el.click()
+            except Exception as e:
+                print("Error al seleccionar álbum:", e)
+                raise
 
-    if not seleccionar_media(driver, index):
-        guardar_resultado(tipo, red, "", "", "", "", "Failed", "Item no found", tam_archivo)
-        return
-    lat, lon = get_location(driver)
-    inicio = timestamp()
-    tam_archivo = "2.3"#obtener_tamano_archivo_android(ARCHIVOS_CONOCIDOS[index])
-    if click_button(driver, btn_id, "Enviar foto", False, 7):
-        compartir(driver, tipo, red, lat, lon, inicio, tam_archivo, wait_for_id)
-    else:
-        guardar_resultado(tipo, red, lat, lon, inicio, timestamp(), "Failed", "No se encontró botón", tam_archivo)
+            exito, tam_archivo = seleccionar_media_publicacion(driver)
+            if exito:
+                try:
+                    clic(driver, "com.instagram.android:id/next_button_textview")
+                    clic(driver, "com.instagram.android:id/creation_next_button")
+                    lat, lon = get_location(driver)
+                    inicio = timestamp()
+                    if clic(driver, "com.instagram.android:id/share_footer_button", "Compartir"):
+                        compartir_P(driver, METRICAS["POST"], red, lat, lon, inicio, tam_archivo, 
+                                    "com.instagram.android:id/row_pending_container", 
+                                    "com.instagram.android:id/row_pending_media_reshare_button", 25)
+                except Exception as e:
+                    print("Error durante la publicación:", e)
+    except Exception as e:
+        print("Error general en el proceso:", e)
 
-def enviar_contenido_V(driver, tipo, index, btn_id, wait_for_id):
-    if not clic(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
-        return
-    
-    clic(driver, "com.instagram.android:id/media_picker_header_title_container")
-    el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
-            f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
-            f'.childSelector(new UiSelector().description("DriveTest"))')))
-    el.click()
+def enviar_contenido_F(driver, red, tipo, index, btn_id, wait_for_id):
+    tam_archivo = "N/A"
+    try:
+        if not clic(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
+            return
+        clic(driver, "com.instagram.android:id/media_picker_header_title_container")
+        el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
+                f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
+                f'.childSelector(new UiSelector().description("DriveTest"))')))
+        el.click()
+        if not seleccionar_media(driver, index):
+            guardar_resultado(tipo, red, "", "", "", "", "Failed", "Item no found", tam_archivo)
+            return
+        lat, lon = get_location(driver)
+        inicio = timestamp()
+        tam_archivo = "2.3" #obtener_tamano_archivo_android(ARCHIVOS_CONOCIDOS[index])
+        if click_button(driver, btn_id, "Enviar foto", False, 7):
+            compartir(driver, tipo, red, lat, lon, inicio, tam_archivo, wait_for_id)
+        else:
+            guardar_resultado(tipo, red, lat, lon, inicio, timestamp(), "Failed", "No se encontró botón", tam_archivo)
+    except Exception as e:
+        guardar_resultado(METRICAS["PHOTO"], red, "", "", timestamp(), timestamp(), "Failed", resumir_error(e), "Desconocido")
 
-    if not seleccionar_media(driver, index):
-        guardar_resultado(tipo, red, "", "", "", "", "Failed", "Item no found", tam_archivo)
-        return
-    lat, lon = get_location(driver)
-    inicio = timestamp()
-    tam_archivo = "20"#obtener_tamano_archivo_android(ARCHIVOS_CONOCIDOS[index])
-    if click_button(driver, btn_id, "Enviar video", False, 7):
-        time.sleep(2)
-        compartir(driver, tipo, red, lat, lon, inicio, tam_archivo, wait_for_id, 45)
-    else:
-        guardar_resultado(tipo, red, lat, lon, inicio, timestamp(), "Failed", "No se encontró botón", tam_archivo)
+def enviar_contenido_V(driver, red, tipo, index, btn_id, wait_for_id):
+    tam_archivo = "N/A"
+    try:
+        if not clic(driver, "com.instagram.android:id/row_thread_composer_button_gallery", "Botón Galería"):
+            return
+        
+        clic(driver, "com.instagram.android:id/media_picker_header_title_container")
+        el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
+                f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
+                f'.childSelector(new UiSelector().description("DriveTest"))')))
+        el.click()
+
+        if not seleccionar_media(driver, index):
+            guardar_resultado(tipo, red, "", "", "", "", "Failed", "Item no found", tam_archivo)
+            return
+        lat, lon = get_location(driver)
+        inicio = timestamp()
+        tam_archivo = "20" #obtener_tamano_archivo_android(ARCHIVOS_CONOCIDOS[index])
+        if click_button(driver, btn_id, "Enviar video", False, 7):
+            time.sleep(2)
+            compartir(driver, tipo, red, lat, lon, inicio, tam_archivo, wait_for_id, 45)
+        else:
+            guardar_resultado(tipo, red, lat, lon, inicio, timestamp(), "Failed", "No se encontró botón", tam_archivo)
+    except Exception as e:
+        guardar_resultado(METRICAS["VIDEO"], red, "", "", timestamp(), timestamp(), "Failed", resumir_error(e), "Desconocido")
+
 
 def click_tab_icon(driver, resource_id, instance_index=0, description="", timeout=15, mandatory=True):
     try:
@@ -196,16 +232,20 @@ def click_tab_icon(driver, resource_id, instance_index=0, description="", timeou
         return False
 
 def enviar_mensaje_texto(driver, mensaje, red):
-    tam_archivo = f"{len(mensaje)}C"
-    if ingresar_texto(driver, "com.instagram.android:id/row_thread_composer_edittext", mensaje):
-        lat, lon = get_location(driver)
-        inicio = timestamp()
-        if clic(driver, "com.instagram.android:id/row_thread_composer_send_button_container", "Enviar texto", timeout=7, mandatory=False):
-            compartir(driver, METRICAS["TEXT"], red, lat, lon, inicio, tam_archivo, "com.instagram.android:id/action_icon")
+    try:
+        tam_archivo = f"{len(mensaje)}Characters"
+        if ingresar_texto(driver, "com.instagram.android:id/row_thread_composer_edittext", mensaje):
+            lat, lon = get_location(driver)
+            inicio = timestamp()
+            if clic(driver, "com.instagram.android:id/row_thread_composer_send_button_container", "Enviar texto", timeout=7, mandatory=False):
+                compartir(driver, METRICAS["TEXT"], red, lat, lon, inicio, tam_archivo, "com.instagram.android:id/action_icon")
+            else:
+                guardar_resultado(METRICAS["TEXT"], red, lat, lon, inicio, timestamp(), "Failed", "No se encontró botón", tam=tam_archivo)
         else:
-            guardar_resultado(METRICAS["TEXT"], red, lat, lon, inicio, timestamp(), "Failed", "No se encontró botón", tam=tam_archivo)
-    else:
-        guardar_resultado(METRICAS["TEXT"], red, "", "", "", "", "Failed", "No se encontró campo de texto", tam=tam_archivo)
+            guardar_resultado(METRICAS["TEXT"], red, "", "", "", "", "Failed", "No se encontró campo de texto", tam=tam_archivo)
+    except Exception as e:
+        guardar_resultado(METRICAS["TEXT"], red, "", "", "", "", "Failed", resumir_error(e), tam_archivo)
+
 
 def asegurar_publicacion_activa(driver, timeout=5):
     try:
@@ -228,7 +268,7 @@ def buscar_reel_con_scrubber(driver, intentos_maximos=5):
             driver.find_element(AppiumBy.ID, "com.instagram.android:id/scrubber")
             return True
         except:
-            driver.swipe(500, 1600, 500, 400, 500); time.sleep(2)
+            driver.swipe(500, 1600, 500, 400, 500); time.sleep(.6)
     return False
 
 def verificar_reproduccion_video(driver, duracion_segundos=15, check_interval=5):
@@ -273,7 +313,6 @@ def setup_driver():
         "forceAppLaunch": True,
         "systemPort": 8200, 
         "noReset": True,
-        
         "newCommandTimeout": 360
     }
     try:
@@ -291,7 +330,7 @@ def test_instagram():
         return
     red = obtener_conectividad(driver)
 
-    # --- Carga de Feed ---
+    # --- Feed ---
     print("Cargando feed...")
     lat, lon = get_location(driver)
     inicio = timestamp()
@@ -305,24 +344,9 @@ def test_instagram():
         guardar_resultado(METRICAS["FEED"], red, lat, lon, inicio, timestamp(), "Failed", "Timeout")
     print("Cargando feed...OK")
 
-    # --- Publicación Imagen ---
+    # --- Post ---
     print("Publicando imagen...")
-    if click_tab_icon(driver, "com.instagram.android:id/tab_icon", 3, "Crear", 10) and asegurar_publicacion_activa(driver):
-        clic(driver, "com.instagram.android:id/gallery_folder_menu_tv")
-        el = esperar(driver, EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,
-            f'new UiSelector().resourceId("com.instagram.android:id/album_thumbnail_recycler_view")'
-            f'.childSelector(new UiSelector().description("DriveTest"))')))
-        el.click()
-        exito, tam_archivo = seleccionar_media_publicacion(driver)
-        if exito:
-            clic(driver, "com.instagram.android:id/next_button_textview")
-            clic(driver, "com.instagram.android:id/creation_next_button")
-            lat, lon = get_location(driver)
-            inicio = timestamp()
-            if clic(driver, "com.instagram.android:id/share_footer_button", "Compartir"):
-                compartir_P(driver, METRICAS["POST"], red, lat, lon, inicio, tam_archivo, 
-                            "com.instagram.android:id/row_pending_container", 
-                            "com.instagram.android:id/row_pending_media_reshare_button", 25)
+    publicar_imagen(driver, red)
     print("Publicando imagen...OK")
 
     # --- Reels ---
@@ -337,41 +361,29 @@ def test_instagram():
             guardar_resultado(METRICAS["RVIDEO"], red, lat, lon, inicio, timestamp(), "Failed", "Reel no válido", "0.0")
     print("Reproduciendo Reel...OK")
 
-    # --- Enviar mensaje de texto ---
-    print("Enviando mensaje de texto...")
+    # --- chat ---
+    print("Entrando al chat...")
     try:
         click_tab_icon(driver, "com.instagram.android:id/tab_icon", 0, "Home", 7)
         clic(driver, "com.instagram.android:id/action_bar_inbox_button", "Inbox", 5)
         clic(driver, "com.instagram.android:id/row_inbox_container", "Primer chat", 5)
-        mensaje = "Hola Mundo Peru"
-        tam_archivo = f"{len(mensaje)}C"
-        if ingresar_texto(driver, "com.instagram.android:id/row_thread_composer_edittext", mensaje, "Campo texto"):
-            lat, lon = get_location(driver)
-            inicio = timestamp()
-            if clic(driver, "com.instagram.android:id/row_thread_composer_send_button_container", "Botón enviar", 7, False):
-                compartir(driver, METRICAS["TEXT"], red, lat, lon, inicio, tam_archivo, "com.instagram.android:id/action_icon")
-            else:
-                guardar_resultado(METRICAS["TEXT"], red, lat, lon, inicio, timestamp(), "Failed", "Botón enviar no disponible", tam_archivo)
-        else:
-            guardar_resultado(METRICAS["TEXT"], red, "", "", "", "", "Failed", "Campo texto no encontrado", tam_archivo)
+        mensaje = "Hola Mundo"
     except Exception as e:
-        guardar_resultado(METRICAS["TEXT"], red, "", "", "", "", "Failed", resumir_error(e), tam_archivo)
+        print("Error no abrio chat")
+    
+   # --- Send m ---
+    print("Enviando mensaje de texto...")
+    enviar_mensaje_texto(driver, mensaje, red)
     print("Enviando mensaje de texto...OK")
 
-    # --- Enviar imagen por mensaje ---
+    # --- Send i ---
     print("Enviando imagen por mensaje...")
-    try:
-        enviar_contenido_F(driver, METRICAS["PHOTO"], 1, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
-    except Exception as e:
-        guardar_resultado(METRICAS["PHOTO"], red, "", "", timestamp(), timestamp(), "Failed", resumir_error(e), "Desconocido")
+        enviar_contenido_F(driver, red, METRICAS["PHOTO"], 1, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
     print("Enviando imagen por mensaje...OK")
 
-    # --- Enviar video por mensaje ---
+    # --- Send v ---
     print("Enviando video por mensaje...")
-    try:
-        enviar_contenido_V(driver, METRICAS["VIDEO"], 5, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
-    except Exception as e:
-        guardar_resultado(METRICAS["VIDEO"], red, "", "", timestamp(), timestamp(), "Failed", resumir_error(e), "Desconocido")
+        enviar_contenido_V(driver, red, METRICAS["VIDEO"], 5, "com.instagram.android:id/direct_media_send_button", "com.instagram.android:id/action_icon")
     print("Enviando video por mensaje...OK")
 
     # Final

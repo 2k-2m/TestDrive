@@ -1,0 +1,93 @@
+
+%%%
+sudo apt install -y npm
+sudo apt install -y nodejs
+
+%%
+sudo npm install -g n
+sudo n lts
+node -v
+npm -v
+
+Para Instalar appium 
+npm install -g appium
+sudo npm install -g appium
+appium -v
+
+appium driver install uiautomator2
+
+
+PARA INSTALR ADB
+
+sudo apt install adb
+sudo apt install --reinstall adb
+
+Verifica que el adb bueno funciona
+/usr/bin/adb devices
+
+Crea el enlace simbólico
+ln -s /usr/bin/adb /home/pi/Android/platform-tools/adb
+
+
+Verifica que el truco funcionó
+Ejecuta:
+ls -l /home/pi/Android/platform-tools/adb
+
+
+Deberías ver algo como:
+/home/pi/Android/platform-tools/adb -> /usr/bin/adb
+
+
+
+
+PORSITEQUEDAS SIN VIEDO
+🛠️ PASO 1: Apaga el Raspberry Pi
+Si no puedes hacer sudo reboot:
+
+Desconéctalo de la corriente.
+
+🧩 PASO 2: Inserta la tarjeta microSD en otro computador (Linux o Windows)
+Verás al menos una partición montada, generalmente llamada boot o similar.
+
+🛠️ PASO 3: Edita el archivo cmdline.txt
+Ubicado en la partición boot.
+
+Abre el archivo cmdline.txt con un editor de texto.
+
+Busca una línea parecida a:
+python-repl
+
+... rootwait quiet splash ...
+Agrega al final de la línea (en la misma línea, sin saltos):
+
+systemd.unit=multi-user.target
+⚠️ Ejemplo final:
+
+console=serial0,115200 console=tty1 root=PARTUUID=xxx rootfstype=ext4 fsck.repair=yes rootwait quiet splash systemd.unit=multi-user.target
+Guarda los cambios.
+
+Vuelve a insertar la tarjeta en el Raspberry Pi y enciende
+rm ~/.config/lxsession/LXDE-pi/autostart
+ls ~/.config/lxsession/LXDE-pi/autostart
+cat ~/.config/lxsession/LXDE-pi/autostart
+
+sudo systemctl disable starttest.service
+sudo rm /etc/systemd/system/starttest.service
+sudo systemctl daemon-reexec
+
+crontab -l
+crontab -e
+
+
+
+sudo raspi-config
+1 System Options → S5 Boot / Auto Login → B4 Desktop Autologin
+PASO 8: Quita el modo texto de cmdline.txt (opcional)
+Si quieres volver a GUI como antes:
+
+Apaga el Pi
+
+Vuelve a insertar la tarjeta en tu PC
+
+Edita cmdline.txt y borra esto:
+systemd.unit=multi-user.target
