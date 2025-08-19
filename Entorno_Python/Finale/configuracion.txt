@@ -1,0 +1,10 @@
+#PARAMETROS
+TIEMPO_ENTRE_CICLOS=2
+MENSAJE_ALEATORIO=0
+
+#CONTACTOS
+A30_TEST|HOLA Whatsapp|6|texto
+A30_TEST|img|6|imagen
+A30_TEST|video de prueba|6|video
+A30_TEST|documento|6|documento
+A30_TEST|estado|6|add_estado

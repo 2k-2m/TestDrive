@@ -1,0 +1,3 @@
+App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,Mobile,CST,vast_f,-17.3762157,-66.1567209,2025-08-19 07:39:19,2025-08-19 07:39:26,Successful,,setup_s=0.19
+WhatsApp,Mobile,CSFR,vast_f,-17.3762157,-66.1567209,2025-08-19 07:39:28,2025-08-19 07:39:28,Failed,ChatNotFound,

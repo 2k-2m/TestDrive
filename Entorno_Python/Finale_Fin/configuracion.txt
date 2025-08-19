@@ -1,0 +1,10 @@
+#PARAMETROS
+TIEMPO_ENTRE_CICLOS=2
+MENSAJE_ALEATORIO=0
+
+#CONTACTOS
+Jose_Andia|HOLA Whatsapp|6|texto
+Jose_Andia|img|6|imagen
+Jose_Andia|video de prueba|6|video
+Jose_Andia|documento|6|documento
+Jose_Andia|estado|6|add_estado
