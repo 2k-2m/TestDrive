@@ -1,0 +1,15 @@
+App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,Mobile,CST,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:47:47,2025-08-27 07:47:50,Successful,,setup_s=0.38;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:47:47,2025-08-27 07:47:50,Successful,,incoming_on_B:fullscreen
+WhatsApp,Mobile,CST,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:47:57,2025-08-27 07:48:16,Successful,,setup_s=0.40;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:47:57,2025-08-27 07:48:16,Successful,,incoming_on_B:fullscreen
+WhatsApp,Mobile,CDR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:48:23,2025-08-27 07:49:03,Successful,,held_s=30
+WhatsApp,Mobile,CST,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:49:10,2025-08-27 07:49:13,Successful,,setup_s=0.35;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:49:10,2025-08-27 07:49:13,Successful,,incoming_on_B:fullscreen
+WhatsApp,Mobile,CDR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:49:19,2025-08-27 07:49:57,Successful,,held_s=30
+WhatsApp,Mobile,CDR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:50:05,2025-08-27 07:50:43,Successful,,held_s=30
+WhatsApp,Mobile,CDR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:50:50,2025-08-27 07:53:34,Successful,,held_s=30
+WhatsApp,Mobile,CST,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:53:47,2025-08-27 07:53:50,Successful,,setup_s=0.41;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:53:47,2025-08-27 07:53:50,Successful,,incoming_on_B:fullscreen
+WhatsApp,Mobile,CST,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:53:57,2025-08-27 07:54:01,Successful,,setup_s=0.34;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762468,-66.1567197,2025-08-27 07:53:57,2025-08-27 07:54:01,Successful,,incoming_on_B:fullscreen

@@ -10,7 +10,7 @@ from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
 
 # ================== CONFIG ==================
-UDID_B = "YLEDU17215000182"                 # <-- serial B
+UDID_B = "6NU7N18614004267"                 # <-- serial B
 APPIUM_URL_B = "http://127.0.0.1:4726"      # Appium B
 SYSTEM_PORT_B = 8211
 

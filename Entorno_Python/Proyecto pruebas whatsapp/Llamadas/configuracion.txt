@@ -1,0 +1,8 @@
+#PARAMETRO
+tiempo_entre_ciclos=5
+
+#CONTACTO
+vast_wb
+
+#PRUEBA
+CDR

@@ -1,0 +1,12 @@
+#Entra en la aplicacion
+adb -s 6NUDU18529000033 shell am start -n com.emanuelef.remote_capture/com.emanuelef.remote_capture.activities.MainActivity
+
+#Para presionar pacapdroid start
+adb -s 6NUDU18529000033 shell input tap 534 870
+
+#Para parar 
+adb -s 6NUDU18529000033 shell input tap 735 170
+
+
+#Para vovler a whats
+adb -s 6NUDU18529000033 shell am start -n com.whatsapp/.home.ui.HomeActivity

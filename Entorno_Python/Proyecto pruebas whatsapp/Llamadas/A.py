@@ -15,7 +15,7 @@ SYSTEM_PORT_A = 8206
 
 # ========= OBSERVADOR B (solo lectura para CSFR) =========
 # No contesta ni desliza. Solo mira la UI para confirmar "entró" la llamada.
-UDID_B = "YLEDU17215000182"                    #serial del teléfono B
+UDID_B = "6NU7N18614004267"                    #serial del teléfono B
 APPIUM_URL_B = "http://127.0.0.1:4726"    # Appium de B 
 SYSTEM_PORT_B_OBS = 8212                
 

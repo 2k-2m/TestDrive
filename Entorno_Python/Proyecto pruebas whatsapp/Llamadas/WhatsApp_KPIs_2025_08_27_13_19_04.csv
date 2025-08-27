@@ -1,0 +1,12 @@
+App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:26,2025-08-27 13:19:26,Event,,by=A
+WhatsApp,Mobile,B_ANSWER,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:31,2025-08-27 13:19:31,Event,,
+WhatsApp,Mobile,ANSWER_TO_CONNECTED,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:31,2025-08-27 13:19:32,Metric,,seconds=0.68
+WhatsApp,Mobile,CALL_CONNECTED,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:32,2025-08-27 13:19:32,Event,,since_attempt_s=5.72;since_answer_s=0.68
+WhatsApp,Mobile,CDR,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:26,2025-08-27 13:21:33,Successful,,held_s=120
+WhatsApp,Mobile,RECON_COUNT,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:26,2025-08-27 13:21:33,Info,,count=1;side=A
+WhatsApp,Mobile,RECON,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:21:24,2025-08-27 13:21:29,Span,,seconds=5.04;side=A
+WhatsApp,Mobile,RECON_COUNT_B,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:26,2025-08-27 13:21:33,Info,,count=3;side=B
+WhatsApp,Mobile,RECON_B,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:19:56,2025-08-27 13:20:18,Span,,seconds=22.08;side=B
+WhatsApp,Mobile,RECON_B,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:20:34,2025-08-27 13:20:44,Span,,seconds=10.05;side=B
+WhatsApp,Mobile,RECON_B,vast_wb,-17.3762468,-66.1567197,2025-08-27 13:21:01,2025-08-27 13:21:06,Span,,seconds=5.00;side=B
