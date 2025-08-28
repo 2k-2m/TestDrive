@@ -1,0 +1,10 @@
+App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,n/a,n/a,2025-08-28 15:35:53,2025-08-28 15:35:53,Event,,by=A
+WhatsApp,Mobile,B_ANSWER,vast_wb,n/a,n/a,2025-08-28 15:36:11,2025-08-28 15:36:11,Event,,
+WhatsApp,Mobile,ANSWER_TO_CONNECTED,vast_wb,n/a,n/a,2025-08-28 15:36:11,2025-08-28 15:36:11,Metric,,seconds=0.34
+WhatsApp,Mobile,CALL_CONNECTED,vast_wb,n/a,n/a,2025-08-28 15:36:11,2025-08-28 15:36:11,Event,,since_attempt_s=18.77;since_answer_s=0.34
+WhatsApp,Mobile,CDR,vast_wb,n/a,n/a,2025-08-28 15:35:53,2025-08-28 15:38:12,Successful,,held_s=120
+WhatsApp,Mobile,RECON_COUNT,vast_wb,n/a,n/a,2025-08-28 15:35:53,2025-08-28 15:38:12,Info,,count=0;side=A
+WhatsApp,Mobile,RECON_COUNT_B,vast_wb,n/a,n/a,2025-08-28 15:35:53,2025-08-28 15:38:12,Info,,count=0;side=B
+WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,n/a,n/a,2025-08-28 15:38:34,2025-08-28 15:38:34,Event,,by=A
+WhatsApp,Mobile,CDR,vast_wb,n/a,n/a,2025-08-28 15:38:34,2025-08-28 15:39:11,Failed,NotConnected,

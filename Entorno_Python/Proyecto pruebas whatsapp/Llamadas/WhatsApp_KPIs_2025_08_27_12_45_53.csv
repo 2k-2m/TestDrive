@@ -1,8 +1,0 @@
-App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
-WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:09,2025-08-27 12:46:09,Event,,by=A
-WhatsApp,Mobile,B_ANSWER,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:15,2025-08-27 12:46:15,Event,,
-WhatsApp,Mobile,ANSWER_TO_CONNECTED,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:15,2025-08-27 12:46:16,Metric,,seconds=0.97
-WhatsApp,Mobile,CALL_CONNECTED,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:16,2025-08-27 12:46:16,Event,,since_attempt_s=6.17;since_answer_s=0.97
-WhatsApp,Mobile,CDR,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:09,2025-08-27 12:48:17,Successful,,held_s=120
-WhatsApp,Mobile,RECON_COUNT,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:09,2025-08-27 12:48:17,Info,,count=0;side=A
-WhatsApp,Mobile,RECON_COUNT_B,vast_wb,-17.3762468,-66.1567197,2025-08-27 12:46:09,2025-08-27 12:48:17,Info,,count=0;side=B

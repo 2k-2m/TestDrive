@@ -5,7 +5,5 @@ tiempo_entre_ciclos=5
 vast_wb
 
 #PRUEBA
-CDR
-CDR
-cst csfr
-cst csfr
+run 
+llamar

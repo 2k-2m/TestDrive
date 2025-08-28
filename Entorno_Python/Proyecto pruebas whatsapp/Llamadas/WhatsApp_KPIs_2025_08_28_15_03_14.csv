@@ -1,0 +1,19 @@
+App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:30,2025-08-28 15:03:30,Event,,by=A
+WhatsApp,Mobile,B_ANSWER,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:35,2025-08-28 15:03:35,Event,,
+WhatsApp,Mobile,ANSWER_TO_CONNECTED,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:35,2025-08-28 15:03:36,Metric,,seconds=0.63
+WhatsApp,Mobile,CALL_CONNECTED,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:36,2025-08-28 15:03:36,Event,,since_attempt_s=5.65;since_answer_s=0.63
+WhatsApp,Mobile,CDR,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:30,2025-08-28 15:03:51,Successful,,held_s=15
+WhatsApp,Mobile,RECON_COUNT,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:30,2025-08-28 15:03:51,Info,,count=0;side=A
+WhatsApp,Mobile,RECON_COUNT_B,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:03:30,2025-08-28 15:03:51,Info,,count=0;side=B
+WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:00,2025-08-28 15:04:00,Event,,by=A
+WhatsApp,Mobile,B_ANSWER,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:05,2025-08-28 15:04:05,Event,,
+WhatsApp,Mobile,ANSWER_TO_CONNECTED,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:05,2025-08-28 15:04:12,Metric,,seconds=6.76
+WhatsApp,Mobile,CALL_CONNECTED,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:12,2025-08-28 15:04:12,Event,,since_attempt_s=11.78;since_answer_s=6.76
+WhatsApp,Mobile,CDR,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:00,2025-08-28 15:04:35,Successful,,held_s=15
+WhatsApp,Mobile,RECON_COUNT,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:00,2025-08-28 15:04:35,Info,,count=0;side=A
+WhatsApp,Mobile,RECON_COUNT_B,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:00,2025-08-28 15:04:35,Info,,count=0;side=B
+WhatsApp,Mobile,CST,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:43,2025-08-28 15:04:46,Successful,,setup_s=0.37;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:43,2025-08-28 15:04:46,Successful,,incoming_on_B:fullscreen
+WhatsApp,Mobile,CST,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:53,2025-08-28 15:04:56,Successful,,setup_s=0.37;trigger=A:label
+WhatsApp,Mobile,CSFR,vast_wb,-17.3762147,-66.1566907,2025-08-28 15:04:53,2025-08-28 15:04:56,Successful,,incoming_on_B:fullscreen
