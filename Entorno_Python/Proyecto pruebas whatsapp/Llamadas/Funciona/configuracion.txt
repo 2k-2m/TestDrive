@@ -1,11 +1,11 @@
 #PARAMETRO
 tiempo_entre_ciclos=5
+cdr_hold_s=15
+call_id=111
 
 #CONTACTO
 vast_wb
 
 #PRUEBA
-CDR
-CDR
-cst csfr
-cst csfr
+llamar
+llamada

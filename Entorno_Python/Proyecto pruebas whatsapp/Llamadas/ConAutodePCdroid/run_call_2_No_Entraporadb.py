@@ -95,7 +95,7 @@ def leer_plan_config(path_txt: str):
 # =========================
 CST_TIMEOUT_S  = 20.0
 CSFR_TIMEOUT_S = 20.0
-CDR_HOLD_S     = 120   # Cambiar a la hora (está en segundos)
+CDR_HOLD_S     = 12   # Cambiar a la hora (está en segundos)
 DROP_GRACE_S   = 2.0
 
 # =========================

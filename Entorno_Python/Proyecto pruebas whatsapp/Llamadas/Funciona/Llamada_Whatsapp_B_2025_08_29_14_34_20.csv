@@ -1,0 +1,4 @@
+App,Network,Evento,CallID,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,Mobile,B_INCOMING,111,vast_wb,n/a,n/a,2025-08-29 14:34:44,2025-08-29 14:34:44,Event,,incoming_ui=visible
+WhatsApp,Mobile,B_ANSWER,111,vast_wb,n/a,n/a,2025-08-29 14:34:50,2025-08-29 14:34:50,Event,,
+WhatsApp,Mobile,RECON_COUNT_B,111,vast_wb,n/a,n/a,2025-08-29 14:35:03,2025-08-29 14:35:03,Info,,count=0;side=B

@@ -1,0 +1,8 @@
+App,Device,UDID,Network,Evento,CallID,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
+WhatsApp,A,6NUDU18529000033,Mobile,CALL_ATTEMPT,111,vast_wb,n/a,n/a,2025-08-29 14:34:43,2025-08-29 14:34:43,Event,,by=A
+WhatsApp,B,6NU7N18614004267,Mobile,B_INCOMING,111,vast_wb,n/a,n/a,2025-08-29 14:34:44,2025-08-29 14:34:44,Event,,incoming_ui=visible
+WhatsApp,B,6NU7N18614004267,Mobile,B_ANSWER,111,vast_wb,n/a,n/a,2025-08-29 14:34:50,2025-08-29 14:34:50,Event,,
+WhatsApp,A,6NUDU18529000033,Mobile,CALL_CONNECTED,111,vast_wb,n/a,n/a,2025-08-29 14:34:50,2025-08-29 14:34:50,Event,,since_attempt_s=7.00;since_answer_s=0.00
+WhatsApp,A,6NUDU18529000033,Mobile,CDR,111,vast_wb,n/a,n/a,2025-08-29 14:34:43,2025-08-29 14:35:02,Successful,,held_s=10
+WhatsApp,A,6NUDU18529000033,Mobile,RECON_COUNT,111,vast_wb,n/a,n/a,2025-08-29 14:34:43,2025-08-29 14:35:02,Info,,count=0;side=A
+WhatsApp,B,6NU7N18614004267,Mobile,RECON_COUNT_B,111,vast_wb,n/a,n/a,2025-08-29 14:35:03,2025-08-29 14:35:03,Info,,count=0;side=B

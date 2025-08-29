@@ -1,5 +1,0 @@
-App,Network,KPI,Contact,Latitude,Longitude,Start,End,Result,Failure,Extra
-WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,n/a,n/a,2025-08-28 15:26:24,2025-08-28 15:26:24,Event,,by=A
-WhatsApp,Mobile,CDR,vast_wb,n/a,n/a,2025-08-28 15:26:24,2025-08-28 15:27:01,Failed,NotConnected,
-WhatsApp,Mobile,CALL_ATTEMPT,vast_wb,n/a,n/a,2025-08-28 15:27:12,2025-08-28 15:27:12,Event,,by=A
-WhatsApp,Mobile,CDR,vast_wb,n/a,n/a,2025-08-28 15:27:12,2025-08-28 15:27:50,Failed,NotConnected,

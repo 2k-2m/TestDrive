@@ -1,6 +1,7 @@
-import os, csv, re, signal
+# -*- coding: utf-8 -*-
+import os, csv, time, re, signal, subprocess, socket
 from datetime import datetime
-import subprocess, time
+
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
@@ -13,18 +14,18 @@ from selenium.webdriver.support import expected_conditions as EC
 PLAN_TXT = os.path.join(os.path.dirname(__file__), "configuracion.txt")
 
 # =========================
-# CONFIG 
+# CONFIG
 # =========================
-UDID_A = "6NUDU18529000033" #Dispositivo A
+UDID_A = "6NUDU18529000033"  # Dispositivo A (caller)
 APPIUM_URL_A = "http://127.0.0.1:4723"
-SYSTEM_PORT_A = 8206
+# SYSTEM_PORT_A se elige libre dinámicamente
 
-UDID_B = "6NU7N18614004267" # Dispositivo B (observer / podrá contestar en CDR)
+UDID_B = "6NU7N18614004267"  # Dispositivo B (callee/observer)
 APPIUM_URL_B = "http://127.0.0.1:4726"
-SYSTEM_PORT_B = 8212
+# SYSTEM_PORT_B se elige libre dinámicamente
 
 APP_PKG = "com.whatsapp"
-APP_ACT = "com.whatsapp.HomeActivity"
+APP_ACT = "com.whatsapp.home.ui.HomeActivity"  # FQCN estable; appWaitActivity="*"
 
 # Variables Globales para Config.txt
 CONTACTO = "0"
@@ -44,8 +45,10 @@ def leer_plan_config(path_txt: str):
             return 'cdr'
         if ('cst' in s) and ('csfr' in s):
             return 'cst_csfr'
+        if 'run_call' in s or 'run call' in s:
+            return 'run_call'
         if ('run' in s) or ('llamar' in s) or ('llamando' in s):
-            return 'run_llamar'        
+            return 'run_call'
         return None
 
     with open(path_txt, 'r', encoding='utf-8') as f:
@@ -55,10 +58,10 @@ def leer_plan_config(path_txt: str):
                 continue
             if line.startswith('#'):
                 h = line.strip('#').strip().upper()
-                if h.startswith('PARAM'):   seccion = 'PARAM'
+                if h.startswith('PARAM'):     seccion = 'PARAM'
                 elif h.startswith('CONTACTO'): seccion = 'CONTACTO'
-                elif h.startswith('PRUEBA'):  seccion = 'PRUEBA'
-                else: seccion = None
+                elif h.startswith('PRUEBA'):   seccion = 'PRUEBA'
+                else:                          seccion = None
                 continue
 
             if seccion == 'PARAM':
@@ -92,9 +95,9 @@ def leer_plan_config(path_txt: str):
 # =========================
 # Timeouts / parámetros
 # =========================
-CST_TIMEOUT_S  = 20.0
-CSFR_TIMEOUT_S = 20.0
-CDR_HOLD_S     = 120   #Cambiar a la hora esta en segundos
+CST_TIMEOUT_S  = 30
+CSFR_TIMEOUT_S = 30
+CDR_HOLD_S     = 120   # tiempo de hold en segundos
 DROP_GRACE_S   = 2.0
 
 # =========================
@@ -122,9 +125,28 @@ def csv_write(kpi, contact, start_dt, end_dt, result, failure="",
         ])
 
 # =========================
-# Drivers
+# Drivers – puertos libres + caps rápidas
 # =========================
-def build_driver(url, udid, system_port, force_launch=True):
+def _port_is_free(port: int) -> bool:
+    import socket as _sock
+    with _sock.socket(_sock.AF_INET, _sock.SOCK_STREAM) as s:
+        s.setsockopt(_sock.SOL_SOCKET, _sock.SO_REUSEADDR, 1)
+        try:
+            s.bind(("127.0.0.1", port))
+            return True
+        except OSError:
+            return False
+
+def pick_free_port(preferred: int | None = None) -> int:
+    if preferred and _port_is_free(preferred):
+        return preferred
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(("127.0.0.1", 0))
+    free_port = s.getsockname()[1]
+    s.close()
+    return free_port
+
+def build_driver(url, udid, system_port, mjpeg_port=None, force_launch=True):
     caps = {
         "platformName": "Android",
         "automationName": "UiAutomator2",
@@ -132,15 +154,34 @@ def build_driver(url, udid, system_port, force_launch=True):
         "udid": udid,
         "appPackage": APP_PKG,
         "appActivity": APP_ACT,
+        "appWaitActivity": "*",
         "noReset": True,
         "forceAppLaunch": bool(force_launch),
-        "systemPort": system_port,
+        "systemPort": int(system_port),
         "newCommandTimeout": 360,
         "disableWindowAnimation": True,
         "ignoreHiddenApiPolicyError": True,
+        # Speed-ups:
+        "skipServerInstallation": True,     # server ya instalado
+        "skipDeviceInitialization": True,   # evita checks iniciales largos
+        # Timeouts de arranque razonables
+        "uiautomator2ServerLaunchTimeout": 20000,
+        "adbExecTimeout": 20000,
     }
+    if mjpeg_port is not None:
+        caps["mjpegServerPort"] = int(mjpeg_port)
     options = UiAutomator2Options().load_capabilities(caps)
-    return webdriver.Remote(command_executor=url, options=options)
+    drv = webdriver.Remote(command_executor=url, options=options)
+    # Tuning runtime para reducir esperas internas de Appium
+    try:
+        drv.update_settings({
+            "waitForIdleTimeout": 0,
+            "actionAcknowledgmentTimeout": 0,
+            "scrollAcknowledgmentTimeout": 0
+        })
+    except Exception:
+        pass
+    return drv
 
 # =========================
 # Utilidades Android
@@ -160,12 +201,18 @@ def obtener_red_real(driver):
         pass
     return "Disconnected"
 
-def obtener_gps(driver):
+def obtener_gps(udid):
     try:
-        loc = driver.location
-        return str(loc.get("latitude","")), str(loc.get("longitude",""))
-    except:
-        return "", ""
+        output = subprocess.check_output(
+            ["adb", "-s", udid, "shell", "dumpsys", "location"],
+            encoding="utf-8"
+        )
+        match = re.search(r'gps:\s+Location\[gps\s+([-\d\.]+),\s*([-\d\.]+)', output, re.I)
+        if match:
+            return str(match.group(1)), str(match.group(2))
+    except Exception as e:
+        print(f"Error obteniendo GPS vía ADB: {e}")
+    return "n/a", "n/a"
 
 def esperar(drv, cond, t=10):
     return WebDriverWait(drv, t).until(cond)
@@ -201,7 +248,7 @@ CHAT_TITLE_IDS = [
 RECON_TOKEN = "reconectando"
 
 # =========================
-# Señales de finalizacion
+# Señales de finalización
 # =========================
 detener = False
 def manejar_senal(sig, frame):
@@ -209,7 +256,6 @@ def manejar_senal(sig, frame):
     detener = True
 signal.signal(signal.SIGINT, manejar_senal)
 signal.signal(signal.SIGTERM, manejar_senal)
-
 
 # =========================
 # Manejar los Chats
@@ -244,8 +290,8 @@ def is_in_chat_with(driver, contacto: str) -> bool:
 
 def go_to_chats_tab(driver):
     try:
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().description("Chats")').click()
-        time.sleep(0.5)
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().description("Chats")').click()
+        time.sleep(0.3)
     except:
         pass
 
@@ -258,7 +304,7 @@ def open_chat(driver, contacto: str) -> bool:
                 nombre = (header.text or "").strip()
                 if contacto.lower() in (nombre or "").lower():
                     fila.click()
-                    esperar(driver, EC.presence_of_element_located((AppiumBy.ID, "com.whatsapp:id/entry")), 8)
+                    esperar(driver, EC.presence_of_element_located((AppiumBy.ID, "com.whatsapp:id/entry")), 6)
                     return True
             except:
                 continue
@@ -269,11 +315,11 @@ def open_chat(driver, contacto: str) -> bool:
         driver.find_element(AppiumBy.ID, SEARCH_BAR_ID).click()
         box = driver.switch_to.active_element
         box.clear(); box.send_keys(contacto)
-        time.sleep(1.0)
+        time.sleep(0.6)
         res = driver.find_elements(AppiumBy.ID, ROW_IDS[0])
         if res:
             res[0].click()
-            esperar(driver, EC.presence_of_element_located((AppiumBy.ID, "com.whatsapp:id/entry")), 8)
+            esperar(driver, EC.presence_of_element_located((AppiumBy.ID, "com.whatsapp:id/entry")), 6)
             return True
     except:
         pass
@@ -291,7 +337,7 @@ def ensure_chat_open(driver, contacto: str) -> bool:
 # =========================
 # Llamada / estados
 # =========================
-def stable_text(el, ms=250):
+def stable_text(el, ms=220):
     t0 = time.monotonic()
     last = el.text or ""
     while (time.monotonic()-t0)*1000 < ms:
@@ -299,7 +345,7 @@ def stable_text(el, ms=250):
         if cur != last:
             t0 = time.monotonic()
             last = cur
-        time.sleep(0.03)
+        time.sleep(0.02)
     return (last or "").strip().lower().replace("…", "...")
 
 def find_subtitle_text(driver) -> str:
@@ -318,11 +364,11 @@ def find_subtitle_text(driver) -> str:
 def tocar_boton_llamar(driver):
     for acc in VOICE_CALL_ACCS:
         try:
-            WebDriverWait(driver, 6).until(
+            WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, acc))
             ).click()
             try:
-                WebDriverWait(driver, 2).until(
+                WebDriverWait(driver, 1.5).until(
                     EC.element_to_be_clickable((AppiumBy.ID, "android:id/button1"))
                 ).click()
             except:
@@ -331,14 +377,15 @@ def tocar_boton_llamar(driver):
         except:
             pass
     try:
-        el = WebDriverWait(driver, 3).until(EC.element_to_be_clickable((
-            AppiumBy.XPATH, "//*[contains(@content-desc,'Llam')] | //*[@content-desc[contains(.,'Call')]]"
+        el = WebDriverWait(driver, 2.5).until(EC.element_to_be_clickable((
+            AppiumBy.XPATH,
+            "//*[contains(@content-desc,'Llam')] | //*[contains(@content-desc,'Call')]"
         )))
         el.click()
     except:
         raise Exception("NoVoiceCallButton")
 
-def colgar_seguro(driver, wait_s=5):
+def colgar_seguro(driver, wait_s=4):
     try:
         card = WebDriverWait(driver, wait_s).until(
             EC.presence_of_element_located((AppiumBy.ID, CALL_CONTROLS_CARD_ID))
@@ -348,7 +395,7 @@ def colgar_seguro(driver, wait_s=5):
     except:
         pass
     try:
-        WebDriverWait(driver, 2).until(
+        WebDriverWait(driver, 1.5).until(
             EC.element_to_be_clickable((AppiumBy.ID, END_CALL_BTN_ID))
         ).click()
         return
@@ -360,7 +407,7 @@ def colgar_seguro(driver, wait_s=5):
         pass
 
 # =========================
-# Auto-answer en B
+# Auto-answer en B (robusto)
 # =========================
 def _center(rect):
     return (rect["x"] + rect["width"] // 2, rect["y"] + rect["height"] // 2)
@@ -369,25 +416,6 @@ def _point_near_bottom(rect, pct_from_bottom=0.88):
     cx = rect["x"] + rect["width"] // 2
     sy = int(rect["y"] + rect["height"] * pct_from_bottom)
     return cx, sy
-
-def _w3c_swipe_up(driver_b, start_x, start_y, end_y, hold_ms=320, move_ms=800):
-    actions = [{
-        "type": "pointer",
-        "id": "finger1",
-        "parameters": {"pointerType": "touch"},
-        "actions": [
-            {"type": "pointerMove", "duration": 0, "x": int(start_x), "y": int(start_y)},
-            {"type": "pointerDown", "button": 0},
-            {"type": "pause", "duration": int(hold_ms)},
-            {"type": "pointerMove", "duration": int(move_ms), "x": int(start_x), "y": int(end_y)},
-            {"type": "pointerUp", "button": 0},
-        ],
-    }]
-    driver_b.perform_actions(actions)
-    try:
-        driver_b.release_actions()
-    except:
-        pass
 
 def _drag_up_via_gesture(driver_b, el, pct=0.75, duration=850):
     r = el.rect
@@ -415,22 +443,57 @@ def wake_and_dismiss_keyguard(driver_b):
     except:
         pass
 
-def answer_incoming_call_b(driver_b, wait_s=14):
-    def _dbg(s): 
-        if DEBUG: 
-            print(f"[DBG] {s}")
+def incoming_ui_on_b(driver_b) -> bool:
+    try:
+        if (driver_b.find_elements(AppiumBy.ID, B_CALL_ROOT_ID) or
+            driver_b.find_elements(AppiumBy.ID, B_ANSWER_ROOT_ID) or
+            driver_b.find_elements(AppiumBy.ID, B_ACCEPT_CONTAINER_ID) or
+            driver_b.find_elements(AppiumBy.ID, B_ACCEPT_SWIPE_HINT_ID) or
+            driver_b.find_elements(AppiumBy.ID, B_ACCEPT_BUTTON_ID)):
+            return True
+    except:
+        pass
+    return False
 
+def wait_incoming_on_b(driver_b, wait_s=14) -> bool:
+    """Espera a que aparezca la UI de llamada entrante en B antes de intentar contestar."""
     try:
         wake_and_dismiss_keyguard(driver_b)
     except:
         pass
+    t_end = time.monotonic() + float(wait_s)
+    while time.monotonic() < t_end and not detener:
+        if incoming_ui_on_b(driver_b):
+            if DEBUG: print("[DBG] UI entrante detectada en B.")
+            return True
+        time.sleep(0.2)
+    if DEBUG: print("[DBG] No apareció UI entrante en B (timeout).")
+    return False
 
+def answer_incoming_call_b(driver_b, wait_s=25):
+    """
+    Contesta en B sólo si hay UI entrante. Intenta:
+    1) Tap en el botón de aceptar (si existe)
+    2) dragGesture sobre el contenedor
+    3) swipe por shell
+    4) dragGesture por coordenadas
+    5) W3C actions
+    """
+    def _dbg(s):
+        if DEBUG:
+            print(f"[DBG] {s}")
+
+    # Esperar a que realmente llegue la llamada
+    if not wait_incoming_on_b(driver_b, wait_s=wait_s):
+        return False, None
+
+    # Coordenadas fallback (ajústalas si fuera necesario)
     START_X, START_Y = 540, 1918
     END_X,   END_Y   = 540, 273
-    t_end = time.monotonic() + wait_s
+    t_end = time.monotonic() + float(wait_s)
 
     def accepted_now_dt():
-        """Si ya no vemos el botón de aceptar, asumimos que contestó ahora y devolvemos ese datetime."""
+        """Si ya no vemos el botón/controles de aceptar, asumimos que se contestó ahora."""
         try:
             still = driver_b.find_elements(AppiumBy.ID, "com.whatsapp:id/accept_incoming_call_view")
             if not still:
@@ -439,7 +502,7 @@ def answer_incoming_call_b(driver_b, wait_s=14):
             pass
         return None
 
-    # Click rápido
+    # 1) Tap rápido en el botón de aceptar (si existe)
     try:
         btns = driver_b.find_elements(AppiumBy.ID, "com.whatsapp:id/accept_incoming_call_view")
         if btns:
@@ -452,7 +515,38 @@ def answer_incoming_call_b(driver_b, wait_s=14):
     except:
         pass
 
-    # dragGesture
+    # 2) dragGesture sobre el contenedor si existe
+    try:
+        containers = driver_b.find_elements(AppiumBy.ID, B_ACCEPT_CONTAINER_ID)
+        if containers:
+            el = containers[0]
+            try:
+                _drag_up_via_gesture(driver_b, el, pct=0.75, duration=850)
+                time.sleep(0.5)
+            except:
+                pass
+            dt = accepted_now_dt()
+            if dt:
+                _dbg("B contestó (dragGesture element).")
+                return True, dt
+
+            # 3) swipe por shell si aún no
+            r = el.rect
+            sx, sy = _point_near_bottom(r, pct_from_bottom=0.88)
+            ey = max(0, int(r["y"] + r["height"] * 0.15))
+            try:
+                _drag_up_via_shell(driver_b, sx, sy, ey, duration_ms=950)
+                time.sleep(0.5)
+                dt = accepted_now_dt()
+                if dt:
+                    _dbg("B contestó (shell swipe).")
+                    return True, dt
+            except:
+                pass
+    except:
+        pass
+
+    # 4) dragGesture por coordenadas absolutas
     try:
         _dbg("B intenta contestar (dragGesture coords).")
         driver_b.execute_script("mobile: dragGesture", {
@@ -467,7 +561,7 @@ def answer_incoming_call_b(driver_b, wait_s=14):
     except:
         pass
 
-    # W3C actions
+    # 5) W3C actions
     try:
         _dbg("B intenta contestar (W3C actions).")
         actions = [{
@@ -490,7 +584,7 @@ def answer_incoming_call_b(driver_b, wait_s=14):
     except:
         pass
 
-    # Poll final
+    # Poll final por si la UI cambió sola
     while time.monotonic() < t_end:
         dt = accepted_now_dt()
         if dt:
@@ -500,18 +594,22 @@ def answer_incoming_call_b(driver_b, wait_s=14):
     return False, None
 
 # =========================
-# Para debugeo
+# Para debug
 # =========================
 DEBUG = True
 def _save_pagesource(driver, tag="ps"):
     try:
         xml = driver.page_source
-        fn = f"./_debug_{tag}_{int(time.time())}.xml"
+    except Exception as e:
+        log(f"no pude guardar pageSource: {e}")
+        return
+    fn = f"./_debug_{tag}_{int(time.time())}.xml"
+    try:
         with open(fn, "w", encoding="utf-8") as f:
             f.write(xml)
         log(f"pageSource guardado en {fn}")
     except Exception as e:
-        log(f"no pude guardar pageSource: {e}")
+        log(f"no pude guardar pageSource en disco: {e}")
 
 def log(msg):
     if DEBUG:
@@ -528,11 +626,8 @@ def log_evt(kpi: str, when: datetime | None = None, extra: str = ""):
         msg += f" | {extra}"
     print(f"[DBG] {msg}")
 
-# ------------------------------------------------------------
-# Helpers ADB (seguros y con timeouts) + wrappers PCAPdroid
-# ------------------------------------------------------------
+# ============ ADB + PCAPdroid ============
 def _run_adb_shell(adb_serial: str, cmd: str, timeout_s: float = 8.0):
-    # cmd: cadena para "adb -s <serial> shell <cmd>"
     try:
         subprocess.run(
             ["adb", "-s", adb_serial, "shell"] + cmd.split(),
@@ -546,76 +641,165 @@ def _run_adb_shell(adb_serial: str, cmd: str, timeout_s: float = 8.0):
         if DEBUG:
             print(f"[DBG] ADB shell timeout: {cmd}")
 
-def _pcapdroid_start(adb_serial: str, start_xy=(534, 870), settle_s=0.8):
-    # Abre la app y toca "Start"
+
+def _pcapdroid_start(adb_serial: str,
+                     start_xy=(534, 870),
+                     settle_s=0.6,
+                     post_delay_s=10.0):
+    """
+    Abre PCAPdroid, toca 'Start' y ESPERA post_delay_s segundos
+    antes de continuar (por defecto, 10 s).
+    """
+    # Abrir la app
     _run_adb_shell(adb_serial, "am start -n com.emanuelef.remote_capture/com.emanuelef.remote_capture.activities.MainActivity")
     time.sleep(settle_s)
+
+    # Tocar Start
     _run_adb_shell(adb_serial, f"input tap {start_xy[0]} {start_xy[1]}")
     if 'log_evt' in globals():
         log_evt("PCAP_START", datetime.now(), f"serial={adb_serial};xy={start_xy[0]},{start_xy[1]}")
 
-def _pcapdroid_stop(adb_serial: str, stop_xy=(735, 170), settle_s=0.6):
-    # Abre la app y toca "Stop"
+    # Espera fija para que la VPN y la pila de red se estabilicen
+    if post_delay_s and post_delay_s > 0:
+        if 'log_evt' in globals():
+            log_evt("PCAP_WAIT", datetime.now(), f"{post_delay_s:.1f}s")
+        time.sleep(float(post_delay_s))
+
+# def _pcapdroid_start(adb_serial: str, start_xy=(534, 870), settle_s=0.6):
+#     _run_adb_shell(adb_serial, "am start -n com.emanuelef.remote_capture/com.emanuelef.remote_capture.activities.MainActivity")
+#     time.sleep(settle_s)
+#     _run_adb_shell(adb_serial, f"input tap {start_xy[0]} {start_xy[1]}")
+#     if 'log_evt' in globals():
+#         log_evt("PCAP_START", datetime.now(), f"serial={adb_serial};xy={start_xy[0]},{start_xy[1]}")
+
+def _pcapdroid_stop(adb_serial: str, stop_xy=(735, 170), settle_s=0.5):
     _run_adb_shell(adb_serial, "am start -n com.emanuelef.remote_capture/com.emanuelef.remote_capture.activities.MainActivity")
     time.sleep(settle_s)
     _run_adb_shell(adb_serial, f"input tap {stop_xy[0]} {stop_xy[1]}")
     if 'log_evt' in globals():
         log_evt("PCAP_STOP", datetime.now(), f"serial={adb_serial};xy={stop_xy[0]},{stop_xy[1]}")
 
-def _switch_to_whatsapp(adb_serial: str, settle_s=0.8):
-    _run_adb_shell(adb_serial, "am start -n com.whatsapp/.home.ui.HomeActivity")
-    time.sleep(settle_s)
-    if 'log_evt' in globals():
-        log_evt("APP_SWITCH", datetime.now(), "to=WhatsApp")
+# ============ Auto-heal de UiAutomator2 ============
+def _is_instrumentation_dead(exc: Exception) -> bool:
+    s = str(exc).lower()
+    return ("instrumentation process is not running" in s) or ("uiautomator2" in s and "not running" in s)
 
+def heal_driver(driver, role: str):
+    try:
+        _ = driver.get_window_size()
+        return driver  # sano
+    except Exception as e:
+        if not _is_instrumentation_dead(e):
+            return driver  # otro error, no tocamos
+    # instrumentation muerto -> recrear
+    try:
+        driver.quit()
+    except:
+        pass
+    time.sleep(0.8)
+    if role == 'A':
+        sysp = pick_free_port(8206)
+        mjpg = pick_free_port(7830)
+        return build_driver(APPIUM_URL_A, UDID_A, sysp, mjpeg_port=mjpg, force_launch=False)
+    else:
+        sysp = pick_free_port(8212)
+        mjpg = pick_free_port(7832)
+        return build_driver(APPIUM_URL_B, UDID_B, sysp, mjpeg_port=mjpg, force_launch=False)
+
+# ============ Readiness/Switch de WhatsApp por Appium ============
+def wait_app_foreground(driver, pkg: str, act: str, timeout_s=8) -> bool:
+    """
+    Garantiza que (pkg/act) están en primer plano usando SOLO Appium.
+    Evita usar ADB para no romper UiAutomator2.
+    """
+    t0 = time.monotonic()
+    last_pkg = None
+    while time.monotonic() - t0 < timeout_s:
+        try:
+            cur_pkg = getattr(driver, "current_package", None)
+            if cur_pkg:
+                last_pkg = cur_pkg
+            if cur_pkg == pkg:
+                return True
+            # traer la app con APIs de Appium (no ADB)
+            try:
+                driver.activate_app(pkg)
+            except Exception:
+                try:
+                    driver.start_activity(pkg, act)
+                except Exception:
+                    pass
+        except Exception:
+            # reintento suave
+            try:
+                driver.start_activity(pkg, act)
+            except Exception:
+                pass
+        time.sleep(0.35)
+    if DEBUG:
+        print(f"[DBG] wait_app_foreground timeout; last_pkg={last_pkg}")
+    return False
+
+def switch_to_whatsapp_via_appium(driver):
+    """
+    Trae WhatsApp al frente de forma 'in-band' (Appium),
+    y espera a que esté listo para interactuar.
+    """
+    ok_fg = wait_app_foreground(driver, APP_PKG, APP_ACT, timeout_s=8)
+    if not ok_fg and DEBUG:
+        print("[DBG] WhatsApp no quedó foreground con start_activity/activate_app")
+    else:
+        log_evt("APP_SWITCH", datetime.now(), "to=WhatsApp (appium)")
+    time.sleep(0.4)
 
 # ------------------------------------------------------------
-# Versión integrada de measure_cdr(...)
+# Versión integrada de run_call(...)
 # ------------------------------------------------------------
 def run_call(
     driver_a, driver_b, contacto,
     hold_s=CDR_HOLD_S, drop_grace=DROP_GRACE_S, auto_answer_b=True,
-    # --- NUEVOS PARAMS PARA PCAPdroid/ADB ---
+    # --- PCAPdroid/ADB ---
     use_pcapdroid=True,
-    adb_serial="6NUDU18529000033",
+    adb_serial=UDID_A,
     pcapdroid_start_xy=(534, 870),
     pcapdroid_stop_xy=(735, 170),
-    settle_after_switch_s=0.8
 ):
     """
-    Mide CDR y ahora enciende/para PCAPdroid antes/después del ciclo,
-    usando ADB en el dispositivo indicado.
+    Ejecuta una sesión de llamada (KPIs: CALL_ATTEMPT, B_ANSWER, CALL_CONNECTED, CDR, RECON spans)
+    con captura PCAP (PCAPdroid) alrededor del ciclo.
     """
 
-    # --------- BLOQUE NUEVO: START PCAPdroid + volver a WhatsApp ----------
+    # START PCAP (sí con ADB) pero el switch a WhatsApp será por Appium
     if use_pcapdroid:
         try:
             _pcapdroid_start(adb_serial, start_xy=pcapdroid_start_xy)
-            _switch_to_whatsapp(adb_serial, settle_s=settle_after_switch_s)
         except Exception as e:
             if DEBUG:
-                print(f"[DBG] PCAP start/switch failed: {e}")
-            # Seguimos igual: el CDR puede continuar aun si no se pudo iniciar la captura
+                print(f"[DBG] PCAP start failed: {e}")
 
-    # Usamos finally para asegurar STOP aunque haya return temprano
+    # Sanar driver y traer WhatsApp foreground con Appium
+    driver_a = heal_driver(driver_a, role='A')
+    switch_to_whatsapp_via_appium(driver_a)
+
     try:
-        # ------------------- (tu lógica existente, sin cambios) -------------------
         # 1) Abrir chat
+        log("[RUN] ensure_chat_open(start)")
         ok = ensure_chat_open(driver_a, contacto)
+        log("[RUN] ensure_chat_open(done) -> " + str(ok))
         if not ok:
             _save_pagesource(driver_a, "cdr_chatnotfound")
             tnow = datetime.now()
             network = obtener_red_real(driver_a)
-            lat, lon = obtener_gps(driver_a)
+            lat, lon = obtener_gps(UDID_A)
             csv_write("CDR", contacto, tnow, tnow, "Failed", "ChatNotFound", "", network, lat, lon)
             log_evt("CDR_FAIL", tnow, "ChatNotFound")
             return
 
         # 2) Contexto
         network = obtener_red_real(driver_a)
-        lat, lon = obtener_gps(driver_a)
+        lat, lon = obtener_gps(UDID_A)
 
-        # 3) CALL_ATTEMPT (al presionar botón)
+        # 3) CALL_ATTEMPT
         try:
             tocar_boton_llamar(driver_a)
         except Exception as e:
@@ -628,22 +812,22 @@ def run_call(
         csv_write("CALL_ATTEMPT", contacto, t_press_dt, t_press_dt, "Event", "", "by=A", network, lat, lon)
         log_evt("CALL_ATTEMPT", t_press_dt, "by=A")
 
-        # El CDR empieza en el intento:
         t0_dt = t_press_dt
 
-        # 4) B_ANSWER (si hay auto-answer)
+        # 4) B_ANSWER (auto) — ahora con espera previa de UI entrante
         answered_dt = None
         if auto_answer_b:
-            answered, answered_dt = answer_incoming_call_b(driver_b, wait_s=14)
+            driver_b = heal_driver(driver_b, role='B')
+            answered, answered_dt = answer_incoming_call_b(driver_b, wait_s=25)
             if answered and answered_dt:
                 csv_write("B_ANSWER", contacto, answered_dt, answered_dt, "Event", "", "", network, lat, lon)
                 log_evt("B_ANSWER", answered_dt)
 
-        # 5) CALL_CONNECTED (cuando A muestra mm:ss en subtítulo)
+        # 5) CALL_CONNECTED (mm:ss)
         connected_dt = None
-        t_deadline = time.monotonic() + 25.0
+        t_deadline = time.monotonic() + 22.0
         while time.monotonic() < t_deadline and not detener:
-            txt = find_subtitle_text(driver_a)  # ya viene lowercase
+            txt = find_subtitle_text(driver_a)
             if _CONNECTED_RE.match(txt or ""):
                 connected_dt = datetime.now()
                 extra_parts = [f"since_attempt_s={(connected_dt - t_press_dt).total_seconds():.2f}"]
@@ -655,7 +839,7 @@ def run_call(
                           network, lat, lon)
                 log_evt("CALL_CONNECTED", connected_dt, "; ".join(extra_parts))
                 break
-            time.sleep(0.2)
+            time.sleep(0.18)
 
         if not connected_dt:
             now_dt = datetime.now()
@@ -737,7 +921,7 @@ def run_call(
                     dropped = True
                     break
 
-            time.sleep(0.25)
+            time.sleep(0.22)
 
         # Cerrar spans si el hold termina mostrando reconectando
         if recon_active_A and recon_start_A is not None:
@@ -781,10 +965,9 @@ def run_call(
                       f"seconds={secs:.2f};side=B", network, lat, lon)
 
         colgar_seguro(driver_a)
-        # ------------------- fin de tu lógica existente -------------------
 
     finally:
-        # --------- BLOQUE NUEVO: STOP PCAPdroid SIEMPRE ----------
+        # STOP PCAP siempre
         if use_pcapdroid:
             try:
                 _pcapdroid_stop(adb_serial, stop_xy=pcapdroid_stop_xy)
@@ -792,35 +975,51 @@ def run_call(
                 if DEBUG:
                     print(f"[DBG] PCAP stop failed: {e}")
 
-
 # =========================
 # MAIN
 # =========================
 def main():
     pruebas = leer_plan_config(PLAN_TXT)
-
     if not pruebas:
+        print("[RUN] No hay pruebas en configuracion.txt")
         return
 
     csv_init()
 
-    driver_a = build_driver(APPIUM_URL_A, UDID_A, SYSTEM_PORT_A, force_launch=True)
-    driver_b = build_driver(APPIUM_URL_B, UDID_B, SYSTEM_PORT_B, force_launch=False)
+    # Puertos libres y distintos por dispositivo
+    sys_a = pick_free_port(8206)
+    mjpeg_a = pick_free_port(7830)
+    sys_b = pick_free_port(8212)
+    if sys_b == sys_a: sys_b = pick_free_port()
+    mjpeg_b = pick_free_port(7832)
+    if mjpeg_b == mjpeg_a: mjpeg_b = pick_free_port()
+
+    print(f"[PORTS] A: systemPort={sys_a}, mjpegServerPort={mjpeg_a}")
+    print(f"[PORTS] B: systemPort={sys_b}, mjpegServerPort={mjpeg_b}")
+
+    driver_a = build_driver(APPIUM_URL_A, UDID_A, sys_a, mjpeg_port=mjpeg_a, force_launch=True)
+    driver_b = build_driver(APPIUM_URL_B, UDID_B, sys_b, mjpeg_port=mjpeg_b, force_launch=False)
 
     try:
         for i, accion in enumerate(pruebas, 1):
             print(f"[RUN] Comenzando {accion.upper()} para '{CONTACTO}'...")
-            if accion == 'run_llamar':
-                print("measure_cst_csfr")
-            elif accion == 'cdr':
-                print("measure_cdr")
-            elif accion == 'run_call':
+            # Sanar drivers por si el ciclo anterior mató UiAutomator2
+            driver_a = heal_driver(driver_a, 'A')
+            driver_b = heal_driver(driver_b, 'B')
+
+            if accion == 'run_call':
                 run_call(
                     driver_a, driver_b, CONTACTO,
                     hold_s=CDR_HOLD_S,
                     drop_grace=DROP_GRACE_S,
-                    auto_answer_b=True
+                    auto_answer_b=True,
+                    adb_serial=UDID_A   # A inicia/para PCAPdroid
                 )
+            elif accion == 'cdr':
+                print("measure_cdr (placeholder)")
+            elif accion == 'cst_csfr':
+                print("measure_cst_csfr (placeholder)")
+
             print(f"[RUN] Terminada {accion.upper()}")
             if i < len(pruebas):
                 print(f"[RUN] Esperando {TIEMPO_ENTRE_CICLOS}s...")
@@ -832,9 +1031,6 @@ def main():
         for d in (driver_a, driver_b):
             try: d.quit()
             except: pass
-
-
-
 
 if __name__ == "__main__":
     main()
