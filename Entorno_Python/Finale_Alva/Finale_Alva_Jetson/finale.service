@@ -1,0 +1,21 @@
+[Unit]
+Description=Finale Alva (autostart Appium + Whats + Gtrack + Gtrack2) usando venv antiguo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jetson
+Group=jetson
+WorkingDirectory=/home/jetson/Desktop/Finale_Alva
+EnvironmentFile=/etc/systemd/system/finale.env
+ExecStartPre=/bin/sleep 20
+ExecStart=/bin/bash /home/jetson/Desktop/Finale_Alva/autostart_finale.sh
+ExecStop=/bin/bash -lc "/home/jetson/Desktop/Finale_Alva/stop_finale.sh || true"
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 #PARAMETRO
 tiempo_entre_ciclos=5
-cdr_hold_s=15
-call_id=111
+cdr_hold_s=300
+call_id=19
 
 #CONTACTO
 vast_wb
@@ -9,3 +9,13 @@ vast_wb
 #PRUEBA
 llamar
 llamada
+llamar
+llamar
+llamar
+llamar
+llamar
+llamar
+llamar
+llamar
+llamar
+llamar

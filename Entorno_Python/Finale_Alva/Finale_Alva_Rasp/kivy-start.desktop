@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Finale Interfaz
+Exec=/usr/bin/python3 /home/pi/Desktop/Finale_Alva/Interfaz/interfaz.py
+Path=/home/pi/Desktop/Finale_Alva/Interfaz
+StartupNotify=false
+Terminal=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=5

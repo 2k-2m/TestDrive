@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ================== CONFIG ==================
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+cd "$SCRIPT_DIR"
+
+# venv ANTIGUO (con espacio en la ruta) — OJO las comillas
+PYBIN="/home/jetson/Desktop/Split Llamadas/.venv/bin/python"
+PIDS_FILE="$SCRIPT_DIR/.run_pids"
+
+# Scripts
+SCRIPT_WHATS="$SCRIPT_DIR/Whats/llamada_CSV_Split_Viva.py"
+SCRIPT_G1="$SCRIPT_DIR/G-net/G-track.py"
+SCRIPT_G2="$SCRIPT_DIR/G-net/G-track2.py"
+
+# Puertos Appium
+PORT_WHATS=4723
+PORT_G1=4783
+PORT_G2=4786
+BASE_PATH=""
+
+# Dispositivos requeridos
+REQUIRED_UDIDS=("6NUDU18529000033" "6NU7N18614004267" "6NU7N18614005207")
+
+# PATH + nvm
+export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+if [[ -s "/home/jetson/.nvm/nvm.sh" ]]; then . "/home/jetson/.nvm/nvm.sh"; fi
+
+# ================== HELPERS ==================
+need(){ command -v "$1" >/dev/null 2>&1 || { echo "[ERROR] Falta '$1' en PATH"; return 1; }; }
+
+wait_for_cmd(){
+  local cmd="$1" secs="${2:-60}"
+  for ((i=1;i<=secs;i++)); do
+    command -v "$cmd" >/dev/null 2>&1 && return 0
+    sleep 1
+  done
+  return 1
+}
+
+have_all_devices(){
+  local ok=0
+  local out
+  out="$(adb devices 2>/dev/null || true)"
+  for udid in "${REQUIRED_UDIDS[@]}"; do
+    grep -qE "^${udid}[[:space:]]+device" <<<"$out" || return 1
+  done
+  return 0
+}
+
+start_appium(){
+  local port="$1"
+  local args=(--relaxed-security -p "$port")
+  [[ -n "$BASE_PATH" ]] && args+=(--base-path "$BASE_PATH")
+  nohup "${APPIUM_CMD[@]}" "${args[@]}" >"$HOME/appium-${port}.log" 2>&1 &
+  echo $! >> "$PIDS_FILE"
+  echo "[INFO] Appium ${port} lanzado. Log: $HOME/appium-${port}.log"
+}
+
+wait_appium(){
+  local port="$1"
+  local url="http://127.0.0.1:${port}/status"
+  [[ -n "$BASE_PATH" ]] && url="http://127.0.0.1:${port}${BASE_PATH}/status"
+  for _ in {1..45}; do
+    curl -sf "$url" >/dev/null 2>&1 && { echo "[OK] Appium ${port} listo"; return 0; }
+    sleep 1
+  done
+  echo "[WARN] Appium ${port} no respondió aún en ${url}; sigo esperando en background."
+  return 0
+}
+
+# ================== CHECKS ==================
+: > "$PIDS_FILE"
+
+if [[ ! -x "$PYBIN" ]]; then
+  echo "[ERROR] No existe el venv en: $PYBIN"
+  exit 1
+fi
+for f in "$SCRIPT_WHATS" "$SCRIPT_G1" "$SCRIPT_G2"; do
+  [[ -f "$f" ]] || { echo "[ERROR] Falta script: $f"; exit 1; }
+done
+
+# Asegura adb/curl presentes (espera hasta 60s)
+wait_for_cmd adb 60 || { echo "[ERROR] adb no disponible tras 60s"; exit 1; }
+wait_for_cmd curl 30 || { echo "[ERROR] curl no disponible tras 30s"; exit 1; }
+
+# Detectar appium/npx
+if command -v appium >/dev/null 2>&1; then
+  APPIUM_CMD=(appium)
+elif command -v npx >/dev/null 2>&1; then
+  APPIUM_CMD=(npx appium)
+else
+  echo "[ERROR] No encuentro 'appium' ni 'npx' en PATH"
+  exit 1
+fi
+
+# Espera a que estén los 3 dispositivos en 'device' (hasta 180s). Si no, sigue esperando sin matar el servicio.
+echo "[INFO] Esperando a que estén conectados los 3 dispositivos: ${REQUIRED_UDIDS[*]}"
+for ((i=1;i<=180;i++)); do
+  if have_all_devices; then
+    echo "[OK] Los 3 dispositivos están en 'device'."
+    break
+  fi
+  sleep 1
+done
+
+if ! have_all_devices; then
+  echo "[WARN] Aún faltan dispositivos. El servicio seguirá corriendo y reintentará cada 15s."
+fi
+
+# ================== LOOP PRINCIPAL ==================
+# Este loop permite que si se desconecta algo al boot, vuelva a intentar sin que systemd marque fallo.
+while true; do
+  if have_all_devices; then
+    echo "[INFO] Iniciando Appium..."
+    for p in "$PORT_WHATS" "$PORT_G1" "$PORT_G2"; do start_appium "$p"; done
+    for p in "$PORT_WHATS" "$PORT_G1" "$PORT_G2"; do wait_appium "$p"; done
+
+    echo "[INFO] Ejecutando scripts..."
+    "$PYBIN" "$SCRIPT_WHATS" & echo $! >> "$PIDS_FILE"
+    "$PYBIN" "$SCRIPT_G1"    & echo $! >> "$PIDS_FILE"
+    "$PYBIN" "$SCRIPT_G2"    & echo $! >> "$PIDS_FILE"
+
+    echo "[OK] Lanzados. Monitoreando..."
+    # Monitor simple: si todos murieron, limpiamos y reintentamos; si no, dormimos.
+    while true; do
+      sleep 10
+      # Si no queda ningún PID vivo de los listados, salimos del ciclo para relanzar
+      mapfile -t PIDS < <(grep -E '^[0-9]+$' "$PIDS_FILE" || true)
+      alive=0
+      for pid in "${PIDS[@]:-}"; do
+        kill -0 "$pid" 2>/dev/null && alive=1
+      done
+      [[ $alive -eq 1 ]] || { echo "[WARN] No quedan procesos vivos; reiniciando ciclo…"; break; }
+    done
+
+    # stop local (no llamamos stop_finale.sh porque eso también mata appium; lo haremos abajo)
+    if [[ -f "$PIDS_FILE" ]]; then : > "$PIDS_FILE"; fi
+    # Cierra appium puertos
+    fuser -k 4723/tcp 4783/tcp 4786/tcp 2>/dev/null || true
+    pkill -f 'appium --relaxed-security' 2>/dev/null || true
+    pkill -f 'npx appium' 2>/dev/null || true
+  else
+    echo "[INFO] Aún no están los 3 dispositivos. Reintentando en 15s…"
+    sleep 15
+  fi
+done
+
+trap 'echo "[SIG] stop_finale.sh"; "$SCRIPT_DIR/stop_finale.sh"; exit 0' INT TERM

@@ -1,0 +1,11 @@
+# PARAM
+answer_timeout_s = 30
+cdr_hold_s = 30
+tiempo_entre_ciclos = 5     
+role = both                   
+
+# CONTACTO
+65362339                      
+
+# PRUEBA
+loop run 5000

@@ -1,0 +1,1571 @@
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] --- Iteración 1 ---
+[2025-10-10 16:11:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:11:47] [INFO] Lanzado instagram.py (pid=3325)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47]  Iteración 1
+[2025-10-10 16:11:47] Iniciando prueba Instagram...
+[2025-10-10 16:11:47] Cargando feed...
+[2025-10-10 16:11:47] Cargando feed...OK
+[2025-10-10 16:11:47] Publicando imagen...
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:11:47] Clic exitoso en: Compartir
+[2025-10-10 16:11:47] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:11:47] Publicando imagen...OK
+[2025-10-10 16:11:47] Reproduciendo Reel...
+[2025-10-10 16:11:47] Reproduciendo Reel...OK
+[2025-10-10 16:11:47] Enviando mensaje de texto...
+[2025-10-10 16:11:47] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:11:47] Clic exitoso en: Inbox
+[2025-10-10 16:11:47] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:11:47] Clic exitoso en: Primer chat
+[2025-10-10 16:11:47] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:11:47] Clic exitoso en: Botón enviar
+[2025-10-10 16:11:47] Enviando mensaje de texto...OK
+[2025-10-10 16:11:47] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:11:47] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:11:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:11:47] [INFO] Lanzado facebook.py (pid=5261)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] --- Iteración Facebook #1 ---
+[2025-10-10 16:11:47] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:11:47] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:11:47] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:11:47] Botón Video no encontrado.
+[2025-10-10 16:11:47] Botón Video clickeado.
+[2025-10-10 16:11:47] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:11:47] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:11:47] Reinicio de app en 3s...
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] --- Iteración 2 ---
+[2025-10-10 16:11:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:11:47] [INFO] Lanzado instagram.py (pid=6173)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47]  Iteración 1
+[2025-10-10 16:11:47] Iniciando prueba Instagram...
+[2025-10-10 16:11:47] Cargando feed...
+[2025-10-10 16:11:47] Cargando feed...OK
+[2025-10-10 16:11:47] Publicando imagen...
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:11:47] Clic exitoso en: Compartir
+[2025-10-10 16:11:47] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:11:47] Publicando imagen...OK
+[2025-10-10 16:11:47] Reproduciendo Reel...
+[2025-10-10 16:11:47] Reproduciendo Reel...OK
+[2025-10-10 16:11:47] Enviando mensaje de texto...
+[2025-10-10 16:11:47] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:11:47] Clic exitoso en: Inbox
+[2025-10-10 16:11:47] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:11:47] Clic exitoso en: Primer chat
+[2025-10-10 16:11:47] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:11:47] Clic exitoso en: Botón enviar
+[2025-10-10 16:11:47] Enviando mensaje de texto...OK
+[2025-10-10 16:11:47] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:11:47] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:11:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:11:47] [INFO] Lanzado facebook.py (pid=7786)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] --- Iteración Facebook #1 ---
+[2025-10-10 16:11:47] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:11:47] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:11:47] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:11:47] Botón Video no encontrado.
+[2025-10-10 16:11:47] Botón Video clickeado.
+[2025-10-10 16:11:47] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:11:47] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:11:47] Reinicio de app en 3s...
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47] --- Iteración 3 ---
+[2025-10-10 16:11:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:11:47] [INFO] Lanzado instagram.py (pid=8790)
+[2025-10-10 16:11:47] 
+[2025-10-10 16:11:47]  Iteración 1
+[2025-10-10 16:11:47] Iniciando prueba Instagram...
+[2025-10-10 16:11:47] Cargando feed...
+[2025-10-10 16:11:47] Cargando feed...OK
+[2025-10-10 16:11:47] Publicando imagen...
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:11:47] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:11:47] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:16:33] Clic exitoso en: Compartir
+[2025-10-10 16:16:33] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:16:33] Publicando imagen...OK
+[2025-10-10 16:16:33] Reproduciendo Reel...
+[2025-10-10 16:16:33] Reproduciendo Reel...OK
+[2025-10-10 16:16:33] Enviando mensaje de texto...
+[2025-10-10 16:16:33] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:16:33] Clic exitoso en: Inbox
+[2025-10-10 16:16:33] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:16:33] Clic exitoso en: Primer chat
+[2025-10-10 16:16:33] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:16:33] Clic exitoso en: Botón enviar
+[2025-10-10 16:16:33] Enviando mensaje de texto...OK
+[2025-10-10 16:16:33] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:16:33] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:16:33] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:16:33] [INFO] Lanzado facebook.py (pid=10506)
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33] --- Iteración Facebook #1 ---
+[2025-10-10 16:16:33] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:16:33] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:16:33] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:16:33] Botón Video no encontrado.
+[2025-10-10 16:16:33] Botón Video clickeado.
+[2025-10-10 16:16:33] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:16:33] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:16:33] Reinicio de app en 3s...
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33] --- Iteración 4 ---
+[2025-10-10 16:16:33] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:16:33] [INFO] Lanzado instagram.py (pid=11441)
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33]  Iteración 1
+[2025-10-10 16:16:33] Iniciando prueba Instagram...
+[2025-10-10 16:16:33] Cargando feed...
+[2025-10-10 16:16:33] Cargando feed...OK
+[2025-10-10 16:16:33] Publicando imagen...
+[2025-10-10 16:16:33] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:16:33] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:16:33] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:16:33] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:16:33] Clic exitoso en: Compartir
+[2025-10-10 16:16:33] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:16:33] Publicando imagen...OK
+[2025-10-10 16:16:33] Reproduciendo Reel...
+[2025-10-10 16:16:33] Reproduciendo Reel...OK
+[2025-10-10 16:16:33] Enviando mensaje de texto...
+[2025-10-10 16:16:33] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:16:33] Clic exitoso en: Inbox
+[2025-10-10 16:16:33] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:16:33] Clic exitoso en: Primer chat
+[2025-10-10 16:16:33] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:16:33] Clic exitoso en: Botón enviar
+[2025-10-10 16:16:33] Enviando mensaje de texto...OK
+[2025-10-10 16:16:33] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:16:33] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:16:33] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:16:33] [INFO] Lanzado facebook.py (pid=13239)
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33] --- Iteración Facebook #1 ---
+[2025-10-10 16:16:33] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:16:33] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:16:33] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:16:33] Botón Video no encontrado.
+[2025-10-10 16:16:33] Botón Video clickeado.
+[2025-10-10 16:16:33] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:16:33] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:16:33] Reinicio de app en 3s...
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33] --- Iteración 5 ---
+[2025-10-10 16:16:33] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:16:33] [INFO] Lanzado instagram.py (pid=14197)
+[2025-10-10 16:16:33] 
+[2025-10-10 16:16:33]  Iteración 1
+[2025-10-10 16:16:33] Iniciando prueba Instagram...
+[2025-10-10 16:16:33] Cargando feed...
+[2025-10-10 16:16:33] Cargando feed...OK
+[2025-10-10 16:16:33] Publicando imagen...
+[2025-10-10 16:16:33] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:16:33] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:16:33] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:16:33] Clic exitoso en: 
+[2025-10-10 16:16:33] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:16:33] Clic exitoso en: Compartir
+[2025-10-10 16:16:33] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:16:33] Publicando imagen...OK
+[2025-10-10 16:16:33] Reproduciendo Reel...
+[2025-10-10 16:16:33] Reproduciendo Reel...OK
+[2025-10-10 16:16:33] Enviando mensaje de texto...
+[2025-10-10 16:16:33] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:16:33] Clic exitoso en: Inbox
+[2025-10-10 16:16:33] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:16:33] Clic exitoso en: Primer chat
+[2025-10-10 16:20:56] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:20:56] Clic exitoso en: Botón enviar
+[2025-10-10 16:20:56] Enviando mensaje de texto...OK
+[2025-10-10 16:20:56] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:20:56] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:20:56] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:20:56] [INFO] Lanzado facebook.py (pid=15962)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] --- Iteración Facebook #1 ---
+[2025-10-10 16:20:56] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:20:56] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:20:56] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:20:56] Botón Video no encontrado.
+[2025-10-10 16:20:56] Botón Video clickeado.
+[2025-10-10 16:20:56] Video corto reproducido sin éxito (progress bar detectado)
+[2025-10-10 16:20:56] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:20:56] Reinicio de app en 3s...
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] --- Iteración 6 ---
+[2025-10-10 16:20:56] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:20:56] [INFO] Lanzado instagram.py (pid=16755)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56]  Iteración 1
+[2025-10-10 16:20:56] Iniciando prueba Instagram...
+[2025-10-10 16:20:56] Cargando feed...
+[2025-10-10 16:20:56] Cargando feed...OK
+[2025-10-10 16:20:56] Publicando imagen...
+[2025-10-10 16:20:56] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:20:56] Clic exitoso en: 
+[2025-10-10 16:20:56] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:20:56] Clic exitoso en: 
+[2025-10-10 16:20:56] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:20:56] Clic exitoso en: 
+[2025-10-10 16:20:56] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:20:56] Clic exitoso en: Compartir
+[2025-10-10 16:20:56] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:20:56] Publicando imagen...OK
+[2025-10-10 16:20:56] Reproduciendo Reel...
+[2025-10-10 16:20:56] Reproduciendo Reel...OK
+[2025-10-10 16:20:56] Enviando mensaje de texto...
+[2025-10-10 16:20:56] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:20:56] Clic exitoso en: Inbox
+[2025-10-10 16:20:56] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:20:56] Clic exitoso en: Primer chat
+[2025-10-10 16:20:56] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:20:56] Clic exitoso en: Botón enviar
+[2025-10-10 16:20:56] Enviando mensaje de texto...OK
+[2025-10-10 16:20:56] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:20:56] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:20:56] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:20:56] [INFO] Lanzado facebook.py (pid=18547)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] --- Iteración Facebook #1 ---
+[2025-10-10 16:20:56] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:20:56] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:20:56] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:20:56] Botón Video no encontrado.
+[2025-10-10 16:20:56] Botón Video clickeado.
+[2025-10-10 16:20:56] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:20:56] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:20:56] Reinicio de app en 3s...
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] --- Iteración 7 ---
+[2025-10-10 16:20:56] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:20:56] [INFO] Lanzado instagram.py (pid=19493)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56]  Iteración 1
+[2025-10-10 16:20:56] Iniciando prueba Instagram...
+[2025-10-10 16:20:56] Cargando feed...
+[2025-10-10 16:20:56] Cargando feed...OK
+[2025-10-10 16:20:56] Publicando imagen...
+[2025-10-10 16:20:56] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:20:56] Clic exitoso en: 
+[2025-10-10 16:20:56] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:20:56] Clic exitoso en: 
+[2025-10-10 16:20:56] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:20:56] Clic exitoso en: 
+[2025-10-10 16:20:56] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:20:56] Clic exitoso en: Compartir
+[2025-10-10 16:20:56] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:20:56] Publicando imagen...OK
+[2025-10-10 16:20:56] Reproduciendo Reel...
+[2025-10-10 16:20:56] Reproduciendo Reel...OK
+[2025-10-10 16:20:56] Enviando mensaje de texto...
+[2025-10-10 16:20:56] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:20:56] Clic exitoso en: Inbox
+[2025-10-10 16:20:56] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:20:56] Clic exitoso en: Primer chat
+[2025-10-10 16:20:56] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:20:56] Clic exitoso en: Botón enviar
+[2025-10-10 16:20:56] Enviando mensaje de texto...OK
+[2025-10-10 16:20:56] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:20:56] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:20:56] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:20:56] [INFO] Lanzado facebook.py (pid=21210)
+[2025-10-10 16:20:56] 
+[2025-10-10 16:20:56] --- Iteración Facebook #1 ---
+[2025-10-10 16:20:56] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:20:56] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:20:56] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:25:43] Botón Video no encontrado.
+[2025-10-10 16:25:43] Botón Video clickeado.
+[2025-10-10 16:25:43] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:25:43] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:25:43] Reinicio de app en 3s...
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] --- Iteración 8 ---
+[2025-10-10 16:25:43] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:25:43] [INFO] Lanzado instagram.py (pid=22139)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43]  Iteración 1
+[2025-10-10 16:25:43] Iniciando prueba Instagram...
+[2025-10-10 16:25:43] Cargando feed...
+[2025-10-10 16:25:43] Cargando feed...OK
+[2025-10-10 16:25:43] Publicando imagen...
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:25:43] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:25:43] Clic exitoso en: Compartir
+[2025-10-10 16:25:43] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:25:43] Publicando imagen...OK
+[2025-10-10 16:25:43] Reproduciendo Reel...
+[2025-10-10 16:25:43] Reproduciendo Reel...OK
+[2025-10-10 16:25:43] Enviando mensaje de texto...
+[2025-10-10 16:25:43] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:25:43] Clic exitoso en: Inbox
+[2025-10-10 16:25:43] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:25:43] Clic exitoso en: Primer chat
+[2025-10-10 16:25:43] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:25:43] Clic exitoso en: Botón enviar
+[2025-10-10 16:25:43] Enviando mensaje de texto...OK
+[2025-10-10 16:25:43] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:25:43] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:25:43] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:25:43] [INFO] Lanzado facebook.py (pid=23944)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] --- Iteración Facebook #1 ---
+[2025-10-10 16:25:43] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:25:43] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:25:43] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:25:43] Botón Video no encontrado.
+[2025-10-10 16:25:43] Botón Video clickeado.
+[2025-10-10 16:25:43] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:25:43] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:25:43] Reinicio de app en 3s...
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] --- Iteración 9 ---
+[2025-10-10 16:25:43] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:25:43] [INFO] Lanzado instagram.py (pid=24828)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43]  Iteración 1
+[2025-10-10 16:25:43] Iniciando prueba Instagram...
+[2025-10-10 16:25:43] Cargando feed...
+[2025-10-10 16:25:43] Cargando feed...OK
+[2025-10-10 16:25:43] Publicando imagen...
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:25:43] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:25:43] Clic exitoso en: Compartir
+[2025-10-10 16:25:43] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:25:43] Publicando imagen...OK
+[2025-10-10 16:25:43] Reproduciendo Reel...
+[2025-10-10 16:25:43] Reproduciendo Reel...OK
+[2025-10-10 16:25:43] Enviando mensaje de texto...
+[2025-10-10 16:25:43] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:25:43] Clic exitoso en: Inbox
+[2025-10-10 16:25:43] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:25:43] Clic exitoso en: Primer chat
+[2025-10-10 16:25:43] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:25:43] Clic exitoso en: Botón enviar
+[2025-10-10 16:25:43] Enviando mensaje de texto...OK
+[2025-10-10 16:25:43] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:25:43] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:25:43] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:25:43] [INFO] Lanzado facebook.py (pid=26614)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] --- Iteración Facebook #1 ---
+[2025-10-10 16:25:43] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:25:43] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:25:43] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:25:43] Botón Video no encontrado.
+[2025-10-10 16:25:43] Botón Video clickeado.
+[2025-10-10 16:25:43] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:25:43] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:25:43] Reinicio de app en 3s...
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43] --- Iteración 10 ---
+[2025-10-10 16:25:43] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:25:43] [INFO] Lanzado instagram.py (pid=27465)
+[2025-10-10 16:25:43] 
+[2025-10-10 16:25:43]  Iteración 1
+[2025-10-10 16:25:43] Iniciando prueba Instagram...
+[2025-10-10 16:25:43] Cargando feed...
+[2025-10-10 16:25:43] Cargando feed...OK
+[2025-10-10 16:25:43] Publicando imagen...
+[2025-10-10 16:25:43] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:25:43] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:30:40] Clic exitoso en: Compartir
+[2025-10-10 16:30:40] Publicación detectada como completada (desapareció el contenedor o apareció el botón Enviar).
+[2025-10-10 16:30:40] Publicando imagen...OK
+[2025-10-10 16:30:40] Reproduciendo Reel...
+[2025-10-10 16:30:40] Reproduciendo Reel...OK
+[2025-10-10 16:30:40] Enviando mensaje de texto...
+[2025-10-10 16:30:40] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:30:40] Clic exitoso en: Inbox
+[2025-10-10 16:30:40] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:30:40] Clic exitoso en: Primer chat
+[2025-10-10 16:30:40] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:30:40] Clic exitoso en: Botón enviar
+[2025-10-10 16:30:40] Enviando mensaje de texto...OK
+[2025-10-10 16:30:40] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:30:40] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:30:40] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:30:40] [INFO] Lanzado facebook.py (pid=29392)
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40] --- Iteración Facebook #1 ---
+[2025-10-10 16:30:40] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:30:40] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:30:40] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:30:40] Botón Video no encontrado.
+[2025-10-10 16:30:40] Botón Video clickeado.
+[2025-10-10 16:30:40] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:30:40] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:30:40] Reinicio de app en 3s...
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40] --- Iteración 11 ---
+[2025-10-10 16:30:40] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:30:40] [INFO] Lanzado instagram.py (pid=30320)
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40]  Iteración 1
+[2025-10-10 16:30:40] Iniciando prueba Instagram...
+[2025-10-10 16:30:40] Cargando feed...
+[2025-10-10 16:30:40] Cargando feed...OK
+[2025-10-10 16:30:40] Publicando imagen...
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:30:40] Clic exitoso en: Compartir
+[2025-10-10 16:30:40] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:30:40] Publicando imagen...OK
+[2025-10-10 16:30:40] Reproduciendo Reel...
+[2025-10-10 16:30:40] Reproduciendo Reel...OK
+[2025-10-10 16:30:40] Enviando mensaje de texto...
+[2025-10-10 16:30:40] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:30:40] Clic exitoso en: Inbox
+[2025-10-10 16:30:40] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:30:40] Clic exitoso en: Primer chat
+[2025-10-10 16:30:40] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:30:40] Clic exitoso en: Botón enviar
+[2025-10-10 16:30:40] Enviando mensaje de texto...OK
+[2025-10-10 16:30:40] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:30:40] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:30:40] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:30:40] [INFO] Lanzado facebook.py (pid=31944)
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40] --- Iteración Facebook #1 ---
+[2025-10-10 16:30:40] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:30:40] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:30:40] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:30:40] Botón Video no encontrado.
+[2025-10-10 16:30:40] Botón Video clickeado.
+[2025-10-10 16:30:40] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:30:40] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:30:40] Reinicio de app en 3s...
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40] --- Iteración 12 ---
+[2025-10-10 16:30:40] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:30:40] [INFO] Lanzado instagram.py (pid=32780)
+[2025-10-10 16:30:40] 
+[2025-10-10 16:30:40]  Iteración 1
+[2025-10-10 16:30:40] Iniciando prueba Instagram...
+[2025-10-10 16:30:40] Cargando feed...
+[2025-10-10 16:30:40] Cargando feed...OK
+[2025-10-10 16:30:40] Publicando imagen...
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:30:40] Clic exitoso en: 
+[2025-10-10 16:30:40] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:30:40] Clic exitoso en: Compartir
+[2025-10-10 16:30:40] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:30:40] Publicando imagen...OK
+[2025-10-10 16:30:40] Reproduciendo Reel...
+[2025-10-10 16:30:40] Reproduciendo Reel...OK
+[2025-10-10 16:30:40] Enviando mensaje de texto...
+[2025-10-10 16:30:40] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:34:47] Clic exitoso en: Inbox
+[2025-10-10 16:34:47] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:34:47] Clic exitoso en: Primer chat
+[2025-10-10 16:34:47] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:34:47] Clic exitoso en: Botón enviar
+[2025-10-10 16:34:47] Enviando mensaje de texto...OK
+[2025-10-10 16:34:47] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:34:47] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:34:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:34:47] [INFO] Lanzado facebook.py (pid=34258)
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47] --- Iteración Facebook #1 ---
+[2025-10-10 16:34:47] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:34:47] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:34:47] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:34:47] Botón Video no encontrado.
+[2025-10-10 16:34:47] Botón Video clickeado.
+[2025-10-10 16:34:47] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:34:47] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:34:47] Reinicio de app en 3s...
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47] --- Iteración 13 ---
+[2025-10-10 16:34:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:34:47] [INFO] Lanzado instagram.py (pid=35053)
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47]  Iteración 1
+[2025-10-10 16:34:47] Iniciando prueba Instagram...
+[2025-10-10 16:34:47] Cargando feed...
+[2025-10-10 16:34:47] Cargando feed...OK
+[2025-10-10 16:34:47] Publicando imagen...
+[2025-10-10 16:34:47] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:34:47] Clic exitoso en: 
+[2025-10-10 16:34:47] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:34:47] Clic exitoso en: 
+[2025-10-10 16:34:47] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:34:47] Clic exitoso en: 
+[2025-10-10 16:34:47] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:34:47] Clic exitoso en: Compartir
+[2025-10-10 16:34:47] Publicación detectada como completada (desapareció el contenedor o apareció el botón Enviar).
+[2025-10-10 16:34:47] Publicando imagen...OK
+[2025-10-10 16:34:47] Reproduciendo Reel...
+[2025-10-10 16:34:47] Reproduciendo Reel...OK
+[2025-10-10 16:34:47] Enviando mensaje de texto...
+[2025-10-10 16:34:47] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:34:47] Clic exitoso en: Inbox
+[2025-10-10 16:34:47] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:34:47] Clic exitoso en: Primer chat
+[2025-10-10 16:34:47] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:34:47] Clic exitoso en: Botón enviar
+[2025-10-10 16:34:47] Enviando mensaje de texto...OK
+[2025-10-10 16:34:47] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:34:47] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:34:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:34:47] [INFO] Lanzado facebook.py (pid=36479)
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47] --- Iteración Facebook #1 ---
+[2025-10-10 16:34:47] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:34:47] Warning: Activity not started, intent has been delivered to currently running top-most instance.
+[2025-10-10 16:34:47] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:34:47] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:34:47] Botón Video no encontrado.
+[2025-10-10 16:34:47] Botón Video clickeado.
+[2025-10-10 16:34:47] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:34:47] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:34:47] Reinicio de app en 3s...
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47] --- Iteración 14 ---
+[2025-10-10 16:34:47] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:34:47] [INFO] Lanzado instagram.py (pid=37297)
+[2025-10-10 16:34:47] 
+[2025-10-10 16:34:47]  Iteración 1
+[2025-10-10 16:34:47] Iniciando prueba Instagram...
+[2025-10-10 16:34:47] Cargando feed...
+[2025-10-10 16:34:47] Cargando feed...OK
+[2025-10-10 16:34:47] Publicando imagen...
+[2025-10-10 16:34:47] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:34:47] Clic exitoso en: 
+[2025-10-10 16:34:47] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:34:47] Clic exitoso en: 
+[2025-10-10 16:34:47] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:34:47] Clic exitoso en: 
+[2025-10-10 16:34:47] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:34:47] Clic exitoso en: Compartir
+[2025-10-10 16:34:47] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:34:47] Publicando imagen...OK
+[2025-10-10 16:34:47] Reproduciendo Reel...
+[2025-10-10 16:34:47] Reproduciendo Reel...OK
+[2025-10-10 16:34:47] Enviando mensaje de texto...
+[2025-10-10 16:34:47] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:34:47] Clic exitoso en: Inbox
+[2025-10-10 16:34:47] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:34:47] Clic exitoso en: Primer chat
+[2025-10-10 16:34:47] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:34:47] Clic exitoso en: Botón enviar
+[2025-10-10 16:34:47] Enviando mensaje de texto...OK
+[2025-10-10 16:34:47] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:34:47] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:39:23] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:39:23] [INFO] Lanzado facebook.py (pid=38868)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] --- Iteración Facebook #1 ---
+[2025-10-10 16:39:23] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:39:23] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:39:23] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:39:23] Botón Video no encontrado.
+[2025-10-10 16:39:23] Botón Video clickeado.
+[2025-10-10 16:39:23] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:39:23] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:39:23] Reinicio de app en 3s...
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] --- Iteración 15 ---
+[2025-10-10 16:39:23] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:39:23] [INFO] Lanzado instagram.py (pid=39648)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23]  Iteración 1
+[2025-10-10 16:39:23] Iniciando prueba Instagram...
+[2025-10-10 16:39:23] Cargando feed...
+[2025-10-10 16:39:23] Cargando feed...OK
+[2025-10-10 16:39:23] Publicando imagen...
+[2025-10-10 16:39:23] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:39:23] Clic exitoso en: 
+[2025-10-10 16:39:23] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:39:23] Clic exitoso en: 
+[2025-10-10 16:39:23] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:39:23] Clic exitoso en: 
+[2025-10-10 16:39:23] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:39:23] Clic exitoso en: Compartir
+[2025-10-10 16:39:23] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:39:23] Publicando imagen...OK
+[2025-10-10 16:39:23] Reproduciendo Reel...
+[2025-10-10 16:39:23] Reproduciendo Reel...OK
+[2025-10-10 16:39:23] Enviando mensaje de texto...
+[2025-10-10 16:39:23] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:39:23] Clic exitoso en: Inbox
+[2025-10-10 16:39:23] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:39:23] Clic exitoso en: Primer chat
+[2025-10-10 16:39:23] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:39:23] Clic exitoso en: Botón enviar
+[2025-10-10 16:39:23] Enviando mensaje de texto...OK
+[2025-10-10 16:39:23] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:39:23] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:39:23] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:39:23] [INFO] Lanzado facebook.py (pid=41320)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] --- Iteración Facebook #1 ---
+[2025-10-10 16:39:23] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:39:23] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:39:23] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:39:23] Botón Video no encontrado.
+[2025-10-10 16:39:23] Botón Video clickeado.
+[2025-10-10 16:39:23] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:39:23] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:39:23] Reinicio de app en 3s...
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] --- Iteración 16 ---
+[2025-10-10 16:39:23] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:39:23] [INFO] Lanzado instagram.py (pid=42226)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23]  Iteración 1
+[2025-10-10 16:39:23] Iniciando prueba Instagram...
+[2025-10-10 16:39:23] Cargando feed...
+[2025-10-10 16:39:23] Cargando feed...OK
+[2025-10-10 16:39:23] Publicando imagen...
+[2025-10-10 16:39:23] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:39:23] Clic exitoso en: 
+[2025-10-10 16:39:23] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:39:23] Clic exitoso en: 
+[2025-10-10 16:39:23] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:39:23] Clic exitoso en: 
+[2025-10-10 16:39:23] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:39:23] Clic exitoso en: Compartir
+[2025-10-10 16:39:23] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:39:23] Publicando imagen...OK
+[2025-10-10 16:39:23] Reproduciendo Reel...
+[2025-10-10 16:39:23] Reproduciendo Reel...OK
+[2025-10-10 16:39:23] Enviando mensaje de texto...
+[2025-10-10 16:39:23] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:39:23] Clic exitoso en: Inbox
+[2025-10-10 16:39:23] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:39:23] Clic exitoso en: Primer chat
+[2025-10-10 16:39:23] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:39:23] Clic exitoso en: Botón enviar
+[2025-10-10 16:39:23] Enviando mensaje de texto...OK
+[2025-10-10 16:39:23] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:39:23] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:39:23] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:39:23] [INFO] Lanzado facebook.py (pid=43783)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] --- Iteración Facebook #1 ---
+[2025-10-10 16:39:23] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:39:23] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:39:23] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:39:23] Botón Video no encontrado.
+[2025-10-10 16:39:23] Botón Video clickeado.
+[2025-10-10 16:39:23] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:39:23] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:39:23] Reinicio de app en 3s...
+[2025-10-10 16:39:23] 
+[2025-10-10 16:39:23] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:39:23] 
+[2025-10-10 16:43:59] --- Iteración 17 ---
+[2025-10-10 16:43:59] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:43:59] [INFO] Lanzado instagram.py (pid=44745)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59]  Iteración 1
+[2025-10-10 16:43:59] Iniciando prueba Instagram...
+[2025-10-10 16:43:59] Cargando feed...
+[2025-10-10 16:43:59] Cargando feed...OK
+[2025-10-10 16:43:59] Publicando imagen...
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:43:59] Clic exitoso en: Compartir
+[2025-10-10 16:43:59] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:43:59] Publicando imagen...OK
+[2025-10-10 16:43:59] Reproduciendo Reel...
+[2025-10-10 16:43:59] Reproduciendo Reel...OK
+[2025-10-10 16:43:59] Enviando mensaje de texto...
+[2025-10-10 16:43:59] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:43:59] Clic exitoso en: Inbox
+[2025-10-10 16:43:59] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:43:59] Clic exitoso en: Primer chat
+[2025-10-10 16:43:59] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:43:59] Clic exitoso en: Botón enviar
+[2025-10-10 16:43:59] Enviando mensaje de texto...OK
+[2025-10-10 16:43:59] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:43:59] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:43:59] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:43:59] [INFO] Lanzado facebook.py (pid=46437)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59] --- Iteración Facebook #1 ---
+[2025-10-10 16:43:59] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:43:59] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:43:59] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:43:59] Botón Video no encontrado.
+[2025-10-10 16:43:59] Botón Video clickeado.
+[2025-10-10 16:43:59] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:43:59] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:43:59] Reinicio de app en 3s...
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59] --- Iteración 18 ---
+[2025-10-10 16:43:59] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:43:59] [INFO] Lanzado instagram.py (pid=47430)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59]  Iteración 1
+[2025-10-10 16:43:59] Iniciando prueba Instagram...
+[2025-10-10 16:43:59] Cargando feed...
+[2025-10-10 16:43:59] Cargando feed...OK
+[2025-10-10 16:43:59] Publicando imagen...
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:43:59] Clic exitoso en: Compartir
+[2025-10-10 16:43:59] Publicación detectada como completada (desapareció el contenedor o apareció el botón Enviar).
+[2025-10-10 16:43:59] Publicando imagen...OK
+[2025-10-10 16:43:59] Reproduciendo Reel...
+[2025-10-10 16:43:59] Reproduciendo Reel...OK
+[2025-10-10 16:43:59] Enviando mensaje de texto...
+[2025-10-10 16:43:59] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:43:59] Clic exitoso en: Inbox
+[2025-10-10 16:43:59] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:43:59] Clic exitoso en: Primer chat
+[2025-10-10 16:43:59] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:43:59] Clic exitoso en: Botón enviar
+[2025-10-10 16:43:59] Enviando mensaje de texto...OK
+[2025-10-10 16:43:59] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:43:59] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:43:59] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:43:59] [INFO] Lanzado facebook.py (pid=49311)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59] --- Iteración Facebook #1 ---
+[2025-10-10 16:43:59] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:43:59] Warning: Activity not started, intent has been delivered to currently running top-most instance.
+[2025-10-10 16:43:59] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:43:59] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:43:59] Botón Video no encontrado.
+[2025-10-10 16:43:59] Botón Video clickeado.
+[2025-10-10 16:43:59] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:43:59] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:43:59] Reinicio de app en 3s...
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59] --- Iteración 19 ---
+[2025-10-10 16:43:59] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:43:59] [INFO] Lanzado instagram.py (pid=50276)
+[2025-10-10 16:43:59] 
+[2025-10-10 16:43:59]  Iteración 1
+[2025-10-10 16:43:59] Iniciando prueba Instagram...
+[2025-10-10 16:43:59] Cargando feed...
+[2025-10-10 16:43:59] Cargando feed...OK
+[2025-10-10 16:43:59] Publicando imagen...
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:43:59] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:43:59] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:48:36] Clic exitoso en: Compartir
+[2025-10-10 16:48:36] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:48:36] Publicando imagen...OK
+[2025-10-10 16:48:36] Reproduciendo Reel...
+[2025-10-10 16:48:36] Reproduciendo Reel...OK
+[2025-10-10 16:48:36] Enviando mensaje de texto...
+[2025-10-10 16:48:36] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:48:36] Clic exitoso en: Inbox
+[2025-10-10 16:48:36] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:48:36] Clic exitoso en: Primer chat
+[2025-10-10 16:48:36] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:48:36] Clic exitoso en: Botón enviar
+[2025-10-10 16:48:36] Enviando mensaje de texto...OK
+[2025-10-10 16:48:36] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:48:36] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:48:36] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:48:36] [INFO] Lanzado facebook.py (pid=51943)
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36] --- Iteración Facebook #1 ---
+[2025-10-10 16:48:36] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:48:36] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:48:36] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:48:36] Botón Video no encontrado.
+[2025-10-10 16:48:36] Botón Video clickeado.
+[2025-10-10 16:48:36] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:48:36] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:48:36] Reinicio de app en 3s...
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36] --- Iteración 20 ---
+[2025-10-10 16:48:36] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:48:36] [INFO] Lanzado instagram.py (pid=52879)
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36]  Iteración 1
+[2025-10-10 16:48:36] Iniciando prueba Instagram...
+[2025-10-10 16:48:36] Cargando feed...
+[2025-10-10 16:48:36] Cargando feed...OK
+[2025-10-10 16:48:36] Publicando imagen...
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:48:36] Clic exitoso en: Compartir
+[2025-10-10 16:48:36] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:48:36] Publicando imagen...OK
+[2025-10-10 16:48:36] Reproduciendo Reel...
+[2025-10-10 16:48:36] Reproduciendo Reel...OK
+[2025-10-10 16:48:36] Enviando mensaje de texto...
+[2025-10-10 16:48:36] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:48:36] Clic exitoso en: Inbox
+[2025-10-10 16:48:36] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:48:36] Clic exitoso en: Primer chat
+[2025-10-10 16:48:36] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:48:36] Clic exitoso en: Botón enviar
+[2025-10-10 16:48:36] Enviando mensaje de texto...OK
+[2025-10-10 16:48:36] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:48:36] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:48:36] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:48:36] [INFO] Lanzado facebook.py (pid=54445)
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36] --- Iteración Facebook #1 ---
+[2025-10-10 16:48:36] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:48:36] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:48:36] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:48:36] Botón Video no encontrado.
+[2025-10-10 16:48:36] Botón Video clickeado.
+[2025-10-10 16:48:36] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:48:36] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:48:36] Reinicio de app en 3s...
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36] --- Iteración 21 ---
+[2025-10-10 16:48:36] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:48:36] [INFO] Lanzado instagram.py (pid=55405)
+[2025-10-10 16:48:36] 
+[2025-10-10 16:48:36]  Iteración 1
+[2025-10-10 16:48:36] Iniciando prueba Instagram...
+[2025-10-10 16:48:36] Cargando feed...
+[2025-10-10 16:48:36] Cargando feed...OK
+[2025-10-10 16:48:36] Publicando imagen...
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:48:36] Clic exitoso en: 
+[2025-10-10 16:48:36] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:48:36] Clic exitoso en: Compartir
+[2025-10-10 16:48:36] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:48:36] Publicando imagen...OK
+[2025-10-10 16:48:36] Reproduciendo Reel...
+[2025-10-10 16:48:36] Reproduciendo Reel...OK
+[2025-10-10 16:48:36] Enviando mensaje de texto...
+[2025-10-10 16:48:36] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:48:36] Clic exitoso en: Inbox
+[2025-10-10 16:48:36] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:53:08] Clic exitoso en: Primer chat
+[2025-10-10 16:53:08] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:53:08] Clic exitoso en: Botón enviar
+[2025-10-10 16:53:08] Enviando mensaje de texto...OK
+[2025-10-10 16:53:08] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:53:08] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:53:08] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:53:08] [INFO] Lanzado facebook.py (pid=57089)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] --- Iteración Facebook #1 ---
+[2025-10-10 16:53:08] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:53:08] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:53:08] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:53:08] Botón Video no encontrado.
+[2025-10-10 16:53:08] Botón Video clickeado.
+[2025-10-10 16:53:08] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:53:08] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:53:08] Reinicio de app en 3s...
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] --- Iteración 22 ---
+[2025-10-10 16:53:08] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:53:08] [INFO] Lanzado instagram.py (pid=57900)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08]  Iteración 1
+[2025-10-10 16:53:08] Iniciando prueba Instagram...
+[2025-10-10 16:53:08] Cargando feed...
+[2025-10-10 16:53:08] Cargando feed...OK
+[2025-10-10 16:53:08] Publicando imagen...
+[2025-10-10 16:53:08] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:53:08] Clic exitoso en: 
+[2025-10-10 16:53:08] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:53:08] Clic exitoso en: 
+[2025-10-10 16:53:08] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:53:08] Clic exitoso en: 
+[2025-10-10 16:53:08] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:53:08] Clic exitoso en: Compartir
+[2025-10-10 16:53:08] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:53:08] Publicando imagen...OK
+[2025-10-10 16:53:08] Reproduciendo Reel...
+[2025-10-10 16:53:08] Reproduciendo Reel...OK
+[2025-10-10 16:53:08] Enviando mensaje de texto...
+[2025-10-10 16:53:08] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:53:08] Clic exitoso en: Inbox
+[2025-10-10 16:53:08] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:53:08] Clic exitoso en: Primer chat
+[2025-10-10 16:53:08] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:53:08] Clic exitoso en: Botón enviar
+[2025-10-10 16:53:08] Enviando mensaje de texto...OK
+[2025-10-10 16:53:08] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:53:08] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:53:08] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:53:08] [INFO] Lanzado facebook.py (pid=59548)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] --- Iteración Facebook #1 ---
+[2025-10-10 16:53:08] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:53:08] Warning: Activity not started, intent has been delivered to currently running top-most instance.
+[2025-10-10 16:53:08] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:53:08] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:53:08] Botón Video no encontrado.
+[2025-10-10 16:53:08] Botón Video clickeado.
+[2025-10-10 16:53:08] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:53:08] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:53:08] Reinicio de app en 3s...
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] --- Iteración 23 ---
+[2025-10-10 16:53:08] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:53:08] [INFO] Lanzado instagram.py (pid=60370)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08]  Iteración 1
+[2025-10-10 16:53:08] Iniciando prueba Instagram...
+[2025-10-10 16:53:08] Cargando feed...
+[2025-10-10 16:53:08] Cargando feed...OK
+[2025-10-10 16:53:08] Publicando imagen...
+[2025-10-10 16:53:08] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:53:08] Clic exitoso en: 
+[2025-10-10 16:53:08] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:53:08] Clic exitoso en: 
+[2025-10-10 16:53:08] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:53:08] Clic exitoso en: 
+[2025-10-10 16:53:08] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:53:08] Clic exitoso en: Compartir
+[2025-10-10 16:53:08] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:53:08] Publicando imagen...OK
+[2025-10-10 16:53:08] Reproduciendo Reel...
+[2025-10-10 16:53:08] Reproduciendo Reel...OK
+[2025-10-10 16:53:08] Enviando mensaje de texto...
+[2025-10-10 16:53:08] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:53:08] Clic exitoso en: Inbox
+[2025-10-10 16:53:08] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:53:08] Clic exitoso en: Primer chat
+[2025-10-10 16:53:08] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:53:08] Clic exitoso en: Botón enviar
+[2025-10-10 16:53:08] Enviando mensaje de texto...OK
+[2025-10-10 16:53:08] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:53:08] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:53:08] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:53:08] [INFO] Lanzado facebook.py (pid=61956)
+[2025-10-10 16:53:08] 
+[2025-10-10 16:53:08] --- Iteración Facebook #1 ---
+[2025-10-10 16:57:31] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:57:31] Warning: Activity not started, intent has been delivered to currently running top-most instance.
+[2025-10-10 16:57:31] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:57:31] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:57:31] Botón Video no encontrado.
+[2025-10-10 16:57:31] Botón Video clickeado.
+[2025-10-10 16:57:31] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:57:31] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:57:31] Reinicio de app en 3s...
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] --- Iteración 24 ---
+[2025-10-10 16:57:31] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:57:31] [INFO] Lanzado instagram.py (pid=62890)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31]  Iteración 1
+[2025-10-10 16:57:31] Iniciando prueba Instagram...
+[2025-10-10 16:57:31] Cargando feed...
+[2025-10-10 16:57:31] Cargando feed...OK
+[2025-10-10 16:57:31] Publicando imagen...
+[2025-10-10 16:57:31] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:57:31] Clic exitoso en: 
+[2025-10-10 16:57:31] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:57:31] Clic exitoso en: 
+[2025-10-10 16:57:31] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:57:31] Clic exitoso en: 
+[2025-10-10 16:57:31] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:57:31] Clic exitoso en: Compartir
+[2025-10-10 16:57:31] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:57:31] Publicando imagen...OK
+[2025-10-10 16:57:31] Reproduciendo Reel...
+[2025-10-10 16:57:31] Reproduciendo Reel...OK
+[2025-10-10 16:57:31] Enviando mensaje de texto...
+[2025-10-10 16:57:31] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:57:31] Clic exitoso en: Inbox
+[2025-10-10 16:57:31] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:57:31] Clic exitoso en: Primer chat
+[2025-10-10 16:57:31] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:57:31] Clic exitoso en: Botón enviar
+[2025-10-10 16:57:31] Enviando mensaje de texto...OK
+[2025-10-10 16:57:31] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:57:31] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:57:31] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:57:31] [INFO] Lanzado facebook.py (pid=64620)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] --- Iteración Facebook #1 ---
+[2025-10-10 16:57:31] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:57:31] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:57:31] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:57:31] Botón Video no encontrado.
+[2025-10-10 16:57:31] Botón Video clickeado.
+[2025-10-10 16:57:31] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:57:31] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:57:31] Reinicio de app en 3s...
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] --- Iteración 25 ---
+[2025-10-10 16:57:31] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 16:57:31] [INFO] Lanzado instagram.py (pid=65572)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31]  Iteración 1
+[2025-10-10 16:57:31] Iniciando prueba Instagram...
+[2025-10-10 16:57:31] Cargando feed...
+[2025-10-10 16:57:31] Cargando feed...OK
+[2025-10-10 16:57:31] Publicando imagen...
+[2025-10-10 16:57:31] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 16:57:31] Clic exitoso en: 
+[2025-10-10 16:57:31] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 16:57:31] Clic exitoso en: 
+[2025-10-10 16:57:31] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 16:57:31] Clic exitoso en: 
+[2025-10-10 16:57:31] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 16:57:31] Clic exitoso en: Compartir
+[2025-10-10 16:57:31] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 16:57:31] Publicando imagen...OK
+[2025-10-10 16:57:31] Reproduciendo Reel...
+[2025-10-10 16:57:31] Reproduciendo Reel...OK
+[2025-10-10 16:57:31] Enviando mensaje de texto...
+[2025-10-10 16:57:31] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 16:57:31] Clic exitoso en: Inbox
+[2025-10-10 16:57:31] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 16:57:31] Clic exitoso en: Primer chat
+[2025-10-10 16:57:31] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 16:57:31] Clic exitoso en: Botón enviar
+[2025-10-10 16:57:31] Enviando mensaje de texto...OK
+[2025-10-10 16:57:31] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 16:57:31] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 16:57:31] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 16:57:31] [INFO] Lanzado facebook.py (pid=67240)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] --- Iteración Facebook #1 ---
+[2025-10-10 16:57:31] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 16:57:31] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 16:57:31] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 16:57:31] Botón Video no encontrado.
+[2025-10-10 16:57:31] Botón Video clickeado.
+[2025-10-10 16:57:31] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 16:57:31] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 16:57:31] Reinicio de app en 3s...
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 16:57:31] 
+[2025-10-10 16:57:31] --- Iteración 26 ---
+[2025-10-10 17:01:54] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:01:54] [INFO] Lanzado instagram.py (pid=68079)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54]  Iteración 1
+[2025-10-10 17:01:54] Iniciando prueba Instagram...
+[2025-10-10 17:01:54] Cargando feed...
+[2025-10-10 17:01:54] Cargando feed...OK
+[2025-10-10 17:01:54] Publicando imagen...
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:01:54] Clic exitoso en: Compartir
+[2025-10-10 17:01:54] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:01:54] Publicando imagen...OK
+[2025-10-10 17:01:54] Reproduciendo Reel...
+[2025-10-10 17:01:54] Reproduciendo Reel...OK
+[2025-10-10 17:01:54] Enviando mensaje de texto...
+[2025-10-10 17:01:54] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:01:54] Clic exitoso en: Inbox
+[2025-10-10 17:01:54] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:01:54] Clic exitoso en: Primer chat
+[2025-10-10 17:01:54] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:01:54] Clic exitoso en: Botón enviar
+[2025-10-10 17:01:54] Enviando mensaje de texto...OK
+[2025-10-10 17:01:54] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:01:54] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:01:54] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:01:54] [INFO] Lanzado facebook.py (pid=69900)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54] --- Iteración Facebook #1 ---
+[2025-10-10 17:01:54] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:01:54] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:01:54] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:01:54] Botón Video no encontrado.
+[2025-10-10 17:01:54] Botón Video clickeado.
+[2025-10-10 17:01:54] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:01:54] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:01:54] Reinicio de app en 3s...
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54] --- Iteración 27 ---
+[2025-10-10 17:01:54] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:01:54] [INFO] Lanzado instagram.py (pid=70785)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54]  Iteración 1
+[2025-10-10 17:01:54] Iniciando prueba Instagram...
+[2025-10-10 17:01:54] Cargando feed...
+[2025-10-10 17:01:54] Cargando feed...OK
+[2025-10-10 17:01:54] Publicando imagen...
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:01:54] Clic exitoso en: Compartir
+[2025-10-10 17:01:54] Publicación detectada como completada (desapareció el contenedor o apareció el botón Enviar).
+[2025-10-10 17:01:54] Publicando imagen...OK
+[2025-10-10 17:01:54] Reproduciendo Reel...
+[2025-10-10 17:01:54] Reproduciendo Reel...OK
+[2025-10-10 17:01:54] Enviando mensaje de texto...
+[2025-10-10 17:01:54] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:01:54] Clic exitoso en: Inbox
+[2025-10-10 17:01:54] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:01:54] Clic exitoso en: Primer chat
+[2025-10-10 17:01:54] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:01:54] Clic exitoso en: Botón enviar
+[2025-10-10 17:01:54] Enviando mensaje de texto...OK
+[2025-10-10 17:01:54] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:01:54] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:01:54] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:01:54] [INFO] Lanzado facebook.py (pid=72344)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54] --- Iteración Facebook #1 ---
+[2025-10-10 17:01:54] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:01:54] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:01:54] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:01:54] Botón Video no encontrado.
+[2025-10-10 17:01:54] Botón Video clickeado.
+[2025-10-10 17:01:54] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:01:54] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:01:54] Reinicio de app en 3s...
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54] --- Iteración 28 ---
+[2025-10-10 17:01:54] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:01:54] [INFO] Lanzado instagram.py (pid=73217)
+[2025-10-10 17:01:54] 
+[2025-10-10 17:01:54]  Iteración 1
+[2025-10-10 17:01:54] Iniciando prueba Instagram...
+[2025-10-10 17:01:54] Cargando feed...
+[2025-10-10 17:01:54] Cargando feed...OK
+[2025-10-10 17:01:54] Publicando imagen...
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:01:54] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:01:54] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:06:45] Clic exitoso en: Compartir
+[2025-10-10 17:06:45] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:06:45] Publicando imagen...OK
+[2025-10-10 17:06:45] Reproduciendo Reel...
+[2025-10-10 17:06:45] Reproduciendo Reel...OK
+[2025-10-10 17:06:45] Enviando mensaje de texto...
+[2025-10-10 17:06:45] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:06:45] Clic exitoso en: Inbox
+[2025-10-10 17:06:45] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:06:45] Clic exitoso en: Primer chat
+[2025-10-10 17:06:45] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:06:45] Clic exitoso en: Botón enviar
+[2025-10-10 17:06:45] Enviando mensaje de texto...OK
+[2025-10-10 17:06:45] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:06:45] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:06:45] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:06:45] [INFO] Lanzado facebook.py (pid=75096)
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45] --- Iteración Facebook #1 ---
+[2025-10-10 17:06:45] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:06:45] Warning: Activity not started, intent has been delivered to currently running top-most instance.
+[2025-10-10 17:06:45] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:06:45] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:06:45] Botón Video no encontrado.
+[2025-10-10 17:06:45] Botón Video clickeado.
+[2025-10-10 17:06:45] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:06:45] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:06:45] Reinicio de app en 3s...
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45] --- Iteración 29 ---
+[2025-10-10 17:06:45] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:06:45] [INFO] Lanzado instagram.py (pid=76073)
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45]  Iteración 1
+[2025-10-10 17:06:45] Iniciando prueba Instagram...
+[2025-10-10 17:06:45] Cargando feed...
+[2025-10-10 17:06:45] Cargando feed...OK
+[2025-10-10 17:06:45] Publicando imagen...
+[2025-10-10 17:06:45] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:06:45] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:06:45] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:06:45] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:06:45] Clic exitoso en: Compartir
+[2025-10-10 17:06:45] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:06:45] Publicando imagen...OK
+[2025-10-10 17:06:45] Reproduciendo Reel...
+[2025-10-10 17:06:45] Reproduciendo Reel...OK
+[2025-10-10 17:06:45] Enviando mensaje de texto...
+[2025-10-10 17:06:45] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:06:45] Clic exitoso en: Inbox
+[2025-10-10 17:06:45] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:06:45] Clic exitoso en: Primer chat
+[2025-10-10 17:06:45] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:06:45] Clic exitoso en: Botón enviar
+[2025-10-10 17:06:45] Enviando mensaje de texto...OK
+[2025-10-10 17:06:45] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:06:45] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:06:45] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:06:45] [INFO] Lanzado facebook.py (pid=77851)
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45] --- Iteración Facebook #1 ---
+[2025-10-10 17:06:45] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:06:45] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:06:45] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:06:45] Botón Video no encontrado.
+[2025-10-10 17:06:45] Botón Video clickeado.
+[2025-10-10 17:06:45] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:06:45] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:06:45] Reinicio de app en 3s...
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45] --- Iteración 30 ---
+[2025-10-10 17:06:45] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:06:45] [INFO] Lanzado instagram.py (pid=78832)
+[2025-10-10 17:06:45] 
+[2025-10-10 17:06:45]  Iteración 1
+[2025-10-10 17:06:45] Iniciando prueba Instagram...
+[2025-10-10 17:06:45] Cargando feed...
+[2025-10-10 17:06:45] Cargando feed...OK
+[2025-10-10 17:06:45] Publicando imagen...
+[2025-10-10 17:06:45] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:06:45] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:06:45] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:06:45] Clic exitoso en: 
+[2025-10-10 17:06:45] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:06:45] Clic exitoso en: Compartir
+[2025-10-10 17:06:45] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:06:45] Publicando imagen...OK
+[2025-10-10 17:06:45] Reproduciendo Reel...
+[2025-10-10 17:06:45] Reproduciendo Reel...OK
+[2025-10-10 17:06:45] Enviando mensaje de texto...
+[2025-10-10 17:06:45] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:06:45] Clic exitoso en: Inbox
+[2025-10-10 17:06:45] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:11:17] Clic exitoso en: Primer chat
+[2025-10-10 17:11:17] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:11:17] Clic exitoso en: Botón enviar
+[2025-10-10 17:11:17] Enviando mensaje de texto...OK
+[2025-10-10 17:11:17] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:11:17] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:11:17] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:11:17] [INFO] Lanzado facebook.py (pid=80600)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] --- Iteración Facebook #1 ---
+[2025-10-10 17:11:17] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:11:17] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:11:17] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:11:17] Botón Video no encontrado.
+[2025-10-10 17:11:17] Botón Video clickeado.
+[2025-10-10 17:11:17] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:11:17] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:11:17] Reinicio de app en 3s...
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] --- Iteración 31 ---
+[2025-10-10 17:11:17] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:11:17] [INFO] Lanzado instagram.py (pid=81594)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17]  Iteración 1
+[2025-10-10 17:11:17] Iniciando prueba Instagram...
+[2025-10-10 17:11:17] Cargando feed...
+[2025-10-10 17:11:17] Cargando feed...OK
+[2025-10-10 17:11:17] Publicando imagen...
+[2025-10-10 17:11:17] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:11:17] Clic exitoso en: 
+[2025-10-10 17:11:17] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:11:17] Clic exitoso en: 
+[2025-10-10 17:11:17] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:11:17] Clic exitoso en: 
+[2025-10-10 17:11:17] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:11:17] Clic exitoso en: Compartir
+[2025-10-10 17:11:17] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:11:17] Publicando imagen...OK
+[2025-10-10 17:11:17] Reproduciendo Reel...
+[2025-10-10 17:11:17] Reproduciendo Reel...OK
+[2025-10-10 17:11:17] Enviando mensaje de texto...
+[2025-10-10 17:11:17] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:11:17] Clic exitoso en: Inbox
+[2025-10-10 17:11:17] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:11:17] Clic exitoso en: Primer chat
+[2025-10-10 17:11:17] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:11:17] Clic exitoso en: Botón enviar
+[2025-10-10 17:11:17] Enviando mensaje de texto...OK
+[2025-10-10 17:11:17] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:11:17] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:11:17] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:11:17] [INFO] Lanzado facebook.py (pid=83382)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] --- Iteración Facebook #1 ---
+[2025-10-10 17:11:17] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:11:17] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:11:17] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:11:17] Botón Video no encontrado.
+[2025-10-10 17:11:17] Botón Video clickeado.
+[2025-10-10 17:11:17] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:11:17] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:11:17] Reinicio de app en 3s...
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] --- Iteración 32 ---
+[2025-10-10 17:11:17] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:11:17] [INFO] Lanzado instagram.py (pid=84206)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17]  Iteración 1
+[2025-10-10 17:11:17] Iniciando prueba Instagram...
+[2025-10-10 17:11:17] Cargando feed...
+[2025-10-10 17:11:17] Cargando feed...OK
+[2025-10-10 17:11:17] Publicando imagen...
+[2025-10-10 17:11:17] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:11:17] Clic exitoso en: 
+[2025-10-10 17:11:17] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:11:17] Clic exitoso en: 
+[2025-10-10 17:11:17] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:11:17] Clic exitoso en: 
+[2025-10-10 17:11:17] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:11:17] Clic exitoso en: Compartir
+[2025-10-10 17:11:17] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:11:17] Publicando imagen...OK
+[2025-10-10 17:11:17] Reproduciendo Reel...
+[2025-10-10 17:11:17] Reproduciendo Reel...OK
+[2025-10-10 17:11:17] Enviando mensaje de texto...
+[2025-10-10 17:11:17] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:11:17] Clic exitoso en: Inbox
+[2025-10-10 17:11:17] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:11:17] Clic exitoso en: Primer chat
+[2025-10-10 17:11:17] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:11:17] Clic exitoso en: Botón enviar
+[2025-10-10 17:11:17] Enviando mensaje de texto...OK
+[2025-10-10 17:11:17] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:11:17] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:11:17] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:11:17] [INFO] Lanzado facebook.py (pid=85790)
+[2025-10-10 17:11:17] 
+[2025-10-10 17:11:17] --- Iteración Facebook #1 ---
+[2025-10-10 17:11:17] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:11:17] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:15:35] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:15:35] Botón Video no encontrado.
+[2025-10-10 17:15:35] Botón Video clickeado.
+[2025-10-10 17:15:35] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:15:35] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:15:35] Reinicio de app en 3s...
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35] --- Iteración 33 ---
+[2025-10-10 17:15:35] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:15:35] [INFO] Lanzado instagram.py (pid=86574)
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35]  Iteración 1
+[2025-10-10 17:15:35] Iniciando prueba Instagram...
+[2025-10-10 17:15:35] Cargando feed...
+[2025-10-10 17:15:35] Cargando feed...OK
+[2025-10-10 17:15:35] Publicando imagen...
+[2025-10-10 17:15:35] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:15:35] Clic exitoso en: 
+[2025-10-10 17:15:35] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:15:35] Clic exitoso en: 
+[2025-10-10 17:15:35] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:15:35] Clic exitoso en: 
+[2025-10-10 17:15:35] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:15:35] Clic exitoso en: Compartir
+[2025-10-10 17:15:35] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:15:35] Publicando imagen...OK
+[2025-10-10 17:15:35] Reproduciendo Reel...
+[2025-10-10 17:15:35] Reproduciendo Reel...OK
+[2025-10-10 17:15:35] Enviando mensaje de texto...
+[2025-10-10 17:15:35] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:15:35] Clic exitoso en: Inbox
+[2025-10-10 17:15:35] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:15:35] Clic exitoso en: Primer chat
+[2025-10-10 17:15:35] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:15:35] Clic exitoso en: Botón enviar
+[2025-10-10 17:15:35] Enviando mensaje de texto...OK
+[2025-10-10 17:15:35] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:15:35] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:15:35] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:15:35] [INFO] Lanzado facebook.py (pid=88165)
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35] --- Iteración Facebook #1 ---
+[2025-10-10 17:15:35] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:15:35] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:15:35] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:15:35] Botón Video no encontrado.
+[2025-10-10 17:15:35] Botón Video clickeado.
+[2025-10-10 17:15:35] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:15:35] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:15:35] Reinicio de app en 3s...
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35] [INFO] facebook.py finalizó (rc=0)
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35] --- Iteración 34 ---
+[2025-10-10 17:15:35] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/instagram.py
+[2025-10-10 17:15:35] [INFO] Lanzado instagram.py (pid=89075)
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35]  Iteración 1
+[2025-10-10 17:15:35] Iniciando prueba Instagram...
+[2025-10-10 17:15:35] Cargando feed...
+[2025-10-10 17:15:35] Cargando feed...OK
+[2025-10-10 17:15:35] Publicando imagen...
+[2025-10-10 17:15:35] Intentando clic en:  (com.instagram.android:id/gallery_folder_menu_tv)
+[2025-10-10 17:15:35] Clic exitoso en: 
+[2025-10-10 17:15:35] Intentando clic en:  (com.instagram.android:id/next_button_textview)
+[2025-10-10 17:15:35] Clic exitoso en: 
+[2025-10-10 17:15:35] Intentando clic en:  (com.instagram.android:id/creation_next_button)
+[2025-10-10 17:15:35] Clic exitoso en: 
+[2025-10-10 17:15:35] Intentando clic en: Compartir (com.instagram.android:id/share_footer_button)
+[2025-10-10 17:15:35] Clic exitoso en: Compartir
+[2025-10-10 17:15:35] Timeout: no se detectó desaparición ni aparición del botón Enviar.
+[2025-10-10 17:15:35] Publicando imagen...OK
+[2025-10-10 17:15:35] Reproduciendo Reel...
+[2025-10-10 17:15:35] Reproduciendo Reel...OK
+[2025-10-10 17:15:35] Enviando mensaje de texto...
+[2025-10-10 17:15:35] Intentando clic en: Inbox (com.instagram.android:id/action_bar_inbox_button)
+[2025-10-10 17:15:35] Clic exitoso en: Inbox
+[2025-10-10 17:15:35] Intentando clic en: Primer chat (com.instagram.android:id/row_inbox_container)
+[2025-10-10 17:15:35] Clic exitoso en: Primer chat
+[2025-10-10 17:15:35] Intentando clic en: Botón enviar (com.instagram.android:id/row_thread_composer_send_button_container)
+[2025-10-10 17:15:35] Clic exitoso en: Botón enviar
+[2025-10-10 17:15:35] Enviando mensaje de texto...OK
+[2025-10-10 17:15:35] App com.instagram.android cerrada en R58MA32XQQW.
+[2025-10-10 17:15:35] [INFO] instagram.py finalizó (rc=0)
+[2025-10-10 17:15:35] → Ejecutando: /home/pi/Desktop/Finale_Alva/Nativo/facebook.py
+[2025-10-10 17:15:35] [INFO] Lanzado facebook.py (pid=90708)
+[2025-10-10 17:15:35] 
+[2025-10-10 17:15:35] --- Iteración Facebook #1 ---
+[2025-10-10 17:15:35] Starting: Intent { cmp=com.facebook.katana/.LoginActivity }
+[2025-10-10 17:15:35] App com.facebook.katana iniciada en R58MA32XQQW
+[2025-10-10 17:15:35] Primer grupo del feed cargado correctamente. (instance)
+[2025-10-10 17:15:35] Botón Video no encontrado.
+[2025-10-10 17:15:35] Botón Video clickeado.
+[2025-10-10 17:15:35] Video corto reproducido con éxito (sin progress bar)
+[2025-10-10 17:15:35] Apps ['com.facebook.katana', 'com.facebook.orca'] cerradas en R58MA32XQQW.
+[2025-10-10 17:15:35] Traceback (most recent call last):
+[2025-10-10 17:15:35]   File "/home/pi/Desktop/Finale_Alva/Nativo/facebook.py", line 302, in <module>
+[2025-10-10 17:15:35]     test_login_facebook()
+[2025-10-10 17:15:35]   File "/home/pi/Desktop/Finale_Alva/Nativo/facebook.py", line 297, in test_login_facebook
+[2025-10-10 17:15:35]     driver.quit()

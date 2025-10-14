@@ -1,0 +1,5 @@
+& "C:/Program Files/Python313/python.exe" "c:/ruta/a/test_wa.py" --role A --plan configuracion.txt --contacto "vast_wb" --udid-a 6NUDU18529000033 --hold 200 --tiempo-entre-ciclos 5
+
+
+
+& "C:/Program Files/Python313/python.exe" "c:/ruta/a/test_wa.py" --role B --plan configuracion.txt --contacto "vast_wb" --udid-b 6NU7N18614004267 --hold 20

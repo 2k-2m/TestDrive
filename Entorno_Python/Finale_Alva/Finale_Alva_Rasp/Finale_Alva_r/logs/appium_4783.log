@@ -1,0 +1,47 @@
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Got response with status 404: {"sessionId":"955e51b5-6600-4b0e-8c28-e44a12910254","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)\n\tat io.netty.chann...
+[38;5;199m[7078060e][0m[38;5;123m[W3C][0m Matched W3C error code 'no such element' to NoSuchElementError
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Encountered internal error running command: NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;199m[7078060e][0m[38;5;86m[HTTP][0m [37m<-- POST /session/7078060e-79c5-4df3-aa16-3b43881f52e5/element [39m[33m404[39m [90m731 ms - 807[39m [90m[39m
+[38;5;199m[7078060e][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/7078060e-79c5-4df3-aa16-3b43881f52e5/element[39m [90m{"using":"-android uiautomator","value":"new UiSelector().resourceId(\"com.gyokovsolutions.gnettrackproplus:id/content\").instance(1)"}[39m
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Calling AppiumDriver.findElement() with args: ["-android uiautomator","new UiSelector().resourceId(\"com.gyokovsolutions.gnettrackproplus:id/content\").instance(1)","7078060e-79c5-4df3-aa16-3b43881f52e5"]
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Waiting up to 0 ms for condition
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Matched '/element' to command name 'findElement'
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Proxying [POST /element] to [POST http://127.0.0.1:8215/session/955e51b5-6600-4b0e-8c28-e44a12910254/element] with body: {"strategy":"-android uiautomator","selector":"new UiSelector().resourceId(\"com.gyokovsolutions.gnettrackproplus:id/content\").instance(1)","context":"","multiple":false}
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Got response with status 404: {"sessionId":"955e51b5-6600-4b0e-8c28-e44a12910254","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)\n\tat io.netty.chann...
+[38;5;199m[7078060e][0m[38;5;123m[W3C][0m Matched W3C error code 'no such element' to NoSuchElementError
+[38;5;199m[7078060e][0m[38;5;-119m[AndroidUiautomator2Driver@dce4][0m Encountered internal error running command: NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;199m[7078060e][0m[38;5;86m[HTTP][0m [37m<-- POST /session/7078060e-79c5-4df3-aa16-3b43881f52e5/element [39m[33m404[39m [90m486 ms - 807[39m [90m[39m
+[38;5;32m[717b6045][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/717b6045-47ab-48f5-92bd-43401954d39b/element[39m [90m{"using":"-android uiautomator","value":"new UiSelector().resourceId(\"com.gyokovsolutions.gnettrackproplus:id/content\").instance(1)"}[39m
+[38;5;32m[717b6045][0m[38;5;199m[AppiumDriver@daec][0m Encountered internal error running command: NoSuchDriverError: A session is either terminated or not started
+    at asyncHandler (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/protocol/protocol.js:311:15)
+    at /usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/protocol/protocol.js:514:15
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/layer.js:95:5)
+    at next (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/layer.js:95:5)
+    at /usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:284:15
+    at param (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:365:14)
+    at param (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:421:3)
+    at next (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:280:10)
+    at logger (/usr/local/lib/node_modules/appium/node_modules/morgan/index.js:144:5)
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:328:13)
+    at /usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:346:12)
+    at next (/usr/local/lib/node_modules/appium/node_modules/express/lib/router/index.js:280:10)
+    at /usr/local/lib/node_modules/appium/node_modules/body-parser/lib/read.js:137:5
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (/usr/local/lib/node_modules/appium/node_modules/raw-body/index.js:238:16)
+    at done (/usr/local/lib/node_modules/appium/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/usr/local/lib/node_modules/appium/node_modules/raw-body/index.js:287:7)
+[38;5;32m[717b6045][0m[38;5;86m[HTTP][0m [37m<-- POST /session/717b6045-47ab-48f5-92bd-43401954d39b/element [39m[33m404[39m [90m20 ms - 2425[39m [90m[39m

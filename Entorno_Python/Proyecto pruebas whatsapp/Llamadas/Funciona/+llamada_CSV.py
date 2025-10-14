@@ -902,6 +902,65 @@ def leer_plan_config(path_txt: str):
 # =========================
 # MAIN
 # =========================
+# def main():
+#     global CONTACTO, CDR_HOLD_S, UDID_A_RUNTIME, UDID_B_RUNTIME, PLAN_PATH_RUNTIME
+#     args = parse_args()
+#     if args.contacto:
+#         CONTACTO = args.contacto
+#     UDID_A_RUNTIME = args.udid_a
+#     UDID_B_RUNTIME = args.udid_b
+#     PLAN_PATH_RUNTIME = args.plan
+
+#     pruebas = leer_plan_config(args.plan)
+#     if not pruebas:
+#         print("[WARN] No hay pruebas en el plan. Saliendo.")
+#         return
+
+#     # CLI puede overridear el hold del TXT solo si lo pasas explícitamente
+#     if args.hold is not None:
+#         CDR_HOLD_S = int(args.hold)
+#     if args.tiempo_entre_ciclos is not None:
+#         TIEMPO_ENTRE_CICLOS = float(args.tiempo_entre_ciclos)
+
+#     # CSV por-UDID y combinado
+#     csv_init(args.udid_a, args.udid_b)
+
+#     driver_a = build_driver(APPIUM_URL_A, args.udid_a, SYSTEM_PORT_A, force_launch=True)
+#     driver_b = build_driver(APPIUM_URL_B, args.udid_b, SYSTEM_PORT_B, force_launch=False)
+
+#     try:
+#         preflight_device(driver_a, APP_PKG)
+#         preflight_device(driver_b, APP_PKG)
+
+#         for i, accion in enumerate(pruebas, 1):
+#             if should_stop(): break
+#             print(f"[RUN] Comenzando {accion.upper()} para '{CONTACTO}'...")
+
+#             if accion == 'run_llamar':
+#                 run_llamar(driver_a, driver_b, CONTACTO,
+#                            hold_s=CDR_HOLD_S, drop_grace=DROP_GRACE_S,
+#                            auto_answer_b=True)
+#             elif accion == 'cst_csfr':
+#                 print("Se encuentra comentado")
+#             elif accion == 'cdr':
+#                 print("Se encuentra comentado")
+
+#             print(f"[RUN] Terminada {accion.upper()}")
+#             if i < len(pruebas) and not should_stop():
+#                 print(f"[RUN] Esperando {TIEMPO_ENTRE_CICLOS}s...")
+#                 try: time.sleep(float(TIEMPO_ENTRE_CICLOS))
+#                 except Exception: pass
+#     finally:
+#         try: colgar_seguro(driver_a)
+#         except: pass
+#         time.sleep(0.5)
+#         for d in (driver_a, driver_b):
+#             try: d.quit()
+#             except: pass
+#         for w in (csvw_a, csvw_b, csvw_all):
+#             try:
+#                 if w: w.close()
+#             except: pass
 def main():
     global CONTACTO, CDR_HOLD_S, UDID_A_RUNTIME, UDID_B_RUNTIME, PLAN_PATH_RUNTIME
     args = parse_args()
@@ -919,8 +978,11 @@ def main():
     # CLI puede overridear el hold del TXT solo si lo pasas explícitamente
     if args.hold is not None:
         CDR_HOLD_S = int(args.hold)
+
+    # 👇 Nueva variable local que hereda lo leído del TXT
+    wait_between = TIEMPO_ENTRE_CICLOS
     if args.tiempo_entre_ciclos is not None:
-        TIEMPO_ENTRE_CICLOS = float(args.tiempo_entre_ciclos)
+        wait_between = float(args.tiempo_entre_ciclos)
 
     # CSV por-UDID y combinado
     csv_init(args.udid_a, args.udid_b)
@@ -947,9 +1009,11 @@ def main():
 
             print(f"[RUN] Terminada {accion.upper()}")
             if i < len(pruebas) and not should_stop():
-                print(f"[RUN] Esperando {TIEMPO_ENTRE_CICLOS}s...")
-                try: time.sleep(float(TIEMPO_ENTRE_CICLOS))
-                except Exception: pass
+                print(f"[RUN] Esperando {wait_between}s...")
+                try:
+                    time.sleep(float(wait_between))
+                except Exception:
+                    pass
     finally:
         try: colgar_seguro(driver_a)
         except: pass
@@ -961,6 +1025,7 @@ def main():
             try:
                 if w: w.close()
             except: pass
+
 
 if __name__ == "__main__":
     main()
