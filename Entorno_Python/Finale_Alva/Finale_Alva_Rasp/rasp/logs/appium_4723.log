@@ -1,0 +1,102 @@
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/75c2cacd-43f2-432b-9463-d5108c562929/element[39m [90m{"using":"id","value":"com.instagram.android:id/recycler_view"}[39m
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Calling AppiumDriver.findElement() with args: ["id","com.instagram.android:id/recycler_view","75c2cacd-43f2-432b-9463-d5108c562929"]
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Waiting up to 0 ms for condition
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Encountered internal error running command: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/jsonwp-proxy/proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/lib/commands/find.js:40:5)
+    at doFind (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:47:17)
+    at wrappedCondFn (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:141:14)
+    at spin (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:219:20)
+    at waitForCondition (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m<-- POST /session/75c2cacd-43f2-432b-9463-d5108c562929/element [39m[31m500[39m [90m21 ms - 2100[39m [90m[39m
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/75c2cacd-43f2-432b-9463-d5108c562929/element[39m [90m{"using":"id","value":"com.instagram.android:id/refreshable_container"}[39m
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Calling AppiumDriver.findElement() with args: ["id","com.instagram.android:id/refreshable_container","75c2cacd-43f2-432b-9463-d5108c562929"]
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Waiting up to 0 ms for condition
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Encountered internal error running command: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/jsonwp-proxy/proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/lib/commands/find.js:40:5)
+    at doFind (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:47:17)
+    at wrappedCondFn (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:141:14)
+    at spin (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:219:20)
+    at waitForCondition (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m<-- POST /session/75c2cacd-43f2-432b-9463-d5108c562929/element [39m[31m500[39m [90m14 ms - 2100[39m [90m[39m
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/75c2cacd-43f2-432b-9463-d5108c562929/element[39m [90m{"using":"id","value":"com.instagram.android:id/recycler_view"}[39m
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Calling AppiumDriver.findElement() with args: ["id","com.instagram.android:id/recycler_view","75c2cacd-43f2-432b-9463-d5108c562929"]
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Waiting up to 0 ms for condition
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Encountered internal error running command: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/jsonwp-proxy/proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/lib/commands/find.js:40:5)
+    at doFind (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:47:17)
+    at wrappedCondFn (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:141:14)
+    at spin (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:219:20)
+    at waitForCondition (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m<-- POST /session/75c2cacd-43f2-432b-9463-d5108c562929/element [39m[31m500[39m [90m9 ms - 2100[39m [90m[39m
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/75c2cacd-43f2-432b-9463-d5108c562929/element[39m [90m{"using":"id","value":"com.instagram.android:id/refreshable_container"}[39m
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Calling AppiumDriver.findElement() with args: ["id","com.instagram.android:id/refreshable_container","75c2cacd-43f2-432b-9463-d5108c562929"]
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Waiting up to 0 ms for condition
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Encountered internal error running command: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/jsonwp-proxy/proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/lib/commands/find.js:40:5)
+    at doFind (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:47:17)
+    at wrappedCondFn (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:141:14)
+    at spin (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:219:20)
+    at waitForCondition (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m<-- POST /session/75c2cacd-43f2-432b-9463-d5108c562929/element [39m[31m500[39m [90m16 ms - 2100[39m [90m[39m
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/75c2cacd-43f2-432b-9463-d5108c562929/element[39m [90m{"using":"id","value":"com.instagram.android:id/recycler_view"}[39m
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Calling AppiumDriver.findElement() with args: ["id","com.instagram.android:id/recycler_view","75c2cacd-43f2-432b-9463-d5108c562929"]
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Waiting up to 0 ms for condition
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Encountered internal error running command: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/jsonwp-proxy/proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/lib/commands/find.js:40:5)
+    at doFind (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:47:17)
+    at wrappedCondFn (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:141:14)
+    at spin (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:219:20)
+    at waitForCondition (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m<-- POST /session/75c2cacd-43f2-432b-9463-d5108c562929/element [39m[31m500[39m [90m11 ms - 2100[39m [90m[39m
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/session/75c2cacd-43f2-432b-9463-d5108c562929/element[39m [90m{"using":"id","value":"com.instagram.android:id/refreshable_container"}[39m
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Calling AppiumDriver.findElement() with args: ["id","com.instagram.android:id/refreshable_container","75c2cacd-43f2-432b-9463-d5108c562929"]
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Valid locator strategies for this request: xpath, id, class name, accessibility id, css selector, -android uiautomator
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Waiting up to 0 ms for condition
+[38;5;228m[75c2cacd][0m[38;5;-102m[AndroidUiautomator2Driver@eafa][0m Encountered internal error running command: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/jsonwp-proxy/proxy.js:359:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.doFindElementOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/lib/commands/find.js:40:5)
+    at doFind (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:47:17)
+    at wrappedCondFn (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:141:14)
+    at spin (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:219:20)
+    at waitForCondition (/usr/local/lib/node_modules/appium/node_modules/asyncbox/lib/asyncbox.js:236:10)
+    at AndroidUiautomator2Driver.implicitWaitForCondition (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/timeout.ts:143:12)
+    at AndroidUiautomator2Driver.findElOrEls (/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-android-driver/lib/commands/find.ts:70:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:75:12)
+[38;5;228m[75c2cacd][0m[38;5;86m[HTTP][0m [37m<-- POST /session/75c2cacd-43f2-432b-9463-d5108c562929/element [39m[31m500[39m [90m19 ms - 2100[39m [90m[39m

@@ -1,0 +1,5 @@
+FAIL (no pudo marcar)
+
+NO_ANSWER_TIMEOUT (no conectó antes del timeout)
+
+DROP (se cayó antes de hold_s)

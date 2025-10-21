@@ -1,0 +1,353 @@
+from __future__ import annotations
+# -*- coding: utf-8 -*-
+from gnet_logs import extraer_logs_gnettrack
+from appium import webdriver
+from appium.options.android import UiAutomator2Options
+from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+from datetime import datetime
+import time, csv, random, os
+import subprocess, re
+import signal
+
+# --- CONSTANTES ---
+detener = False
+
+def manejar_senal(sig, frame):
+    global detener
+    print("[INFO] Señal de terminación recibida.")
+    detener = True
+signal.signal(signal.SIGTERM, manejar_senal)
+signal.signal(signal.SIGINT, manejar_senal)
+
+def cerrar_apps(paquetes, udid):
+    for paquete in paquetes:
+        subprocess.run(['adb', '-s', udid, 'shell', 'am', 'force-stop', paquete])
+        print(f"[INFO] App {paquete} cerrada en {udid}.")
+
+def esperar(driver, cond, timeout=30):
+    return WebDriverWait(driver, timeout).until(cond)
+
+def clic(driver, rid, desc="", timeout=8, mandatory=True):
+    try:
+        print(f"[UI] Intentando clic en: {desc} ({rid})")
+        b = esperar(driver, EC.element_to_be_clickable(
+            (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().resourceId("{rid}").enabled(true)')
+        ), timeout)
+        b.click(); time.sleep(0.5)
+        print(f"[UI] Clic exitoso en: {desc}")
+        return True
+    except Exception as e:
+        print(f"[WARN] Clic fallido en {desc}: {e}")
+        if mandatory: raise
+        return False
+
+def ingresar_texto(driver, rid, texto, desc="", timeout=10):
+    try:
+        campo = esperar(driver, EC.presence_of_element_located((AppiumBy.ID, rid)), timeout)
+        campo.clear(); campo.send_keys(texto); time.sleep(0.5)
+        return True
+    except:
+        return False
+
+def click_button(driver, resource_id, description="", timeout=10, mandatory=True):
+    try:
+        button = WebDriverWait(driver, timeout).until(
+            EC.element_to_be_clickable((AppiumBy.ID, resource_id))
+        )
+        button.click()
+        time.sleep(0.5)
+        return True
+    except Exception:
+        if mandatory: raise
+        return False
+
+def click_tab_icon(driver, resource_id, instance_index=0, description="", timeout=15, mandatory=True):
+    try:
+        element = WebDriverWait(driver, timeout).until(
+            EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,
+            f'new UiSelector().resourceId("{resource_id}").instance({instance_index}).enabled(true)')))
+        element.click(); time.sleep(0.5)
+        return True
+    except:
+        if mandatory: raise
+        return False
+
+# ------- Helpers adicionales -------
+def clic_desc(driver, content_desc, desc="", timeout=8, mandatory=True):
+    try:
+        el = esperar(driver, EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, content_desc)), timeout)
+        el.click(); time.sleep(0.4)
+        print(f"[UI] Clic por content-desc OK: {desc or content_desc}")
+        return True
+    except Exception as e:
+        print(f"[WARN] Clic-desc falló ({content_desc}): {e}")
+        if mandatory: raise
+        return False
+
+def clic_texto(driver, text, rid_filter=None, desc="", timeout=10, mandatory=True):
+    """
+    Clic por texto visible; opcionalmente restringe por resource-id (ej: ...:id/title)
+    """
+    try:
+        if rid_filter:
+            locator = (AppiumBy.ANDROID_UIAUTOMATOR,
+                       f'new UiSelector().resourceId("{rid_filter}").text("{text}")')
+        else:
+            locator = (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{text}")')
+        el = esperar(driver, EC.element_to_be_clickable(locator), timeout)
+        el.click(); time.sleep(0.4)
+        print(f"[UI] Clic por texto OK: {desc or text}")
+        return True
+    except Exception as e:
+        print(f"[WARN] Clic por texto falló ({text}): {e}")
+        if mandatory: raise
+        return False
+
+def presente(driver, by, selector, timeout=5):
+    try:
+        esperar(driver, EC.presence_of_element_located((by, selector)), timeout)
+        return True
+    except TimeoutException:
+        return False
+
+# ------- Config específica que pediste -------
+udid = "6NU7N18614004267"
+PKG  = "com.gyokovsolutions.gnettrackproplus"
+ACT  = "com.gyokovsolutions.gnettrackproplus.MainActivity"
+
+caps = {
+    "platformName": "Android",
+    "deviceName": udid,
+    "udid": udid,
+    "appPackage": PKG,
+    "appActivity": ACT,
+    "appWaitActivity": "*",           # tolerante al primer activity que aparezca
+    "automationName": "UiAutomator2",
+    "forceAppLaunch": True,
+    "systemPort": 8215,
+    "noReset": True,
+    "newCommandTimeout": 360
+}
+
+def setup_driver():
+    try:
+        return webdriver.Remote("http://127.0.0.1:4786", options=UiAutomator2Options().load_capabilities(caps))
+    except Exception as e:
+        print(f"[ERROR] No se pudo iniciar Appium: {e}")
+        return None
+
+# ------- Pasos de la automatización -------
+def abrir_menu(driver):
+    """
+    1) Accesibility id: 'Más opciones'
+    2) Fallback: id 'PKG:id/menu2' (texto MENU)
+    Además espera a que aparezca al menos un item del menú (rid ...:id/title)
+    """
+    if clic_desc(driver, "Más opciones", desc="tres puntos", timeout=5, mandatory=False) \
+       or clic(driver, f"{PKG}:id/menu2", desc="MENU (id)", timeout=5, mandatory=False):
+        # Espera a que estén visibles los títulos del menú
+        try:
+            esperar(driver, EC.presence_of_element_located(
+                (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().resourceId("{PKG}:id/title")')
+            ), 5)
+        except TimeoutException:
+            pass
+        return True
+
+    # Fallback extra: ImageView con desc 'opciones'
+    try:
+        el = esperar(driver, EC.element_to_be_clickable(
+            (AppiumBy.ANDROID_UIAUTOMATOR,
+             'new UiSelector().className("android.widget.ImageView").descriptionContains("opciones")')), 3)
+        el.click(); time.sleep(0.3)
+        esperar(driver, EC.presence_of_element_located(
+            (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().resourceId("{PKG}:id/title")')
+        ), 5)
+        return True
+    except Exception:
+        pass
+
+    raise RuntimeError("No se pudo abrir el menú (Más opciones / MENU).")
+
+def wait_menu_closed(driver, timeout=5):
+    """Espera a que desaparezca algún item típico del menú (p.ej. 'Start Log')."""
+    try:
+        WebDriverWait(driver, timeout).until(
+            EC.invisibility_of_element_located(
+                (AppiumBy.ANDROID_UIAUTOMATOR,
+                 f'new UiSelector().resourceId("{PKG}:id/title").text("Start Log")')
+            )
+        )
+    except TimeoutException:
+        # No es crítico si no detecta invisibilidad; seguimos.
+        pass
+    time.sleep(0.3)
+
+
+def iniciar_secuencia(driver):
+    """
+    MENU -> Start Log -> (menú se cierra) -> MENU -> Start Data Sequence/Data Test -> YES
+    Con reintentos cortos por si hay animaciones.
+    """
+    abrir_menu(driver)
+
+    # 1) Start Log
+    clic_texto(driver, "Start Log",
+               rid_filter=f"{PKG}:id/title",
+               desc="Start Log", timeout=10, mandatory=True)
+
+    # El menú se cierra: esperamos esa invisibilidad y reabrimos
+    wait_menu_closed(driver, timeout=5)
+    time.sleep(0.4)
+    abrir_menu(driver)
+
+    # 2) Start Data Sequence / variantes
+    variantes_data = ["Start Data Sequence", "Start Data Test", "Start DataSequence", "Start Data Seq"]
+    tocado = False
+    for v in variantes_data:
+        if clic_texto(driver, v, rid_filter=f"{PKG}:id/title", desc=v, timeout=6, mandatory=False):
+            tocado = True
+            break
+    if not tocado:
+        # último intento sin rid_filter (por si cambia el id en algunos builds)
+        for v in variantes_data:
+            if clic_texto(driver, v, desc=v, timeout=4, mandatory=False):
+                tocado = True
+                break
+    if not tocado:
+        raise RuntimeError("No se encontró 'Start Data Sequence' (ni sus variantes) después de reabrir el menú.")
+
+    # 3) Confirmación YES
+    click_button(driver, "android:id/button1", description="YES", timeout=10, mandatory=True)
+
+def detener_secuencia_data(driver):
+    """MENU -> Stop Data Sequence -> YES"""
+    abrir_menu(driver)
+    # Click exacto por resource-id + texto
+    clic_texto(
+        driver,
+        "Stop Data Sequence",
+        rid_filter=f"{PKG}:id/title",
+        desc="Stop Data Sequence",
+        timeout=8,
+        mandatory=True
+    )
+    # Confirmación (YES). Si no aparece, no rompe.
+    click_button(driver, "android:id/button1", description="YES", timeout=8, mandatory=False)
+    wait_menu_closed(driver, timeout=5)
+    print("[INFO] Stop Data Sequence ejecutado.")
+    return True
+
+def esperar_fin(driver, max_segundos=900, intervalo=3):
+    """
+    Espera el indicador de finalización:
+      resourceId("com.gyokovsolutions.gnettrackproplus:id/content").instance(1)
+    Devuelve: 'finalizado' | 'detenido' | 'timeout'
+    """
+    t0 = time.time()
+    print("[INFO] Esperando indicador de finalización...")
+    selector = 'new UiSelector().resourceId("com.gyokovsolutions.gnettrackproplus:id/content").instance(1)'
+    while True:
+        if detener:
+            print("[INFO] Bandera detener activada.")
+            return "detenido"
+        try:
+            ok = presente(driver, AppiumBy.ANDROID_UIAUTOMATOR, selector, timeout=2)
+            if ok:
+                # doble chequeo rápido
+                time.sleep(1)
+                ok2 = presente(driver, AppiumBy.ANDROID_UIAUTOMATOR, selector, timeout=2)
+                if ok2:
+                    print("[INFO] Señal de finalización detectada.")
+                    return "finalizado"
+        except Exception:
+            pass
+        if time.time() - t0 > max_segundos:
+            print(f"[WARN] Timeout esperando finalización ({max_segundos}s).")
+            return "timeout"
+        time.sleep(intervalo)
+
+def terminar_log(driver):
+    """
+    MENU -> End Log (intenta varias variantes por si cambia el texto)
+    """
+    abrir_menu(driver)
+    variantes = ["End Log", "Stop Log", "Finish Log", "Endlog", "END LOG"]
+    for v in variantes:
+        if clic_texto(driver, v, rid_filter=f"{PKG}:id/title", desc=v, timeout=5, mandatory=False):
+            print(f"[INFO] Opción '{v}' tocada.")
+            return True
+    # intento sin rid_filter
+    for v in variantes:
+        if clic_texto(driver, v, desc=v, timeout=4, mandatory=False):
+            print(f"[INFO] Opción '{v}' tocada.")
+            return True
+    print("[WARN] No se encontró opción para terminar log en el menú.")
+    return False
+
+# --- PRUEBA PRINCIPAL ---
+def gnetrack():
+    print("=== Iniciando G-NetTrack Pro+ ===")
+    driver = setup_driver()
+    if not driver:
+        return False
+
+    try:
+        # Espera básica de carga (no crítico)
+        try:
+            esperar(driver, EC.any_of(
+                EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().packageName("{PKG}")')),
+                EC.presence_of_element_located((AppiumBy.ID, f"{PKG}:id/menu2"))
+            ), 10)
+        except Exception:
+            pass
+
+        if detener:
+            print("[INFO] Proceso detenido por el usuario antes de iniciar.")
+            return False
+
+        # 1) Ejecutar secuencia
+        iniciar_secuencia(driver)
+
+        # 2) Esperar fin
+        estado = esperar_fin(driver, max_segundos=900, intervalo=3)
+
+        # 3) Terminar log (si corresponde)
+        if estado in ("finalizado", "detenido", "timeout"):
+            try:
+                terminar_log(driver)
+            except Exception as e:
+                print(f"[WARN] Error al intentar terminar el log: {e}")
+            
+            try:
+                detener_secuencia_data(driver)
+            except Exception as e:
+                print(f"[WARN] Error en Stop Data Sequence: {e}")
+
+        print(f"[INFO] Flujo completado con estado: {estado}")  
+
+        try:
+            ruta_local = extraer_logs_gnettrack()
+            print(f"[INFO] Logs copiados en: {ruta_local}")
+        except Exception as e:
+            print(f"[WARN] No se pudieron extraer los logs: {e}")
+
+        return True
+    
+    finally:
+        # Cierre limpio
+        try:
+            cerrar_apps([PKG], udid)
+        except Exception:
+            pass
+        try:
+            driver.quit()
+        except Exception:
+            pass
+        time.sleep(1.0)
+
+if __name__ == "__main__":
+    gnetrack()

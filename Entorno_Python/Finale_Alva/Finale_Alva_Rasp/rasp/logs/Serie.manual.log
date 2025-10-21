@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/home/pi/Desktop/Finale_Alva/Nativo/Serie.py", line 234, in <module>
+    iniciar_logs(
+  File "/home/pi/Desktop/Finale_Alva/Nativo/gnettrack.py", line 160, in iniciar_logs
+    driver = _crear_driver(udid, pkg, act, server_url, caps_overrides=caps_overrides)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/Desktop/Finale_Alva/Nativo/gnettrack.py", line 138, in _crear_driver
+    return webdriver.Remote(server_url, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/Desktop/Testdrive/venv/lib/python3.11/site-packages/appium/webdriver/webdriver.py", line 238, in __init__
+    super().__init__(
+  File "/home/pi/Desktop/Testdrive/venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 261, in __init__
+    self.start_session(capabilities)
+  File "/home/pi/Desktop/Testdrive/venv/lib/python3.11/site-packages/appium/webdriver/webdriver.py", line 329, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/Desktop/Testdrive/venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 454, in execute
+    self.error_handler.check_response(response)
+  File "/home/pi/Desktop/Testdrive/venv/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not find a driver for automationName 'UiAutomator2' and platformName 'Android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Cannot find module '/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/minimatch/minimatch.js'. Please verify that the package.json has a valid "main" entry)
+Stacktrace:
+UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not find a driver for automationName 'UiAutomator2' and platformName 'Android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Cannot find module '/home/pi/.appium/node_modules/appium-uiautomator2-driver/node_modules/minimatch/minimatch.js'. Please verify that the package.json has a valid "main" entry)
+    at getResponseForW3CError (/usr/lib/node_modules/appium/node_modules/@appium/base-driver/lib/protocol/errors.js:1143:9)
+    at asyncHandler (/usr/lib/node_modules/appium/node_modules/@appium/base-driver/lib/protocol/protocol.js:487:57)

@@ -1,0 +1,11 @@
+#PARAMETRO
+tiempo_entre_ciclos=5
+cdr_hold_s=20
+call_id=0
+role=A
+
+#CONTACTO
+vast_wb
+
+#PRUEBA
+loop llamar 5000
